@@ -1,9 +1,15 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+//csss
+import './styles/index.css';
+import './styles/mainFont.css';
 
-createRoot(document.getElementById("root")).render(
+//routes
+import RoutesSystem from './routes/RoutesSystem';
+import { RouterProvider } from 'react-router-dom';
+
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <h1>Hola</h1>
+    <RouterProvider router={RoutesSystem} />
   </StrictMode>
 );
