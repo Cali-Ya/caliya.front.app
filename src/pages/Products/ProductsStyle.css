@@ -1,0 +1,21 @@
+.products_section {
+  display: flex;
+  flex-direction: column;
+
+  .products_title {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 1.2rem;
+      color: var(--active-color-secondary);
+      text-align: center;
+    }
+    p {
+      font-size: 0.8rem;
+      color: var(--active-color-primary);
+      text-align: center;
+    }
+  }
+}

@@ -19,3 +19,9 @@
   --accents-color-secondary: #395998;
   --accents-color-secondary-light: #4285f4;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

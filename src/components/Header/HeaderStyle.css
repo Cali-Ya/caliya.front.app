@@ -1,0 +1,31 @@
+.header_component {
+  border-bottom: 1px solid var(--active-color-secondary-light);
+  padding: 0 0.5rem;
+  border-radius: 0 0 10px 10px;
+}
+
+.img_header_component {
+  width: 50px;
+  height: 100%;
+  position: relative;
+  animation: moveAndFade 2s ease-in-out backwards;
+}
+
+@keyframes moveAndFade {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  40% {
+    left: 100px;
+    opacity: 0;
+  }
+  50% {
+    left: -100px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
