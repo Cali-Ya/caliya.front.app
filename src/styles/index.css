@@ -18,6 +18,10 @@
   --accents-color-primary: #ef9920;
   --accents-color-secondary: #395998;
   --accents-color-secondary-light: #4285f4;
+
+  /* Global */
+  --border-radius: 0.8rem;
+  --shadow: 0px 0px 15px #010f07;
 }
 
 * {

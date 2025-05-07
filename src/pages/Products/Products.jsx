@@ -1,4 +1,5 @@
 import './ProductsStyle.css';
+import ProductCardStandard from '../../components/Cards/ProductoCard/ProductCardStandard/ProductCardStandard';
 
 const Products = ({ Title, ProductList }) => {
   return (
@@ -9,12 +10,15 @@ const Products = ({ Title, ProductList }) => {
       </figure>
       <figure className="products_list">
         {ProductList.map((product, index) => (
-          <div className="product_card" key={index}>
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <span>${product.price}</span>
-          </div>
+          <>
+            <ProductCardStandard
+              key={index}
+              Image={product.image}
+              Title={product.name}
+              Description={product.description}
+              Price={product.price}
+            />
+          </>
         ))}
       </figure>
     </section>
