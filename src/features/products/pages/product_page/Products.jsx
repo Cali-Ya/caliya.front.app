@@ -1,0 +1,42 @@
+import './ProductsStyle.css';
+import ProductCardStandard from '../../ProductoCard/ProductCardStandard/ProductCardStandard';
+import useExpanded from '../../hooks/useExpanded';
+
+const Products = ({ Title, ProductsList }) => {
+  const { isExpanded, handleToggleViewProducts } = useExpanded({
+    initialValue: false,
+  });
+
+  const displayedProducts = isExpanded
+    ? ProductsList
+    : ProductsList.slice(0, 3);
+
+  return (
+    <section className="products_section">
+      <figure className="products_header">
+        <h1 className="products_header__title">{Title}</h1>
+        <p
+          className="products_header__details"
+          onClick={handleToggleViewProducts}
+        >
+          {isExpanded ? 'Ver menos' : 'Ver más'}
+        </p>
+      </figure>
+      <figure
+        className={`products_list ${isExpanded ? 'expanded' : 'collapsed'}`}
+      >
+        {displayedProducts.map((product, index) => (
+          <ProductCardStandard
+            key={index}
+            Image={product.image}
+            Title={product.name}
+            Description={product.description}
+            Price={product.price}
+          />
+        ))}
+      </figure>
+    </section>
+  );
+};
+
+export default Products;

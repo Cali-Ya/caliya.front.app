@@ -1,9 +1,9 @@
 import CaliYaIsoTipo from './logos/caliya/caliya_isotipo.svg';
-import CaliYaImagoTipo from './logos/caliya/caliya_imagotipo.svg';
+import CaliYaIsologo from '../../public/caliya_isologo.svg';
 
 export const logos = {
   CaliYa: {
     IsoTipo: CaliYaIsoTipo,
-    ImagoTipo: CaliYaImagoTipo,
+    Isologo: CaliYaIsologo,
   },
 };
