@@ -1,5 +1,5 @@
 import './ProductsStyle.css';
-import ProductCardStandard from '../../ProductoCard/ProductCardStandard/ProductCardStandard';
+import ProductCardStandard from '../../product_card/product_card_standard/ProductCardStandard';
 import useExpanded from '../../hooks/useExpanded';
 
 const Products = ({ Title, ProductsList }) => {
