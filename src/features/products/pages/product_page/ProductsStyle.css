@@ -37,7 +37,7 @@
   transition: all 0.4s ease-in-out;
 }
 
-.products_list.collapsed {
+.products_list--collapsed {
   padding: 1rem 0.6rem;
   overflow-x: scroll;
 
@@ -49,7 +49,7 @@
   }
 }
 
-.products_list.expanded {
+.products_list--expanded {
   display: grid;
   grid-template-columns: 50% 50%;
   justify-content: center;

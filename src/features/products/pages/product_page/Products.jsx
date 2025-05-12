@@ -1,6 +1,7 @@
 import './ProductsStyle.css';
 import ProductCardStandard from '../../product_card/product_card_standard/ProductCardStandard';
 import useExpanded from '../../hooks/useExpanded';
+import clsx from 'clsx';
 
 const Products = ({ Title, ProductsList }) => {
   const { isExpanded, handleToggleViewProducts } = useExpanded({
@@ -23,7 +24,10 @@ const Products = ({ Title, ProductsList }) => {
         </p>
       </figure>
       <figure
-        className={`products_list ${isExpanded ? 'expanded' : 'collapsed'}`}
+        className={clsx('products_list', {
+          'products_list--expanded': isExpanded,
+          'products_list--collapsed': !isExpanded,
+        })}
       >
         {displayedProducts.map((product, index) => (
           <ProductCardStandard
