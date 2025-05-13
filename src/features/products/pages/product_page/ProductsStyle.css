@@ -30,22 +30,26 @@
 .products_list {
   display: flex;
   overflow: hidden;
-  gap: 1rem;
-  padding: 1.2rem 0.6rem;
+  padding: 1rem 0.6rem;
+  gap: 1.2rem;
   transition: max-height 0.6s ease-in-out, opacity 0.3s ease;
   max-height: 100%;
   transition: all 0.4s ease-in-out;
 }
 
 .products_list--collapsed {
-  padding: 1rem 0.6rem;
   overflow-x: scroll;
+  gap: 1rem;
 
-  .product_card_standard__details,
-  .product_card_standard__description {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  .product_card_standard {
+    .product_card_standard__details {
+      .product_card_standard__title,
+      .product_card_standard__description {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }
 

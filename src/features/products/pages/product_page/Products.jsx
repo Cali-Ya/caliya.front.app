@@ -8,9 +8,9 @@ const Products = ({ Title, ProductsList }) => {
     initialValue: false,
   });
 
-  const displayedProducts = isExpanded
+  /*  const displayedProducts = isExpanded
     ? ProductsList
-    : ProductsList.slice(0, 3);
+    : ProductsList.slice(0, 3); */
 
   return (
     <section className="products_section">
@@ -29,15 +29,16 @@ const Products = ({ Title, ProductsList }) => {
           'products_list--collapsed': !isExpanded,
         })}
       >
-        {displayedProducts.map((product, index) => (
-          <ProductCardStandard
-            key={index}
-            Image={product.image}
-            Title={product.name}
-            Description={product.description}
-            Price={product.price}
-          />
-        ))}
+        {ProductsList &&
+          ProductsList.map((product) => (
+            <ProductCardStandard
+              key={product.id}
+              image={product.image}
+              title={product.name}
+              description={product.description}
+              price={product.price}
+            />
+          ))}
       </figure>
     </section>
   );
