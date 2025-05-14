@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: relative;
-  overflow: hidden;
 }
 
 .products_header {
@@ -29,7 +27,6 @@
 
 .products_list {
   display: flex;
-  overflow: hidden;
   gap: 1rem;
   padding: 1.2rem 0.6rem;
   transition: max-height 0.6s ease-in-out, opacity 0.3s ease;
@@ -40,13 +37,6 @@
 .products_list--collapsed {
   padding: 1rem 0.6rem;
   overflow-x: scroll;
-
-  .product_card_standard__details,
-  .product_card_standard__description {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
 }
 
 .products_list--expanded {
@@ -56,10 +46,6 @@
   justify-items: center;
   opacity: 1;
   height: 100%;
-
-  .product_card_standard {
-    height: max-content;
-  }
 }
 
 .products_section__expanded .products_header {

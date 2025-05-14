@@ -1,0 +1,102 @@
+.product_selection__container {
+  width: 100%;
+  min-height: 100%;
+  gap: 0.5rem;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background-color: var(--active-color-white);
+
+  .icon_return_products_section {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem 0.3em;
+
+    .icon_return_products_section__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 2em;
+      color: var(--active-color-white);
+
+      &:active {
+        transform: translateX(-0.3em);
+      }
+    }
+  }
+
+  .image_product_selection_container {
+    width: 100%;
+    height: 100%;
+
+    .image_product_selection {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: inline-block;
+    }
+  }
+
+  .total_product_selection {
+    width: 100%;
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .product_selection_details {
+    padding: 0 0.6em;
+
+    .product_selection_title {
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    .product_selection_description {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+      color: var(--active-color-secondary-light);
+    }
+  }
+
+  .details_product_selection {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.7em;
+    gap: 0.3em;
+
+    .total_product_selection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em 0;
+      font-size: 1.2em;
+      color: var(--active-color-secondary);
+    }
+  }
+}
+/* 
+.product_selection__container--active {
+  transition: all 0.3s ease allow-discrete;
+  flex-direction: column;
+  transform: translateX(0%);
+  display: flex;
+
+  @starting-style {
+    display: flex;
+  }
+}
+
+.product_selection__container--inactive {
+  transition: all 0.3s ease allow-discrete;
+  transform: translateX(100%);
+  display: flex;
+
+  @starting-style {
+    display: none;
+    transform: translateX(0%);
+  }
+} */

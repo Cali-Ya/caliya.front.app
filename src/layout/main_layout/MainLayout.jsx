@@ -1,13 +1,12 @@
 //styles
 import './MainLayoutStyle.css';
 
-//router-dom
-import { Outlet } from 'react-router-dom';
 //componentes
 import Header from '../../components/header/Header';
 import Products from '../../features/products/pages/product_page/Products';
 import Salchipapa from '../../assets/emplatado-final-de-las-salchipapas.jpg';
 import hamburgesa from '../../assets/hamburguesa-test.jpg';
+import ProductSelection from '../../features/products/components/product_selection/ProductSelection';
 
 const MainLayout = () => {
   const Producto = {
