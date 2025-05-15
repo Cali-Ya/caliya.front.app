@@ -1,5 +1,5 @@
 import './ProductsStyle.css';
-import ProductCardStandard from '../../product_card/product_card_standard/ProductCardStandard';
+import ProductCardStandard from '../../components/product_card/product_card_standard/ProductCardStandard';
 import useExpanded from '../../hooks/useExpanded';
 import clsx from 'clsx';
 
@@ -10,7 +10,15 @@ const Products = ({ Title, ProductsList }) => {
 
   /*  const displayedProducts = isExpanded
     ? ProductsList
-    : ProductsList.slice(0, 3); */
+    : ProductsList.slice(0, 3);
+
+  const isExpandedElipsis = true;
+
+  const size_details = {
+    size_title: '1.1rem',
+    size_description: '.9rem',
+    size_price: '1rem',
+  };
 
   return (
     <section className="products_section">
@@ -29,16 +37,19 @@ const Products = ({ Title, ProductsList }) => {
           'products_list--collapsed': !isExpanded,
         })}
       >
-        {ProductsList &&
-          ProductsList.map((product) => (
-            <ProductCardStandard
-              key={product.id}
-              image={product.image}
-              title={product.name}
-              description={product.description}
-              price={product.price}
-            />
-          ))}
+        {displayedProducts.map((product, index) => (
+          <ProductCardStandard
+            key={index}
+            image={product.image}
+            title={product.name}
+            description={product.description}
+            price={product.price}
+            activeElipsis={isExpandedElipsis}
+            size_title={size_details.size_title}
+            size_description={size_details.size_description}
+            size_price={size_details.size_price}
+          />
+        ))}
       </figure>
     </section>
   );

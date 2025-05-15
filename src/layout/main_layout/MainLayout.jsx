@@ -1,8 +1,6 @@
 //styles
 import './MainLayoutStyle.css';
 
-//router-dom
-import { Outlet } from 'react-router-dom';
 //componentes
 import Header from '../../components/header/Header';
 import Products from '../../features/products/pages/product_page/Products';
