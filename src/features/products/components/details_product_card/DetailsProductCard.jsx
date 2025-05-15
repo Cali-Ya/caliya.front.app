@@ -43,7 +43,7 @@ const DetailsProductCard = ({
           ...elipsis,
         }}
       >
-        {price}
+        {new Intl.NumberFormat('es-CO').format(price)} COP
       </span>
     </section>
   );

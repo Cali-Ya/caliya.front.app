@@ -2,23 +2,28 @@
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  width: 180px;
+  width: 150px;
   height: max-content;
-  padding: 0.6em 0.5em 1em 0.5em;
   background-color: var(--active-color-white);
   border-radius: var(--border-radius);
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   box-shadow: var(--shadow);
+  padding: 0.7em 0.5em;
 
   .product_card_standard__image {
     width: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    margin: 0.2em 0;
 
     img {
       width: 100%;
+      max-width: 90%;
       height: 100%;
       border-radius: var(--border-radius);
-      aspect-ratio: 6/4;
+      aspect-ratio: 1/1;
     }
   }
 }
@@ -30,5 +35,4 @@
 
 .product_card_standard:active {
   transform: scale(0.95);
-  transition: all 0.1s ease-in;
 }

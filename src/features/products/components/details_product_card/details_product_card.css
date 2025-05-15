@@ -1,7 +1,6 @@
 .product_card_details {
   display: flex;
   flex-direction: column;
-  margin-top: 0.4em;
   gap: 0.5em;
 
   .product_card_details__title {

@@ -2,18 +2,13 @@
 import './ProductSelectionStyle.css';
 import { RxCaretLeft } from 'react-icons/rx';
 
-import ImgTest from '../../../../assets/hamburguesa-test.jpg';
 import useProductSelection from '../../modules/product_selection.store';
 import clsx from 'clsx';
 import DetailsProductCard from '../details_product_card/DetailsProductCard';
 
 const ProductSelection = () => {
-  const {
-    productSelection,
-    cardProductSelection,
-    setProductSelection,
-    setCardProductSelection,
-  } = useProductSelection();
+  const { productSelection, cardProductSelection, setCardProductSelection } =
+    useProductSelection();
 
   const handleSelectProduct = () => {
     setCardProductSelection(false);
@@ -34,7 +29,11 @@ const ProductSelection = () => {
       </figure>
 
       <figure className="image_product_selection_container">
-        <img src={ImgTest} alt="" className="image_product_selection" />
+        <img
+          src={productSelection.image}
+          alt={`product_selection_${productSelection.image}`}
+          className="image_product_selection"
+        />
       </figure>
 
       <section className="details_product_selection">

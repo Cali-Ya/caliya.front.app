@@ -29,7 +29,7 @@
   display: flex;
   gap: 1rem;
   padding: 1.2rem 0.6rem;
-  transition: max-height 0.6s ease-in-out, opacity 0.3s ease;
+  transition: all 0.6s ease-in-out forwards;
   max-height: 100%;
   transition: all 0.4s ease-in-out;
 }
@@ -44,7 +44,6 @@
   justify-content: center;
   justify-items: center;
   opacity: 1;
-  height: 100%;
 }
 
 .products_section__expanded .products_header {

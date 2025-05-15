@@ -8,7 +8,7 @@ const Products = ({ Title, ProductsList }) => {
     initialValue: false,
   });
 
-  /*  const displayedProducts = isExpanded
+  const displayedProducts = isExpanded
     ? ProductsList
     : ProductsList.slice(0, 3);
 
