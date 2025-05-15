@@ -7,12 +7,13 @@ const Products = ({ Title, ProductsList }) => {
   const { isExpanded, handleToggleViewProducts } = useExpanded({
     initialValue: false,
   });
-
+  /* 
   const displayedProducts = isExpanded
     ? ProductsList
-    : ProductsList.slice(0, 3);
+    : ProductsList.slice(0, 3); */
 
   const isExpandedElipsis = true;
+  const isProductMaxLength = 4;
 
   const size_details = {
     size_title: '1.1rem',
@@ -28,7 +29,11 @@ const Products = ({ Title, ProductsList }) => {
           className="products_header__details"
           onClick={handleToggleViewProducts}
         >
-          {isExpanded ? 'Ver menos' : 'Ver más'}
+          {ProductsList.length > isProductMaxLength
+            ? isExpanded
+              ? 'Ver menos'
+              : 'Ver más'
+            : ''}
         </p>
       </figure>
       <figure
@@ -37,7 +42,7 @@ const Products = ({ Title, ProductsList }) => {
           'products_list--collapsed': !isExpanded,
         })}
       >
-        {displayedProducts.map((product, index) => (
+        {ProductsList.map((product, index) => (
           <ProductCardStandard
             key={index}
             image={product.image}

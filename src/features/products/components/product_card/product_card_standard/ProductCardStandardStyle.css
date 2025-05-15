@@ -1,6 +1,5 @@
 .product_card_standard {
   display: flex;
-  flex-shrink: 0;
   flex-direction: column;
   width: 150px;
   height: max-content;
