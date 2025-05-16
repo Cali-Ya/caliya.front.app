@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import DetailsProductCard from '../details_product_card/DetailsProductCard';
 import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
 import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
+import InputComponent from '../../../../components/InputComponent/InputComponent';
 
 const ProductSelection = () => {
   const { productSelection, cardProductSelection, setCardProductSelection } =
@@ -54,6 +55,15 @@ const ProductSelection = () => {
           <section className="added_other_product">
             <PrimaryButtonComponent text="Añadir" />
             <SecondaryButtonComponent text="Quitar" />
+          </section>
+
+          <section className="section_added_aditionals">
+            <InputComponent
+              placeholder=""
+              label="Escribe los adicionales"
+              type="text"
+              id="added_aditionals"
+            />
           </section>
         </footer>
       </div>

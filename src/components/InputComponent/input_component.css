@@ -1,0 +1,41 @@
+.input_component {
+  width: 100%;
+  height: 100%;
+  color: var(--active-color-secondary);
+  font-size: 1em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.1s ease;
+
+  .label_input_component {
+    color: var(--active-color-secondary-light);
+    transition: all 0.1s ease;
+    position: absolute;
+    padding: 0.4em 0;
+    cursor: text;
+  }
+  .label_input_component--active {
+    transform: translateY(-100%);
+    font-size: 0.8em;
+  }
+  .label_input_component--inactive {
+    bottom: 0;
+    font-size: 1em;
+    transform: translateY(0%);
+  }
+
+  .input_component__input {
+    padding: 0.8em 0.6em;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--active-color-secondary);
+  }
+
+  /*  &:hover {
+    background-color: var(--accents-color-primary);
+    color: var(--active-color-white);
+  } */
+}
