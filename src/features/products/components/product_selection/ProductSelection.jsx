@@ -5,6 +5,8 @@ import { RxCaretLeft } from 'react-icons/rx';
 import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
 import DetailsProductCard from '../details_product_card/DetailsProductCard';
+import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
+import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
 
 const ProductSelection = () => {
   const { productSelection, cardProductSelection, setCardProductSelection } =
@@ -36,7 +38,7 @@ const ProductSelection = () => {
         />
       </figure>
 
-      <section className="details_product_selection">
+      <div className="production_selection_content">
         <DetailsProductCard
           title={productSelection.name}
           description={productSelection.description}
@@ -47,7 +49,14 @@ const ProductSelection = () => {
           <p className="total_amount">Cantidad: 2</p>
           <p className="total_price">Total: 11.000 </p>
         </section>
-      </section>
+
+        <footer className="actions_product_selection">
+          <section className="added_other_product">
+            <PrimaryButtonComponent text="Añadir" />
+            <SecondaryButtonComponent text="Quitar" />
+          </section>
+        </footer>
+      </div>
     </aside>
   );
 };

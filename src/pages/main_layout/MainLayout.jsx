@@ -1,5 +1,5 @@
 //styles
-import './main_layoutStyle.css';
+import './main_layout.css';
 
 //componentes
 import Header from '../../layout/header/Header';
@@ -18,7 +18,7 @@ const MainLayout = () => {
   return (
     <main className="container_main_layout">
       <Header />
-      {/* <ProductSelection /> */}
+      <ProductSelection />
       <section className="container_main_layout__content">
         {products &&
           products.categories

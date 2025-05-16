@@ -1,0 +1,21 @@
+.secondary_button_component {
+  width: 100%;
+  padding: 0.8em 0.6em;
+  color: var(--active-color-primary);
+  background-color: var(--active-color-white);
+  border-radius: 0.4em;
+  font-size: 1em;
+  outline: none;
+  border: solid 2px var(--active-color-primary);
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  &:hover {
+    background-color: var(--accents-color-primary);
+    color: var(--active-color-white);
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+}
