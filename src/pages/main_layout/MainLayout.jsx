@@ -2,7 +2,7 @@
 import './MainLayoutStyle.css';
 
 //componentes
-import Header from '../../components/header/Header';
+import Header from '../../layout/header/Header';
 import Products from '../../features/products/pages/product_page/Products';
 import { useEffect, useState } from 'react';
 import { fecthProducts } from '../../features/products/api/products_api';

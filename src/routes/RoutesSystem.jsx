@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../layout/main_layout/MainLayout';
+import MainLayout from '../pages/main_layout/MainLayout';
 
 const RoutesSystem = createBrowserRouter([
   {
