@@ -1,7 +1,6 @@
 .header_component {
   border-bottom: 1px solid var(--active-color-secondary-light);
   background-color: var(--active-color-secondary);
-  display: flex;
   justify-content: center;
 }
 
@@ -11,14 +10,14 @@
   top: 0;
   left: 0;
   margin: 1.2em 0.9em;
-  animation: moveAndFade 2s ease-in-out backwards;
+  z-index: 2;
+  animation: moveAndFade 2s ease-in-out;
 }
 
 .logos_header_component {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 50%;
 
   .image_header_component {
     object-fit: cover;

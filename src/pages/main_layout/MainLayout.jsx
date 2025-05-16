@@ -3,37 +3,22 @@ import './main_layout.css';
 
 //componentes
 import Header from '../../layout/header/Header';
-import Products from '../../features/products/pages/product_page/Products';
-import { useEffect, useState } from 'react';
-import { fecthProducts } from '../../features/products/api/products_api';
-import ProductSelection from '../../features/products/components/product_selection/ProductSelection';
+import { Outlet } from 'react-router-dom';
+import useProductSelection from '../../features/products/store/product_selection.store';
 
 const MainLayout = () => {
-  const [products, setProducts] = useState();
-
-  useEffect(() => {
-    fecthProducts(setProducts);
-  }, []);
+  //global
+  const { productSelection } = useProductSelection();
 
   return (
-    <main className="container_main_layout">
+    <main
+      className="container_main_layout"
+      style={{
+        overflow: productSelection ? 'hidden' : 'auto',
+      }}
+    >
       <Header />
-      <ProductSelection />
-      <section className="container_main_layout__content">
-        {products &&
-          products.categories
-            .filter(
-              (category) =>
-                Array.isArray(category.items) && category.items.length > 0
-            )
-            .map((categories) => (
-              <Products
-                Title={categories.name}
-                ProductsList={categories.items}
-                key={categories.name}
-              />
-            ))}
-      </section>
+      <Outlet />
     </main>
   );
 };

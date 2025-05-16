@@ -8,14 +8,24 @@ import DetailsProductCard from '../details_product_card/DetailsProductCard';
 import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
 import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
 import InputComponent from '../../../../components/InputComponent/InputComponent';
+import useNavigatePage from '../../../../hooks/useNavigatePage';
+import { useEffect } from 'react';
 
 const ProductSelection = () => {
+  //custom hooks
+  const navigate = useNavigatePage();
+
+  //global
   const { productSelection, cardProductSelection, setCardProductSelection } =
     useProductSelection();
 
   const handleSelectProduct = () => {
+    navigate('/');
     setCardProductSelection(false);
   };
+
+  //react
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
     <aside
@@ -64,6 +74,7 @@ const ProductSelection = () => {
               type="text"
               id="added_aditionals"
             />
+            <PrimaryButtonComponent text="Agregar al carrito" />
           </section>
         </footer>
       </div>

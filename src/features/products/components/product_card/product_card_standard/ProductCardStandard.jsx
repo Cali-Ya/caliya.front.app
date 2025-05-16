@@ -1,3 +1,4 @@
+import useNavigatePage from '../../../../../hooks/useNavigatePage';
 import useProductSelection from '../../../store/product_selection.store';
 import DetailsProductCard from '../../details_product_card/DetailsProductCard';
 import './product_card_standard.css';
@@ -12,6 +13,10 @@ const ProductCardStandard = ({
   size_description,
   size_price,
 }) => {
+  //custom hooks
+  const navigate = useNavigatePage();
+
+  //global
   const { setProductSelection, setCardProductSelection } =
     useProductSelection();
 
@@ -23,6 +28,7 @@ const ProductCardStandard = ({
       image: image,
     });
     setCardProductSelection(true);
+    navigate('/add_to_cart');
   };
 
   return (
