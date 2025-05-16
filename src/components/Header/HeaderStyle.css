@@ -1,14 +1,30 @@
 .header_component {
   border-bottom: 1px solid var(--active-color-secondary-light);
-  padding: 0 0.5rem;
-  border-radius: 0 0 10px 10px;
+  background-color: var(--active-color-secondary);
+  display: flex;
+  justify-content: center;
 }
 
-.img_header_component {
-  width: 50px;
-  height: 100%;
-  position: relative;
+.logo_header_component {
+  position: absolute;
+  max-width: 6vh;
+  top: 0;
+  left: 0;
+  margin: 1.2em 0.9em;
   animation: moveAndFade 2s ease-in-out backwards;
+}
+
+.logos_header_component {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 50%;
+
+  .image_header_component {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @keyframes moveAndFade {

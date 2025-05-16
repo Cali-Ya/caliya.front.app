@@ -3,15 +3,22 @@ import './HeaderStyle.css';
 //images
 import { logos } from '../../assets/assets_exports';
 
-const Header = ({ Title }) => {
+const Header = ({ title }) => {
   return (
     <section className="header_component">
       <img
         src={logos.CaliYa.IsoTipo}
-        alt="caliya_isotipo"
-        className="img_header_component"
+        alt="caliya_logo"
+        className="logo_header_component"
       />
-      {Title && <h1 className="title header">{Title}</h1>}
+      <figure className="logos_header_component">
+        <img
+          src={logos.D_M_O.D_M_O_logo}
+          alt="logo"
+          className="image_header_component"
+        />
+      </figure>
+      {title && <h1 className="title header">{title}</h1>}
     </section>
   );
 };
