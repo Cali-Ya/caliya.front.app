@@ -1,4 +1,4 @@
-import './ProductsStyle.css';
+import './products.css';
 import ProductCardStandard from '../../components/product_card/product_card_standard/ProductCardStandard';
 import useExpanded from '../../hooks/useExpanded';
 import clsx from 'clsx';

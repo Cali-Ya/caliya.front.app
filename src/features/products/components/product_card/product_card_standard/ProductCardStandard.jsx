@@ -1,6 +1,6 @@
-import useProductSelection from '../../../modules/product_selection.store';
+import useProductSelection from '../../../store/product_selection.store';
 import DetailsProductCard from '../../details_product_card/DetailsProductCard';
-import './ProductCardStandardStyle.css';
+import './product_card_standard.css';
 
 const ProductCardStandard = ({
   image,

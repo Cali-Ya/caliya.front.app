@@ -1,8 +1,8 @@
 //css
-import './ProductSelectionStyle.css';
+import './product_selection.css';
 import { RxCaretLeft } from 'react-icons/rx';
 
-import useProductSelection from '../../modules/product_selection.store';
+import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
 import DetailsProductCard from '../details_product_card/DetailsProductCard';
 

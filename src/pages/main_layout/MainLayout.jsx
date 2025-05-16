@@ -1,5 +1,5 @@
 //styles
-import './MainLayoutStyle.css';
+import './main_layoutStyle.css';
 
 //componentes
 import Header from '../../layout/header/Header';
