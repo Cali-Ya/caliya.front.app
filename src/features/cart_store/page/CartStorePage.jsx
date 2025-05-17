@@ -44,14 +44,14 @@ const CartStorePage = () => {
     let message = '¡Hola! Quiero hacer el siguiente pedido:%0A';
 
     cart.forEach((item) => {
-      // Construye la línea principal con cantidad y nombre
       message += `• ${item.name} x${item.quantity} - $${
         item.price * item.quantity
       }%0A`;
-
-      // Si tiene adicionales, agrégalos en una sola línea
       if (item.additionals && item.additionals.length > 0) {
         message += `   Adicionales: ${item.additionals.join(', ')}%0A`;
+      }
+      if (item.observation) {
+        message += `   Observaciones: ${item.observation}%0A`;
       }
       message += `%0A`;
     });
@@ -107,6 +107,11 @@ const CartStorePage = () => {
                     </p>
                   ))}
                 </article>
+              )}
+              {item.observation && (
+                <p className="observations_item_cart_store">
+                  <strong>Observaciones:</strong> {item.observation}
+                </p>
               )}
 
               <div className="actions_item_list_cart_store">

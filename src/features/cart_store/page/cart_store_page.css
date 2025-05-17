@@ -75,6 +75,10 @@
         gap: 0.4em;
         margin: 0.4em 0;
       }
+
+      .observations_item_cart_store {
+        margin: 0.3em 0;
+      }
     }
 
     .actions_item_list_cart_store {

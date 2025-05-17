@@ -5,7 +5,7 @@ import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
 import DetailsProductCard from '../../components/details_product_card/DetailsProductCard';
 import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
-import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
+import InputComponent from '../../../../components/InputComponent/InputComponent';
 import useNavigatePage from '../../../../hooks/useNavigatePage';
 import { useEffect, useRef, useState } from 'react';
 import useCartStore from '../../../../store/cart.store';
@@ -19,6 +19,8 @@ const ProductSelection = () => {
   const handleNavigate = useNavigatePage();
 
   //state
+  const [observation, setObservation] = useState('');
+
   //add additionals
   const additionalsRef = useRef();
   const [selectedAdditionals, setSelectedAdditionals] = useState([]);
@@ -51,8 +53,10 @@ const ProductSelection = () => {
     addItem({
       ...productSelection,
       additionals: selectedAdditionals,
+      observation: observation.trim(),
     });
     setSelectedAdditionals([]);
+    setObservation('');
     additionalsRef.current?.clearChecks();
   };
 
@@ -109,6 +113,17 @@ const ProductSelection = () => {
         </section>
 
         <footer className="actions_product_selection">
+          <div className="observations_actions_product_selection">
+            <InputComponent
+              placeholder=""
+              id="pruduct_observation"
+              label="Observaciones"
+              value={observation}
+              onChange={(e) => setObservation(e.target.value)}
+            />
+            <p className="obersvations_text"></p>
+          </div>
+
           <DropDownSelectAdditionals
             ref={additionalsRef}
             list={['Salsa', 'Queso', 'Tocineta', 'Papas']}
