@@ -2,12 +2,14 @@ import clsx from 'clsx';
 import useExpanded from '../../../products/hooks/useExpanded';
 import ProductCardStandard from '../../../products/components/product_card/product_card_standard/ProductCardStandard';
 import useCartStore from '../../../../store/cart.store';
+import { useState } from 'react';
 
 const ProductCategory = ({ title, products }) => {
   //global
   const { isExpanded, handleToggleViewProducts } = useExpanded({
     initialValue: false,
   });
+  const [isExpandedElipsis, setIsExpandedElipsis] = useState(true);
 
   //cart store
   const addItem = useCartStore((state) => state.addItem);
@@ -16,12 +18,17 @@ const ProductCategory = ({ title, products }) => {
     addItem(product);
   };
 
+  //handle collapse
+  const handleIsExpanded = () => {
+    handleToggleViewProducts();
+    setIsExpandedElipsis(!isExpandedElipsis);
+  };
+
   /* 
   const displayedProducts = isExpanded
     ? ProductsList
     : ProductsList.slice(0, 3); */
 
-  const isExpandedElipsis = true;
   const isProductMaxLength = 4;
 
   const size_details = {
@@ -33,10 +40,7 @@ const ProductCategory = ({ title, products }) => {
     <section className="products_section">
       <figure className="products_header">
         <h1 className="products_header__title">{title}</h1>
-        <p
-          className="products_header__details"
-          onClick={handleToggleViewProducts}
-        >
+        <p className="products_header__details" onClick={handleIsExpanded}>
           {products && products.length > isProductMaxLength
             ? isExpanded
               ? 'Ver menos'
