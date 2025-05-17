@@ -11,9 +11,11 @@ import useNavigatePage from '../../../../hooks/useNavigatePage';
 import { useEffect, useState } from 'react';
 import useCartStore from '../../../../store/cart.store';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
+import useNumberFormat from '../../../../hooks/useNumberFormat';
 
 const ProductSelection = () => {
   //custom hooks
+  const { formatNumber } = useNumberFormat();
   const handleNavigate = useNavigatePage();
 
   //state
@@ -69,7 +71,13 @@ const ProductSelection = () => {
   };
 
   //react
-  useEffect(() => window.scrollTo(0, 0), []);
+  //format number
+  const country = 'es-CO';
+  const numberFormat = formatNumber(selectedSubtotal, country);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <aside
@@ -99,7 +107,7 @@ const ProductSelection = () => {
 
         <section className="total_product_selection">
           <p className="total_amount">Cantidad: {selectedQuantity}</p>
-          <p className="total_price">Precio total: {selectedSubtotal}</p>
+          <p className="total_price">Precio total: {numberFormat} COP</p>
         </section>
 
         <footer className="actions_product_selection">

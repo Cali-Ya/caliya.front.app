@@ -2,6 +2,7 @@ import PrimaryButtonComponent from '../../../components/ButtonComponent/ButtonPr
 import SecondaryButtonComponent from '../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
 import CaretIconLeft from '../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useNavigatePage from '../../../hooks/useNavigatePage';
+import useNumberFormat from '../../../hooks/useNumberFormat';
 import useCartStore from '../../../store/cart.store';
 import useProductSelection from '../../products/store/product_selection.store';
 import './cart_store_page.css';
@@ -16,6 +17,7 @@ const CartStorePage = () => {
 
   //custom hooks
   const handleNavigate = useNavigatePage();
+  const { formatNumber } = useNumberFormat();
 
   //total products in cart
   const totalQuantity = cart.reduce(
@@ -60,6 +62,9 @@ const CartStorePage = () => {
 
   //vars
   const caretBlack = false;
+  const country = 'es-CO';
+
+  //custom hook
 
   return (
     <section className="cart_store_container">
@@ -85,7 +90,7 @@ const CartStorePage = () => {
                   </p>
                 </article>
                 <p className="subtotal_item_cart_store">
-                  {item.price * item.quantity}
+                  {formatNumber(item.price * item.quantity, country)} COP
                 </p>
               </section>
 
@@ -111,7 +116,9 @@ const CartStorePage = () => {
         <article className="total_price_cart_store">
           <div className="content_total_price_cart_store">
             <p className="title_total_price_cart_store">Total</p>
-            <p className="description_total_price_cart_store">{getTotal()}</p>
+            <p className="description_total_price_cart_store">
+              {formatNumber(getTotal(), country)}
+            </p>
           </div>
 
           {/* total quantity */}

@@ -47,10 +47,10 @@
           flex-direction: column;
           justify-content: center;
           width: 100%;
+          max-width: 100%;
 
           .title_item_cart_store {
             font-size: 1.2em;
-            max-width: 90%;
             font-weight: 300;
             line-height: 1.4em;
           }
@@ -64,6 +64,9 @@
 
         .subtotal_item_cart_store {
           color: var(--accents-color-primary);
+          width: 100%;
+          max-width: 90%;
+          text-align: right;
         }
       }
     }

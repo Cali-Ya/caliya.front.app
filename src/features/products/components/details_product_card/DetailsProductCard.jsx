@@ -1,3 +1,4 @@
+import useNumberFormat from '../../../../hooks/useNumberFormat';
 import './details_product_card.css';
 
 const DetailsProductCard = ({
@@ -9,11 +10,17 @@ const DetailsProductCard = ({
   size_price,
   activeElipsis,
 }) => {
+  //css elipsis
   const elipsis = {
     whiteSpace: activeElipsis ? 'nowrap' : '',
     overflow: activeElipsis ? 'hidden' : '',
     textOverflow: activeElipsis ? 'ellipsis' : '',
   };
+
+  //custom hook
+  const { formatNumber } = useNumberFormat();
+  const country = 'es-CO';
+  const numberFormat = formatNumber(price, country);
 
   return (
     <section className="product_card_details">
@@ -43,7 +50,7 @@ const DetailsProductCard = ({
           ...elipsis,
         }}
       >
-        {new Intl.NumberFormat('es-CO').format(price)} COP
+        {numberFormat} COP
       </span>
     </section>
   );
