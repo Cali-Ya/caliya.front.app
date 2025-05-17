@@ -41,21 +41,24 @@ const CartStorePage = () => {
     if (cart.length === 0) return;
 
     let message = '¡Hola! Quiero hacer el siguiente pedido:%0A';
+
     cart.forEach((item) => {
+      // Construye la línea principal con cantidad y nombre
       message += `• ${item.name} x${item.quantity} - $${
         item.price * item.quantity
       }%0A`;
+
+      // Si tiene adicionales, agrégalos en una sola línea
       if (item.additionals && item.additionals.length > 0) {
-        item.additionals.forEach((ad, idx) => {
-          message += `   - Adicional ${idx + 1}: ${ad.additional}%0A`;
-        });
+        message += `   Adicionales: ${item.additionals.join(', ')}%0A`;
       }
       message += `%0A`;
     });
+
     message += `--------------------%0ATotal: $${getTotal()}`;
 
     // Número de WhatsApp (código de país + número, sin espacios ni signos)
-    const phone = import.meta.env.VITE_PHONE_DMO; // Cambia este número por el tuyo
+    const phone = import.meta.env.VITE_PHONE_DMO;
 
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
@@ -63,8 +66,6 @@ const CartStorePage = () => {
   //vars
   const caretBlack = false;
   const country = 'es-CO';
-
-  //custom hook
 
   return (
     <section className="cart_store_container">
@@ -94,17 +95,18 @@ const CartStorePage = () => {
                 </p>
               </section>
 
-              {/* actions */}
-              {/*   <div className="actions_list_item_cart_store">
-                <PrimaryButtonComponent
-                  onClick={() => addItem(item)}
-                  text="Añadir"
-                />
-                <SecondaryButtonComponent
-                  onClick={() => removeProductList(item)}
-                  text="Eliminar"
-                />
-              </div> */}
+              {item.additionals.length !== 0 && (
+                <article className="content_additionals_list_item_cart_store">
+                  <h4 className="title_additionals_list_item_cart_store">
+                    Adicionales:
+                  </h4>
+                  {item.additionals.map((additionals, index) => (
+                    <p className="additionals_list_item_cart_store" key={index}>
+                      {additionals}
+                    </p>
+                  ))}
+                </article>
+              )}
             </li>
           ))}
         </ul>

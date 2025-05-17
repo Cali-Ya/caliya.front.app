@@ -69,6 +69,12 @@
           text-align: right;
         }
       }
+
+      .content_additionals_list_item_cart_store {
+        display: flex;
+        gap: 0.4em;
+        margin: 0.4em 0;
+      }
     }
   }
   .container_total_price_cart_store {

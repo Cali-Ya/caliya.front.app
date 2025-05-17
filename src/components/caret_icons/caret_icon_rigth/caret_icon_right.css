@@ -1,0 +1,17 @@
+.caret_icon_right {
+  cursor: pointer;
+  font-size: 2em;
+  transition: all 0.3s ease;
+}
+
+.caret_icon_right_normal:active {
+  transform: translateX(-0.3em);
+  transition: all 0.3s ease;
+}
+
+.caret_icon_right_dropdown--starting {
+  transform: rotate(0deg);
+}
+.caret_icon_right_dropdown--rotate {
+  transform: rotate(90deg);
+}

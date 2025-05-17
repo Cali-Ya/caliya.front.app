@@ -3,15 +3,15 @@ import './product_selection.css';
 
 import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
-import DetailsProductCard from '../details_product_card/DetailsProductCard';
+import DetailsProductCard from '../../components/details_product_card/DetailsProductCard';
 import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
 import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
-import InputComponent from '../../../../components/InputComponent/InputComponent';
 import useNavigatePage from '../../../../hooks/useNavigatePage';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useCartStore from '../../../../store/cart.store';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useNumberFormat from '../../../../hooks/useNumberFormat';
+import DropDownSelectAdditionals from '../../components/dropdown_select_additionals/DropDownSelectAdditionals';
 
 const ProductSelection = () => {
   //custom hooks
@@ -20,8 +20,8 @@ const ProductSelection = () => {
 
   //state
   //add additionals
-  const [additionalInput, setAdditionalInput] = useState('');
-  const [additionals, setAdditionals] = useState([]);
+  const additionalsRef = useRef();
+  const [selectedAdditionals, setSelectedAdditionals] = useState([]);
 
   //global
 
@@ -30,33 +30,35 @@ const ProductSelection = () => {
     useProductSelection();
 
   //cart store
-  const { addItem, cart, removeProductList, addAdditionalToProduct } =
-    useCartStore();
+  const { addItem, cart, removeProductList } = useCartStore();
 
   //total products in cart
+
   // Busca el producto seleccionado en el carrito
-  const selectedInCart = cart.find((item) => item.id === productSelection.id);
+  /*  const selectedInCart = cart.find((item) => item.id === productSelection.id); */
 
   // Cantidad y subtotal solo del producto seleccionado
-  const selectedQuantity = selectedInCart ? selectedInCart.quantity : 0;
-  const selectedSubtotal = selectedInCart
-    ? selectedInCart.quantity * selectedInCart.price
-    : 0;
+  const totalQuantity = cart
+    .filter((item) => item.id === productSelection.id)
+    .reduce((sum, item) => sum + (item.quantity || 1), 0);
+
+  const totalSubtotal = cart
+    .filter((item) => item.id === productSelection.id)
+    .reduce((sum, item) => sum + (item.quantity || 1) * item.price, 0);
 
   //handle add cart store
   const handleAddToCart = () => {
-    addItem(productSelection, additionals);
-    setAdditionals([]);
+    addItem({
+      ...productSelection,
+      additionals: selectedAdditionals,
+    });
+    setSelectedAdditionals([]);
+    additionalsRef.current?.clearChecks();
   };
 
   //handle add additional
-  const handleAddAdditional = () => {
-    if (selectedQuantity > 0 && additionalInput.trim() !== '') {
-      addAdditionalToProduct(productSelection.id, {
-        additional: additionalInput,
-      });
-      setAdditionalInput('');
-    }
+  const handleChangeAdditionals = (additionals) => {
+    setSelectedAdditionals(additionals);
   };
 
   //remove product
@@ -73,7 +75,7 @@ const ProductSelection = () => {
   //react
   //format number
   const country = 'es-CO';
-  const numberFormat = formatNumber(selectedSubtotal, country);
+  const numberFormat = formatNumber(totalSubtotal, country);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -106,46 +108,27 @@ const ProductSelection = () => {
         />
 
         <section className="total_product_selection">
-          <p className="total_amount">Cantidad: {selectedQuantity}</p>
+          <p className="total_amount">Cantidad: {totalQuantity}</p>
+
           <p className="total_price">Precio total: {numberFormat} COP</p>
         </section>
 
         <footer className="actions_product_selection">
+          <DropDownSelectAdditionals
+            ref={additionalsRef}
+            list={['Salsa', 'Queso', 'Tocineta', 'Papas']}
+            title="Agrega los adicionales"
+            onChangeAdditionals={handleChangeAdditionals}
+          />
+
           <section className="added_other_product">
-            <PrimaryButtonComponent text="Añadir" onClick={handleAddToCart} />
+            <PrimaryButtonComponent
+              text="Añadir al Carrito"
+              onClick={handleAddToCart}
+            />
             <SecondaryButtonComponent
               text="Quitar"
               onClick={handleRemoveToCart}
-            />
-          </section>
-
-          <section className="section_added_aditionals">
-            <InputComponent
-              placeholder=""
-              label="Escribe los adicionales"
-              type="text"
-              id="added_aditionals"
-              onChange={(e) => setAdditionalInput(e.target.value)}
-              value={additionalInput}
-              disabled={
-                selectedQuantity === 0 ||
-                (selectedInCart?.additionals?.length || 0) >= selectedQuantity
-              }
-            />
-            <ul>
-              {(selectedInCart?.additionals || []).map((ad, idx) => (
-                <li key={idx}>{ad.additional}</li>
-              ))}
-            </ul>
-            <PrimaryButtonComponent
-              text="Agregar Adicionales"
-              onClick={handleAddAdditional}
-              disabled={
-                selectedQuantity === 0 ||
-                (selectedInCart?.additionals?.length || 0) >=
-                  selectedQuantity ||
-                additionalInput.trim() === ''
-              }
             />
           </section>
         </footer>
