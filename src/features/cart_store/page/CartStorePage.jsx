@@ -41,7 +41,7 @@ const CartStorePage = () => {
   const handleSendWhatsApp = () => {
     if (cart.length === 0) return;
 
-    let message = '¡Hola! Quiero hacer el siguiente pedido:%0A';
+    let message = '¡Hola! Quiero hacer el siguiente pedido:%0A%0A';
 
     cart.forEach((item) => {
       message += `• ${item.name} x${item.quantity} - $${
