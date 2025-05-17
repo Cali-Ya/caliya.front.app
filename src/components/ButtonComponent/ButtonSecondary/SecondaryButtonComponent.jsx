@@ -5,7 +5,7 @@ const SecondaryButtonComponent = ({
   text = 'Button',
   onClick,
   type = 'button',
-  disabled = true,
+  disabled = false,
   className = '',
 }) => {
   return (

@@ -4,6 +4,7 @@ import DetailsProductCard from '../../details_product_card/DetailsProductCard';
 import './product_card_standard.css';
 
 const ProductCardStandard = ({
+  id,
   image,
   title,
   description,
@@ -22,6 +23,7 @@ const ProductCardStandard = ({
 
   const handleSelectProduct = () => {
     setProductSelection({
+      id: id,
       name: title,
       description: description,
       price: price,

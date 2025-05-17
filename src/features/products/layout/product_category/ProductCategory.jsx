@@ -1,12 +1,20 @@
 import clsx from 'clsx';
 import useExpanded from '../../../products/hooks/useExpanded';
 import ProductCardStandard from '../../../products/components/product_card/product_card_standard/ProductCardStandard';
+import useCartStore from '../../../../store/cart.store';
 
 const ProductCategory = ({ title, products }) => {
   //global
   const { isExpanded, handleToggleViewProducts } = useExpanded({
     initialValue: false,
   });
+
+  //cart store
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = (product) => {
+    addItem(product);
+  };
 
   /* 
   const displayedProducts = isExpanded
@@ -46,6 +54,7 @@ const ProductCategory = ({ title, products }) => {
           products.map((product, index) => (
             <ProductCardStandard
               key={index}
+              id={product.id}
               image={product.image}
               title={product.name}
               description={product.description}
@@ -54,6 +63,7 @@ const ProductCategory = ({ title, products }) => {
               size_title={size_details.size_title}
               size_description={size_details.size_description}
               size_price={size_details.size_price}
+              onClick={() => handleAddToCart(product)}
             />
           ))}
       </figure>

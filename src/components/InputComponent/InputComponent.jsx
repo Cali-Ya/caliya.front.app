@@ -8,6 +8,7 @@ const InputComponent = ({
   label = 'label',
   type = 'text',
   value,
+  disabled,
   onChange,
   onClick,
   onFocus,
@@ -78,6 +79,7 @@ const InputComponent = ({
         onClick={handleClick}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        disabled={disabled}
       />
     </div>
   );

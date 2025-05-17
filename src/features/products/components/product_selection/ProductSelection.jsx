@@ -1,6 +1,5 @@
 //css
 import './product_selection.css';
-import { RxCaretLeft } from 'react-icons/rx';
 
 import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
@@ -9,18 +8,63 @@ import PrimaryButtonComponent from '../../../../components/ButtonComponent/Butto
 import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
 import InputComponent from '../../../../components/InputComponent/InputComponent';
 import useNavigatePage from '../../../../hooks/useNavigatePage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import useCartStore from '../../../../store/cart.store';
+import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 
 const ProductSelection = () => {
   //custom hooks
-  const navigate = useNavigatePage();
+  const handleNavigate = useNavigatePage();
+
+  //state
+  //add additionals
+  const [additionalInput, setAdditionalInput] = useState('');
+  const [additionals, setAdditionals] = useState([]);
 
   //global
+
+  //select product
   const { productSelection, cardProductSelection, setCardProductSelection } =
     useProductSelection();
 
-  const handleSelectProduct = () => {
-    navigate('/');
+  //cart store
+  const { addItem, cart, removeProductList, addAdditionalToProduct } =
+    useCartStore();
+
+  //total products in cart
+  // Busca el producto seleccionado en el carrito
+  const selectedInCart = cart.find((item) => item.id === productSelection.id);
+
+  // Cantidad y subtotal solo del producto seleccionado
+  const selectedQuantity = selectedInCart ? selectedInCart.quantity : 0;
+  const selectedSubtotal = selectedInCart
+    ? selectedInCart.quantity * selectedInCart.price
+    : 0;
+
+  //handle add cart store
+  const handleAddToCart = () => {
+    addItem(productSelection, additionals);
+    setAdditionals([]);
+  };
+
+  //handle add additional
+  const handleAddAdditional = () => {
+    if (selectedQuantity > 0 && additionalInput.trim() !== '') {
+      addAdditionalToProduct(productSelection.id, {
+        additional: additionalInput,
+      });
+      setAdditionalInput('');
+    }
+  };
+
+  //remove product
+  const handleRemoveToCart = () => {
+    removeProductList(productSelection);
+  };
+
+  //retur page
+  const handleReturnPage = () => {
+    handleNavigate('/');
     setCardProductSelection(false);
   };
 
@@ -34,12 +78,9 @@ const ProductSelection = () => {
         'product_selection__container--inactive': !cardProductSelection,
       })}
     >
-      <figure className="icon_return_products_section">
-        <RxCaretLeft
-          className="icon_return_products_section__icon"
-          onClick={handleSelectProduct}
-        />
-      </figure>
+      <header className="header_product_selection">
+        <CaretIconLeft onClick={handleReturnPage} />
+      </header>
 
       <figure className="image_product_selection_container">
         <img
@@ -57,14 +98,17 @@ const ProductSelection = () => {
         />
 
         <section className="total_product_selection">
-          <p className="total_amount">Cantidad: 2</p>
-          <p className="total_price">Total: 11.000 </p>
+          <p className="total_amount">Cantidad: {selectedQuantity}</p>
+          <p className="total_price">SubTotal: {selectedSubtotal}</p>
         </section>
 
         <footer className="actions_product_selection">
           <section className="added_other_product">
-            <PrimaryButtonComponent text="Añadir" />
-            <SecondaryButtonComponent text="Quitar" />
+            <PrimaryButtonComponent text="Añadir" onClick={handleAddToCart} />
+            <SecondaryButtonComponent
+              text="Quitar"
+              onClick={handleRemoveToCart}
+            />
           </section>
 
           <section className="section_added_aditionals">
@@ -73,8 +117,28 @@ const ProductSelection = () => {
               label="Escribe los adicionales"
               type="text"
               id="added_aditionals"
+              onChange={(e) => setAdditionalInput(e.target.value)}
+              value={additionalInput}
+              disabled={
+                selectedQuantity === 0 ||
+                (selectedInCart?.additionals?.length || 0) >= selectedQuantity
+              }
             />
-            <PrimaryButtonComponent text="Agregar al carrito" />
+            <ul>
+              {(selectedInCart?.additionals || []).map((ad, idx) => (
+                <li key={idx}>{ad.additional}</li>
+              ))}
+            </ul>
+            <PrimaryButtonComponent
+              text="Agregar Adicionales"
+              onClick={handleAddAdditional}
+              disabled={
+                selectedQuantity === 0 ||
+                (selectedInCart?.additionals?.length || 0) >=
+                  selectedQuantity ||
+                additionalInput.trim() === ''
+              }
+            />
           </section>
         </footer>
       </div>

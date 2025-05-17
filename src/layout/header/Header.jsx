@@ -6,7 +6,6 @@ import useProductSelection from '../../features/products/store/product_selection
 
 const Header = ({ title }) => {
   const { cardProductSelection } = useProductSelection();
-  console.log(cardProductSelection);
   return (
     <section
       className="header_component"

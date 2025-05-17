@@ -6,9 +6,23 @@ import Header from '../../layout/header/Header';
 import { Outlet } from 'react-router-dom';
 import useProductSelection from '../../features/products/store/product_selection.store';
 
+//icons
+import { FaShoppingCart } from 'react-icons/fa';
+import useNavigatePage from '../../hooks/useNavigatePage';
+import useCartStore from '../../store/cart.store';
+
 const MainLayout = () => {
   //global
   const { productSelection } = useProductSelection();
+
+  const { cart } = useCartStore();
+
+  //hooks
+  const navigate = useNavigatePage();
+
+  const handleIconCart = () => {
+    navigate('/cart_store');
+  };
 
   return (
     <main
@@ -19,6 +33,12 @@ const MainLayout = () => {
     >
       <Header />
       <Outlet />
+
+      {cart.length > 0 && (
+        <aside className="container_icon_cart">
+          <FaShoppingCart className="icon_cart" onClick={handleIconCart} />
+        </aside>
+      )}
     </main>
   );
 };

@@ -3,25 +3,10 @@
   min-height: 100%;
   background-color: var(--active-color-white);
 
-  .icon_return_products_section {
+  .header_product_selection {
     position: absolute;
-    top: 0;
     width: 100%;
-    padding: 0.5rem 0.3em;
-
-    .icon_return_products_section__icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 2em;
-      color: var(--active-color-white);
-
-      &:active {
-        transform: translateX(-0.3em);
-      }
-    }
+    padding: 0.5em;
   }
 
   .image_product_selection_container {

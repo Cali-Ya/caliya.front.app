@@ -17,6 +17,10 @@ const RoutesSystem = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/cart_store',
+    element: <features_pages.CartStorePage />,
+  },
 ]);
 
 export default RoutesSystem;

@@ -5,7 +5,7 @@ const PrimaryButtonComponent = ({
   text = 'Button',
   onClick,
   type = 'button',
-  disabled = true,
+  disabled = false,
   className = '',
 }) => {
   return (
