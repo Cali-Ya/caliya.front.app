@@ -28,8 +28,8 @@ const CartStorePage = () => {
 
   //handle return page
   const handleReturnPage = () => {
-    handleNavigate('/');
     setCardProductSelection(false);
+    handleNavigate('/');
   };
 
   //handle remove all products
