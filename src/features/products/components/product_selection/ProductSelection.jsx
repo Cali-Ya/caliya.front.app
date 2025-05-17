@@ -99,7 +99,7 @@ const ProductSelection = () => {
 
         <section className="total_product_selection">
           <p className="total_amount">Cantidad: {selectedQuantity}</p>
-          <p className="total_price">SubTotal: {selectedSubtotal}</p>
+          <p className="total_price">Precio total: {selectedSubtotal}</p>
         </section>
 
         <footer className="actions_product_selection">
