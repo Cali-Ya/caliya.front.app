@@ -29,27 +29,25 @@ const useCartStore = create((set, get) => ({
       return { cart: newCart };
     }),
 
-  removeProductList: (item) => {
+  removeItemQuantity: (product) =>
     set((state) => {
-      const additionalsKey = (item.additionals || []).sort().join(',');
-      const existingIndex = state.cart.findIndex(
-        (cartItem) =>
-          cartItem.id === item.id &&
-          (cartItem.additionals || []).sort().join(',') === additionalsKey
-      );
-      let newCart = [...state.cart];
-      if (existingIndex !== -1) {
-        if (newCart[existingIndex].quantity > 1) {
-          newCart[existingIndex].quantity -= 1;
-        } else {
-          newCart = newCart.filter((_, idx) => idx !== existingIndex);
-        }
-      }
-      // Guarda en localStorage
-      localStorage.setItem('cart', JSON.stringify(newCart));
-      return { cart: newCart };
-    });
-  },
+      const cart = state.cart
+        .map((item) => {
+          // Comparar id y adicionales
+          if (
+            item.id === product.id &&
+            JSON.stringify(item.additionals) ===
+              JSON.stringify(product.additionals)
+          ) {
+            // Si la cantidad es 1, lo elimina
+            if (item.quantity <= 1) return null;
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        })
+        .filter(Boolean);
+      return { cart };
+    }),
 
   clearCart: () => {
     localStorage.setItem('cart', JSON.stringify([]));

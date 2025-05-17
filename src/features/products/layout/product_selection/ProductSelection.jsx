@@ -30,7 +30,7 @@ const ProductSelection = () => {
     useProductSelection();
 
   //cart store
-  const { addItem, cart, removeProductList } = useCartStore();
+  const { addItem, cart } = useCartStore();
 
   //total products in cart
 
@@ -59,11 +59,6 @@ const ProductSelection = () => {
   //handle add additional
   const handleChangeAdditionals = (additionals) => {
     setSelectedAdditionals(additionals);
-  };
-
-  //remove product
-  const handleRemoveToCart = () => {
-    removeProductList(productSelection);
   };
 
   //retur page
@@ -125,10 +120,6 @@ const ProductSelection = () => {
             <PrimaryButtonComponent
               text="Añadir al Carrito"
               onClick={handleAddToCart}
-            />
-            <SecondaryButtonComponent
-              text="Quitar"
-              onClick={handleRemoveToCart}
             />
           </section>
         </footer>

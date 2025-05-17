@@ -76,6 +76,26 @@
         margin: 0.4em 0;
       }
     }
+
+    .actions_item_list_cart_store {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      .actions_item_list_cart_store {
+        border-radius: var(--border-radius);
+        outline: none;
+        border: none;
+        padding: 0.5em 1em;
+        font-size: 0.9em;
+        margin: 0.3em 0;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
   }
   .container_total_price_cart_store {
     width: 100%;

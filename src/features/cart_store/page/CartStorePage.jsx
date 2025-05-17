@@ -10,7 +10,8 @@ import './cart_store_page.css';
 const CartStorePage = () => {
   //global
   //cart store
-  const { cart, getTotal, clearCart } = useCartStore();
+  const { cart, getTotal, clearCart, removeItemQuantity, addItem } =
+    useCartStore();
 
   //products selections
   const { setCardProductSelection } = useProductSelection;
@@ -59,7 +60,7 @@ const CartStorePage = () => {
 
     // Número de WhatsApp (código de país + número, sin espacios ni signos)
     const phone = import.meta.env.VITE_PHONE_DMO;
-
+    handleRemoveAllProducts();
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
   };
 
@@ -107,6 +108,27 @@ const CartStorePage = () => {
                   ))}
                 </article>
               )}
+
+              <div className="actions_item_list_cart_store">
+                <button
+                  onClick={() =>
+                    addItem({
+                      ...item,
+                      quantity: 1,
+                    })
+                  }
+                  className="action_add_item_list_cart_store actions_item_list_cart_store"
+                >
+                  Añadir Otro
+                </button>
+                <button
+                  onClick={() => removeItemQuantity(item)}
+                  disabled={item.quantity <= 1}
+                  className="action_add_item_list_cart_store actions_item_list_cart_store"
+                >
+                  Quitar
+                </button>
+              </div>
             </li>
           ))}
         </ul>
