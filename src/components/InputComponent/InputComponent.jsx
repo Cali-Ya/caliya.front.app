@@ -4,7 +4,7 @@ import './input_component.css';
 import clsx from 'clsx';
 
 const InputComponent = ({
-  id,
+  id = 'id',
   label = 'label',
   type = 'text',
   value,

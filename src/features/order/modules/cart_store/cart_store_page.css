@@ -1,24 +1,9 @@
 .cart_store_container {
   width: 100%;
   height: max-content;
-  padding: 0.8em 0.5em;
   display: flex;
   flex-direction: column;
   gap: 1em;
-
-  .header_cart_store {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .caret_left_children {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
 
   .list_cart_store {
     display: flex;

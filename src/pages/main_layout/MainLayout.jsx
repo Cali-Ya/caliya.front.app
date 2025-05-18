@@ -21,7 +21,7 @@ const MainLayout = () => {
   const navigate = useNavigatePage();
 
   const handleIconCart = () => {
-    navigate('/cart_store');
+    navigate('/order');
   };
 
   return (

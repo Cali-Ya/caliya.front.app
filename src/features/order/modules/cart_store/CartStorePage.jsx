@@ -1,11 +1,10 @@
-import PrimaryButtonComponent from '../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
-import SecondaryButtonComponent from '../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
-import CaretIconLeft from '../../../components/caret_icons/caret_icon_left/CaretIconLeft';
-import useNavigatePage from '../../../hooks/useNavigatePage';
-import useNumberFormat from '../../../hooks/useNumberFormat';
-import useCartStore from '../../../store/cart.store';
-import useProductSelection from '../../products/store/product_selection.store';
 import './cart_store_page.css';
+import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
+import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
+import useNumberFormat from '../../../../hooks/useNumberFormat';
+import useCartStore from '../../../../store/cart.store';
+import useIsTogglePage from '../../store/useIsTogglePage.store';
+import useNavigatePage from '../../../../hooks/useNavigatePage';
 
 const CartStorePage = () => {
   //global
@@ -13,11 +12,13 @@ const CartStorePage = () => {
   const { cart, getTotal, clearCart, removeItemQuantity, addItem } =
     useCartStore();
 
-  //products selections
-  const { setCardProductSelection } = useProductSelection;
+  //navigate
+  const handleNavigate = useNavigatePage();
+
+  //togle page
+  const { setTogglePage } = useIsTogglePage();
 
   //custom hooks
-  const handleNavigate = useNavigatePage();
   const { formatNumber } = useNumberFormat();
 
   //total products in cart
@@ -26,55 +27,22 @@ const CartStorePage = () => {
     0
   );
 
-  //handle return page
-  const handleReturnPage = () => {
-    setCardProductSelection(false);
-    handleNavigate('/');
-  };
-
   //handle remove all products
   const handleRemoveAllProducts = () => {
     clearCart();
   };
 
-  //handle send whastapp
-  const handleSendWhatsApp = () => {
-    if (cart.length === 0) return;
-
-    let message = '¡Hola! Quiero hacer el siguiente pedido:%0A%0A';
-
-    cart.forEach((item) => {
-      message += `• ${item.name} x${item.quantity} - $${
-        item.price * item.quantity
-      }%0A`;
-      if (item.additionals && item.additionals.length > 0) {
-        message += `   Adicionales: ${item.additionals.join(', ')}%0A`;
-      }
-      if (item.observation) {
-        message += `   Observaciones: ${item.observation}%0A`;
-      }
-      message += `%0A`;
-    });
-
-    message += `--------------------%0ATotal: $${getTotal()}`;
-
-    // Número de WhatsApp (código de país + número, sin espacios ni signos)
-    const phone = import.meta.env.VITE_PHONE_DMO;
-    handleRemoveAllProducts();
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+  //handle add direction
+  const handleAddDirection = () => {
+    setTogglePage();
+    handleNavigate('/order/purcharse_data_form');
   };
 
   //vars
-  const caretBlack = false;
   const country = 'es-CO';
 
   return (
     <section className="cart_store_container">
-      <header className="header_cart_store">
-        <CaretIconLeft onClick={handleReturnPage} preferColor={caretBlack} />
-        <h3 className="header_title_cart_store">Tus ordenes</h3>
-      </header>
-
       {cart.length === 0 ? (
         <p>El carrito esta vacio</p>
       ) : (
@@ -164,7 +132,10 @@ const CartStorePage = () => {
 
       {/* actions */}
       <section className="actions_cart_store_page">
-        <PrimaryButtonComponent text="Enviar" onClick={handleSendWhatsApp} />
+        <PrimaryButtonComponent
+          text="Añadir Dirección"
+          onClick={handleAddDirection}
+        />
         <SecondaryButtonComponent
           text="Quitar todo de la lista"
           onClick={handleRemoveAllProducts}
