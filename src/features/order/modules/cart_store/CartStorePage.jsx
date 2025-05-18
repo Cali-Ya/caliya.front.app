@@ -1,6 +1,6 @@
 import './cart_store_page.css';
-import PrimaryButtonComponent from '../../../../components/ButtonComponent/ButtonPrimary/PrimaryButtonComponent';
-import SecondaryButtonComponent from '../../../../components/ButtonComponent/ButtonSecondary/SecondaryButtonComponent';
+import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import SecondaryButtonComponent from '../../../../components/button_components/button_secondary/SecondaryButtonComponent';
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useCartStore from '../../../../store/cart.store';
 import useIsTogglePage from '../../store/useIsTogglePage.store';
