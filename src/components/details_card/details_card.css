@@ -1,0 +1,24 @@
+.product_card_details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  .product_card_details__title {
+    color: var(--active-color-secondary);
+    font-family: var(--font-family);
+    font-weight: 500;
+  }
+  .product_card_details__description {
+    color: var(--active-color-secondary-light);
+    font-family: var(--font-family);
+    font-weight: 500;
+  }
+
+  .product_card_details__price {
+    background-color: var(--active-color-primary);
+    width: max-content;
+    padding: 0.3em 0.5em;
+    border-radius: 0.5em;
+    color: var(--active-color-white);
+  }
+}

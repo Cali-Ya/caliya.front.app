@@ -8,14 +8,14 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* actives colors */
-  --active-color-primary: #eea734;
+  --active-color-primary: #ef9920;
   --active-color-secondary: #010f07;
   --active-color-secondary-light: #868686;
   --active-color-white: #ffffff;
   --active-color-light: #fbfbfb;
 
   /* accents colors */
-  --accents-color-primary: #ef9920;
+  --accents-color-primary: #eea734;
   --accents-color-secondary: #395998;
   --accents-color-secondary-light: #4285f4;
 

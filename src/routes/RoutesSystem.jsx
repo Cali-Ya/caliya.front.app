@@ -1,38 +1,37 @@
 import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../pages/main_layout/MainLayout';
-import { features_pages } from '../features/features_exports';
+import { features_pages as Features } from '../features/features_exports';
 
 const indexActive = true;
 
 const RoutesSystem = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
-    children: [
+    element: <Features.MainDashboard />,
+    /*  children: [
       {
         index: indexActive,
-        element: <features_pages.product_page.ProductsPage />,
+        element: <Features.product_page.ProductsPage />,
       },
       {
         path: '/add_to_cart',
-        element: <features_pages.product_page.ProductSelection />,
+        element: <Features.product_page.ProductSelection />,
       },
     ],
   },
   {
     path: '/order/',
-    element: <features_pages.order_page.OrderPage />,
+    element: <Features.order_page.OrderPage />,
 
     children: [
       {
         index: indexActive,
-        element: <features_pages.order_page.CartStorePage />,
+        element: <Features.order_page.CartStorePage />,
       },
       {
         path: 'purcharse_data_form',
-        element: <features_pages.order_page.PurcharseDataForm />,
+        element: <Features.order_page.PurcharseDataForm />,
       },
-    ],
+    ], */
   },
 ]);
 

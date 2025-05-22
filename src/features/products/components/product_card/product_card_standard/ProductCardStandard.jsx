@@ -1,6 +1,6 @@
 import useNavigatePage from '../../../../../hooks/useNavigatePage';
 import useProductSelection from '../../../store/product_selection.store';
-import DetailsProductCard from '../../details_product_card/DetailsProductCard';
+import DetailsCard from '../../../../../components/details_card/DetailsCard';
 import './product_card_standard.css';
 
 const ProductCardStandard = ({
@@ -38,7 +38,7 @@ const ProductCardStandard = ({
       <figure className="product_card_standard__image">
         <img src={image} />
       </figure>
-      <DetailsProductCard
+      <DetailsCard
         title={title}
         description={description}
         price={price}

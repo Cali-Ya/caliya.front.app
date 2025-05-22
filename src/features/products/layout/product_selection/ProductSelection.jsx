@@ -3,7 +3,7 @@ import './product_selection.css';
 
 import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
-import DetailsProductCard from '../../components/details_product_card/DetailsProductCard';
+import DetailsCard from '../../../../components/details_card/DetailsCard';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import useNavigatePage from '../../../../hooks/useNavigatePage';
@@ -100,7 +100,7 @@ const ProductSelection = () => {
       </figure>
 
       <div className="production_selection_content">
-        <DetailsProductCard
+        <DetailsCard
           title={productSelection.name}
           description={productSelection.description}
           price={productSelection.price}

@@ -1,0 +1,28 @@
+.search_component {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #cbcbcb;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  color: #545454;
+
+  .icon_search_component {
+    position: absolute;
+    margin-left: 0.6em;
+  }
+
+  .search_component_input {
+    width: 100%;
+    padding: 0.5em 0.7em;
+    text-indent: 1.8em;
+    border-radius: inherit;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding-left: 0.7em;
+    color: inherit;
+    font-weight: 300;
+  }
+}

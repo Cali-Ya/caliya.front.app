@@ -8,7 +8,6 @@ import useProductSelection from '../../features/products/store/product_selection
 
 //icons
 import { FaShoppingCart } from 'react-icons/fa';
-import useNavigatePage from '../../hooks/useNavigatePage';
 import useCartStore from '../../store/cart.store';
 
 const MainLayout = () => {
@@ -18,11 +17,8 @@ const MainLayout = () => {
   const { cart } = useCartStore();
 
   //hooks
-  const navigate = useNavigatePage();
 
-  const handleIconCart = () => {
-    navigate('/order');
-  };
+  const handleIconCart = () => {};
 
   return (
     <main
