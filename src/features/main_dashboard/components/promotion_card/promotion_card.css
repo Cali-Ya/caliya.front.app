@@ -1,6 +1,6 @@
 .promotion_card_container {
   width: 100%;
-  box-shadow: 0 0 4px #d9d9d9;
+  box-shadow: var(--shadow);
   background-color: var(--active-color-white);
   border-radius: var(--border-radius);
   margin: 0 0.3em;
@@ -19,10 +19,13 @@
 
   .container_image_promotion_card {
     position: relative;
+    height: 130px;
 
     .image_promotion_card {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
 
@@ -39,37 +42,6 @@
   }
 
   .info_promotion_card {
-    padding: 0 0.4em 0.7em 0.4em;
-
-    .title_info_promotion_card {
-      font-weight: 400;
-      font-size: 1.1em;
-    }
-
-    .discount_info_promotion,
-    .price_info_promotion {
-      font-weight: 500;
-    }
-
-    .discount_info_promotion {
-      color: var(--active-color-primary);
-      font-size: 0.9em;
-    }
-
-    .content_price_info_promotion_card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .icon_price_infor_promotion_card {
-        font-size: 1.3em;
-      }
-
-      .price_info_promotion_card {
-        font-size: 0.7em;
-        text-decoration: line-through;
-        color: var(--active-color-secondary-light);
-      }
-    }
+    padding: 0.5em;
   }
 }

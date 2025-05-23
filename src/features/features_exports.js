@@ -1,25 +1,25 @@
 // main dashabord
 import MainDashboard from '../pages/main_dashaboard/MainDashboard';
 //stores
-import ProductsPage from './products/pages/products_page/ProductsPage';
-import ProductSelection from './products/layout/product_selection/ProductSelection';
+import StorePage from './stores/pages/store_page/StorePage';
+import ProductSelection from './stores/layout/product_selection/ProductSelection';
 
 //shopping cart
-import CartStorePage from './order/modules/cart_store/CartStorePage';
-import PurcharseDataForm from './order/modules/purcharse_data_form/PurcharseDataForm';
-import OrderPage from './order/page/OrderPage';
+import CartStorePage from './shopping_cart/modules/cart_store/CartStorePage';
+import PurcharseDataForm from './shopping_cart/modules/purcharse_data_form/PurcharseDataForm';
+import OrderPage from './shopping_cart/page/OrderPage';
 
 export const features_pages = {
   MainDashboard,
 
   store_page: {
-    ProductsPage,
+    StorePage,
     ProductSelection,
   },
 
-  shopping_cart_page: {
+  /*  shopping_cart_page: {
     OrderPage,
     CartStorePage,
     PurcharseDataForm,
-  },
+  }, */
 };

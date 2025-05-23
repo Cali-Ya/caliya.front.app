@@ -1,10 +1,10 @@
 import { RxCaretLeft } from 'react-icons/rx';
 import './caret_icon_left.css';
 
-const CaretIconLeft = ({ onClick, preferColor = true }) => {
+const CaretIconLeft = ({ onClick, preferColor = true, className }) => {
   return (
     <RxCaretLeft
-      className="caret_icon_left caret_left_children"
+      className={`caret_icon_left ${className}`}
       onClick={onClick}
       style={{
         color: preferColor

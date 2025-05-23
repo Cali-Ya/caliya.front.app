@@ -1,6 +1,6 @@
 import './order_page.css';
 import { Outlet } from 'react-router-dom';
-import useProductSelection from '../../products/store/product_selection.store';
+import useProductSelection from '../../stores/store/product_selection.store';
 import useNavigatePage from '../../../hooks/useNavigatePage';
 import CaretIconLeft from '../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useIsTogglePage from '../store/useIsTogglePage.store';

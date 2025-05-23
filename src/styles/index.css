@@ -8,7 +8,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* actives colors */
-  --active-color-primary: #ef9920;
+  --active-color-primary: #f59713;
   --active-color-secondary: #010f07;
   --active-color-secondary-light: #868686;
   --active-color-white: #ffffff;
@@ -21,7 +21,7 @@
 
   /* Global */
   --border-radius: 0.4rem;
-  --shadow: 0px 0px 15px #b6b6b6;
+  --shadow: 0 0 4px #d9d9d9;
 }
 
 * {
@@ -29,10 +29,20 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 
 html,
 body {
   height: 100%;
   width: 100%;
+}
+
+ul {
+  list-style-type: none;
 }

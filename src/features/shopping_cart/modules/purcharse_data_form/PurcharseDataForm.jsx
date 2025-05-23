@@ -6,7 +6,7 @@ import InputComponent from '../../../../components/input_component/InputComponen
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import { useState } from 'react';
 import useNavigatePage from '../../../../hooks/useNavigatePage';
-import useProductSelection from '../../../products/store/product_selection.store';
+import useProductSelection from '../../../stores/store/product_selection.store';
 
 const FormDelevery = () => {
   //global

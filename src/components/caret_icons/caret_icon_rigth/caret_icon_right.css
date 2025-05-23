@@ -9,9 +9,9 @@
   transition: all 0.3s ease;
 }
 
-.caret_icon_right_dropdown--starting {
+.caret_icon_right_expanded--starting {
   transform: rotate(0deg);
 }
-.caret_icon_right_dropdown--rotate {
+.caret_icon_right_expanded--rotate {
   transform: rotate(90deg);
 }

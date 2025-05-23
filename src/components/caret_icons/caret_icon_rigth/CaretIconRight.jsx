@@ -6,17 +6,18 @@ const CaretIconRigth = ({
   preferColor = true,
   type = 'caret',
   isCaretRight,
+  className = '',
 }) => {
   const Types = {
-    dropdown: isCaretRight
-      ? 'caret_icon_right_dropdown--rotate'
-      : 'caret_icon_right_dropdown--starting',
+    expand: isCaretRight
+      ? 'caret_icon_right_expanded--rotate'
+      : 'caret_icon_right_expanded--starting',
     normal: 'caret_icon_right_normal',
   };
 
   return (
     <RxCaretRight
-      className={`caret_icon_right caret_right_children ${Types[type]}`}
+      className={`caret_icon_right ${Types[type]} ${className}`}
       onClick={onClick}
       style={{
         color: preferColor
