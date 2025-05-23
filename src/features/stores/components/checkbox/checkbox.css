@@ -1,0 +1,27 @@
+.custom-check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #888;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+}
+
+.custom-check.checked {
+  background: #007bff;
+  border-color: #007bff;
+}
+
+.custom-check svg {
+  display: block;
+}
+
+.custom-check:focus {
+  box-shadow: 0 0 0 2px #007bff55;
+}

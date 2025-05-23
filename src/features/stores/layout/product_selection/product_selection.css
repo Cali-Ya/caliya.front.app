@@ -1,0 +1,84 @@
+.product_selection__container {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--active-color-white);
+
+  .header_product_selection {
+    position: absolute;
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .image_product_selection_container {
+    width: 100%;
+
+    .image_product_selection {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  .production_selection_content {
+    padding: 0 0.6em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .container_details_product_selection {
+      .product_selection_title {
+        font-size: 2em;
+        font-weight: 600;
+      }
+
+      .product_selection_description {
+        font-size: 1.2em;
+        margin: 0.5em 0;
+        color: var(--active-color-secondary-light);
+        font-weight: 300;
+      }
+    }
+
+    .total_product_selection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em 0;
+      font-size: 1.2em;
+      color: var(--active-color-secondary);
+    }
+
+    .actions_product_selection {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-bottom: 1em;
+
+      .added_other_product {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5em;
+      }
+    }
+    .section_added_aditionals {
+      width: 100%;
+      margin: 1em 0;
+      gap: 1em;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.product_selection__container--active {
+  transition: all 0.3s ease;
+  transform: translateX(0%);
+  @starting-style {
+    transform: translateX(100%);
+  }
+}
+
+.product_selection__container--inactive {
+  transition: all 0.3s ease;
+  transform: translateX(100%);
+}

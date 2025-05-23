@@ -1,0 +1,24 @@
+.container_main_layout {
+  height: max-content;
+
+  .container_icon_cart {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: var(--active-color-primary);
+    padding: 1em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    box-shadow: 0 0 20px var(--active-color-secondary);
+    &:active {
+      transition: all 0.2s ease-out;
+      scale: 0.8;
+    }
+
+    .icon_cart {
+      color: var(--active-color-white);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.caret_icon_left {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 2em;
+
+  &:active {
+    transform: translateX(-0.3em);
+  }
+}

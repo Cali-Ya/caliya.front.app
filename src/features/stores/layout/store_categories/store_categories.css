@@ -1,0 +1,19 @@
+.container_store_categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+  width: 100%;
+}
+
+.list_categories_list {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.4em;
+  overflow-x: auto;
+}
+
+.list_recommended_category_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

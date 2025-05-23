@@ -1,0 +1,72 @@
+.container_store_page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+
+  .poster_store_page {
+    width: 100%;
+    z-index: -1;
+    aspect-ratio: 2/1;
+    position: absolute;
+  }
+
+  .header_store_page {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    position: fixed;
+    padding: 0.7em 0.9em;
+    transition: background-color 0.2s ease-out;
+    z-index: 2;
+
+    .header_store_page__icon {
+      background-color: var(--active-color-white);
+      border-radius: 40px;
+    }
+  }
+
+  .content_store_page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: var(--active-color-white);
+    margin-top: 40%;
+    border-radius: 20px 20px 0 0;
+    padding: 1em 0.8em;
+
+    .header_content_store_page {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      .logo_header_store_page {
+        max-width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: var(--active-color-white);
+        box-shadow: var(--shadow);
+      }
+
+      .information_store {
+        width: 100%;
+        color: var(--active-color-secondary);
+        line-height: 1.9em;
+
+        .name_store {
+          font-size: 1.5em;
+        }
+
+        .description_store {
+          font-size: 1em;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

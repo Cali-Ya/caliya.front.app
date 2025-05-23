@@ -1,0 +1,10 @@
+.header_store_categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header_store_categories__title {
+    color: var(--active-color-secondary);
+    font-size: 1.5em;
+  }
+}
