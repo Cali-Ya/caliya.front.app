@@ -2,7 +2,9 @@
 import './store_card_food_list.css';
 //icons
 import IconAddShoppingCard from '../icons/IconAddShoppingCard';
+//custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
+import useHandleBuyProduct from '../../../../lib/shared/useHandleBuyProduct';
 
 const StoreCardFoodList = ({
   id,
@@ -11,16 +13,32 @@ const StoreCardFoodList = ({
   image,
   price,
   prev_price,
-  onClick,
 }) => {
   //custom hook
+  //format number
   const { formatNumber } = useNumberFormat();
   const country = 'es-CO';
   const Price = formatNumber(price, country);
   const prevePrice = formatNumber(prev_price, country);
 
+  //buy product
+  const purcharse_product_information = {
+    id: id,
+    title: title,
+    description: description,
+    image: image,
+    price: price,
+    prev_price: prev_price,
+  };
+
+  //handle buy product
+  const handleBuyProduct = useHandleBuyProduct();
+
   return (
-    <li className="store_food_list__item">
+    <li
+      className="store_food_list__item"
+      onClick={() => handleBuyProduct(purcharse_product_information)}
+    >
       <article className="store_food_list__info">
         <h3 className="store_food_list_title">{title}</h3>
         <p className="store_food_list_description">{description}</p>

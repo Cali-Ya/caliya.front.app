@@ -1,13 +1,12 @@
 //css
 import './store_product_card_medium.css';
-//icons
-import { MdOutlineAddShoppingCart } from 'react-icons/md';
 //custom hooks
-import useNavigatePage from '../../../../../hooks/useNavigatePage';
-import useProductSelection from '../../../store/product_selection.store';
+import useProductSelection from '../../../store/buy_product.store';
 //components
 import CardDetails from '../../../../../components/card_details/CardDetails';
 import IconAddShoppingCard from '../../icons/IconAddShoppingCard';
+import { useNavigate } from 'react-router-dom';
+import useHandleBuyProduct from '../../../../../lib/shared/useHandleBuyProduct';
 
 const StoreProductCardMedium = ({
   id,
@@ -16,34 +15,28 @@ const StoreProductCardMedium = ({
   title,
   description,
   price,
+  prev_price,
   activeElipsis,
   size_title,
   size_description,
   size_price,
 }) => {
-  //custom hooks
-  const navigate = useNavigatePage();
-
-  //global
-  const { setProductSelection, setCardProductSelection } =
-    useProductSelection();
-
-  const handleSelectProduct = () => {
-    setProductSelection({
-      id: id,
-      name: title,
-      description: description,
-      price: price,
-      image: image,
-    });
-    setCardProductSelection(true);
-    navigate('/add_to_cart');
+  //handle buy product
+  const purcharse_product_information = {
+    id: id,
+    title: title,
+    description: description,
+    image: image,
+    price: price,
+    prev_price: prev_price,
   };
+
+  const handleBuyProduct = useHandleBuyProduct();
 
   return (
     <li
       className="container_store_product_card_medium"
-      onClick={handleSelectProduct}
+      onClick={() => handleBuyProduct(purcharse_product_information)}
     >
       <figure className="container_image_store_card_medium">
         <img src={image} alt={image} className="image_store_card_medium" />

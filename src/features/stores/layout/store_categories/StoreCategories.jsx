@@ -2,27 +2,18 @@
 import './store_categories.css';
 //custom hooks
 import useExpanded from '../../hooks/useExpanded';
-import useCartStore from '../../../../store/cart.store';
 //icons
 import { MdOutlineFastfood, MdStarOutline } from 'react-icons/md';
-
 //components
 import StoreProductCardMedium from '../../components/store_product_cards/store_product_card_medium/StoreProductCardMedium';
 import HeaderCategoryList from '../../components/header_category_list/HeaderCategoryList';
-import StoreCardFoodList from '../../components/store_food_list/StoreCardFoodList';
+import StoreCardFoodList from '../../components/store_card_food_list/StoreCardFoodList';
 
 const StoreCategories = () => {
   //global
   const { isExpanded, handleToggleViewProducts } = useExpanded({
     initialValue: false,
   });
-
-  //cart store
-  const addItem = useCartStore((state) => state.addItem);
-
-  const handleAddToCart = (product) => {
-    addItem(product);
-  };
 
   //handle collapse
   const handleIsExpanded = () => {
@@ -148,15 +139,11 @@ const StoreCategories = () => {
     ],
   };
 
-  const isProductMaxLength = 4;
-
   const size_details = {
     size_title: '1.1rem',
     size_description: '.9rem',
     size_price: '1rem',
   };
-
-  const isProductsExist = ProductsTest.categories.length > isProductMaxLength;
 
   return (
     <section className="container_store_categories">
@@ -183,10 +170,10 @@ const StoreCategories = () => {
                 title={product.name}
                 description={product.description}
                 price={product.price}
+                prev_price={product.price}
                 size_title={size_details.size_title}
                 size_description={size_details.size_description}
                 size_price={size_details.size_price}
-                onClick={() => handleAddToCart(product)}
               />
             ))
           )}
@@ -214,10 +201,10 @@ const StoreCategories = () => {
                 title={product.name}
                 description={product.description}
                 price={product.price}
+                prev_price={product.price}
                 size_title={size_details.size_title}
                 size_description={size_details.size_description}
                 size_price={size_details.size_price}
-                onClick={() => handleAddToCart(product)}
               />
             ))
           )}

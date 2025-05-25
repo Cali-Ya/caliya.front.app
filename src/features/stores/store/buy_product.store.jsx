@@ -1,16 +1,17 @@
 import { create } from 'zustand';
 
-const useProductSelection = create((set) => ({
-  productSelection: {
+const useBuyProduct = create((set) => ({
+  //buy product
+  purcharseInformationProduct: {
     id: '',
     name: '',
     description: '',
     price: 0,
     image: '',
   },
-  setProductSelection: (product) =>
+  setPurcharseInformationProduct: (product) =>
     set(() => ({
-      productSelection: {
+      purcharse_information_product: {
         id: product.id,
         name: product.name,
         description: product.description,
@@ -18,11 +19,13 @@ const useProductSelection = create((set) => ({
         image: product.image,
       },
     })),
-  cardProductSelection: '',
-  setCardProductSelection: (value) =>
+
+  //toggle page buy product
+  togglePageBuyProduct: false,
+  setTogglePageBuyProduct: (value) =>
     set(() => ({
       cardProductSelection: value,
     })),
 }));
 
-export default useProductSelection;
+export default useBuyProduct;

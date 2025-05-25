@@ -1,7 +1,15 @@
 .store_food_list__item {
   display: flex;
   justify-content: space-between;
-  margin: 1em 0;
+  margin: 0.5em 0;
+  padding: 0.9em 0.7em;
+  transition: all 0.4s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
 
   .container_food_list_image {
     position: relative;
