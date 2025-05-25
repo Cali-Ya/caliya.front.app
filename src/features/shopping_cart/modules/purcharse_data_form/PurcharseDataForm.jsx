@@ -5,7 +5,7 @@ import useIsTogglePage from '../../store/useIsTogglePage.store';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import { useState } from 'react';
-import useProductSelection from '../../../stores/store/product_selection.store';
+import useBuyProduct from '../../../stores/store/buy_product.store';
 import { useNavigate } from 'react-router-dom';
 
 const FormDelevery = () => {
@@ -14,7 +14,7 @@ const FormDelevery = () => {
   const { cart, getTotal, clearCart } = useCartStore();
 
   //products selections
-  const { setCardProductSelection } = useProductSelection();
+  const { setTogglePageBuyProduct } = useBuyProduct();
 
   //navigate
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const FormDelevery = () => {
   //handle remove all products
   const handleRemoveAllProducts = () => {
     clearCart();
-    setCardProductSelection(false);
+    setTogglePageBuyProduct(false);
     navigate('/');
   };
 

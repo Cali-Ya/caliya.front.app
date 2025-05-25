@@ -1,15 +1,12 @@
 import './order_page.css';
-import { Outlet, useNavigate } from 'react-router-dom';
-import useProductSelection from '../../stores/store/product_selection.store';
+import { Outlet } from 'react-router-dom';
 import CaretIconLeft from '../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useIsTogglePage from '../store/useIsTogglePage.store';
+import useBuyProduct from '../../stores/store/buy_product.store';
 
 const OrderPage = () => {
   //products selections
-  const { setCardProductSelection } = useProductSelection();
-
-  //navigate
-  const navigate = useNavigate();
+  const { setTogglePageBuyProduct } = useBuyProduct();
 
   //togle page
   const { togglePage, setTogglePage } = useIsTogglePage();
@@ -19,7 +16,7 @@ const OrderPage = () => {
     const navigate = togglePage ? '/' : '/order';
     const cardProduct = togglePage ? '' : false;
 
-    setCardProductSelection(cardProduct);
+    setTogglePageBuyProduct(cardProduct);
     setTogglePage();
     navigate(navigate);
   };

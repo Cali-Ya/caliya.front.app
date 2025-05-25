@@ -1,6 +1,5 @@
 //css
 import './product_selection.css';
-import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
 import CardDetails from '../../../../components/card_details/CardDetails';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
@@ -9,8 +8,8 @@ import { useEffect, useRef, useState } from 'react';
 import useCartStore from '../../../../store/cart.store';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useNumberFormat from '../../../../hooks/useNumberFormat';
-import DropDownSelectAdditionals from '../../components/dropdown_select_additionals/DropDownSelectAdditionals';
 import { useNavigate } from 'react-router-dom';
+import useBuyProduct from '../../store/buy_product.store';
 
 const ProductSelection = () => {
   //navigate
@@ -29,8 +28,11 @@ const ProductSelection = () => {
   //global
 
   //select product
-  const { productSelection, cardProductSelection, setCardProductSelection } =
-    useProductSelection();
+  const {
+    purcharseInformationProduct,
+    togglePageBuyProduct,
+    setTogglePageBuyProduct,
+  } = useBuyProduct();
 
   //cart store
   const { addItem, cart } = useCartStore();
@@ -38,21 +40,21 @@ const ProductSelection = () => {
   //total products in cart
 
   // Busca el producto seleccionado en el carrito
-  /*  const selectedInCart = cart.find((item) => item.id === productSelection.id); */
+  /*  const selectedInCart = cart.find((item) => item.id === purcharseInformationProduct.id); */
 
   // Cantidad y subtotal solo del producto seleccionado
   const totalQuantity = cart
-    .filter((item) => item.id === productSelection.id)
+    .filter((item) => item.id === purcharseInformationProduct.id)
     .reduce((sum, item) => sum + (item.quantity || 1), 0);
 
   const totalSubtotal = cart
-    .filter((item) => item.id === productSelection.id)
+    .filter((item) => item.id === purcharseInformationProduct.id)
     .reduce((sum, item) => sum + (item.quantity || 1) * item.price, 0);
 
   //handle add cart store
   const handleAddToCart = () => {
     addItem({
-      ...productSelection,
+      ...purcharseInformationProduct,
       additionals: selectedAdditionals,
       observation: observation.trim(),
     });
@@ -69,7 +71,7 @@ const ProductSelection = () => {
   //retur page
   const handleReturnPage = () => {
     navigate('/');
-    setCardProductSelection(false);
+    setTogglePageBuyProduct(false);
   };
 
   //react
@@ -84,8 +86,8 @@ const ProductSelection = () => {
   return (
     <aside
       className={clsx('product_selection__container', {
-        'product_selection__container--active': cardProductSelection,
-        'product_selection__container--inactive': !cardProductSelection,
+        'product_selection__container--active': togglePageBuyProduct,
+        'product_selection__container--inactive': !togglePageBuyProduct,
       })}
     >
       <header className="header_product_selection">
@@ -94,17 +96,17 @@ const ProductSelection = () => {
 
       <figure className="image_product_selection_container">
         <img
-          src={productSelection.image}
-          alt={`product_selection_${productSelection.image}`}
+          src={purcharseInformationProduct.image}
+          alt={`product_selection_${purcharseInformationProduct.image}`}
           className="image_product_selection"
         />
       </figure>
 
       <div className="production_selection_content">
         <CardDetails
-          title={productSelection.name}
-          description={productSelection.description}
-          price={productSelection.price}
+          title={purcharseInformationProduct.name}
+          description={purcharseInformationProduct.description}
+          price={purcharseInformationProduct.price}
         />
 
         <section className="total_product_selection">
