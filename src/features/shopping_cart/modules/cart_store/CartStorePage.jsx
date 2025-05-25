@@ -4,7 +4,7 @@ import SecondaryButtonComponent from '../../../../components/button_components/b
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useCartStore from '../../../../store/cart.store';
 import useIsTogglePage from '../../store/useIsTogglePage.store';
-import useNavigatePage from '../../../../hooks/useNavigatePage';
+import { useNavigate } from 'react-router-dom';
 
 const CartStorePage = () => {
   //global
@@ -13,7 +13,7 @@ const CartStorePage = () => {
     useCartStore();
 
   //navigate
-  const handleNavigate = useNavigatePage();
+  const navigate = useNavigate();
 
   //togle page
   const { setTogglePage } = useIsTogglePage();
@@ -35,7 +35,7 @@ const CartStorePage = () => {
   //handle add direction
   const handleAddDirection = () => {
     setTogglePage();
-    handleNavigate('/order/purcharse_data_form');
+    navigate('/order/purcharse_data_form');
   };
 
   //vars

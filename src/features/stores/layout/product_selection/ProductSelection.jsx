@@ -1,22 +1,23 @@
 //css
 import './product_selection.css';
-
 import useProductSelection from '../../store/product_selection.store';
 import clsx from 'clsx';
 import CardDetails from '../../../../components/card_details/CardDetails';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputComponent from '../../../../components/input_component/InputComponent';
-import useNavigatePage from '../../../../hooks/useNavigatePage';
 import { useEffect, useRef, useState } from 'react';
 import useCartStore from '../../../../store/cart.store';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import DropDownSelectAdditionals from '../../components/dropdown_select_additionals/DropDownSelectAdditionals';
+import { useNavigate } from 'react-router-dom';
 
 const ProductSelection = () => {
+  //navigate
+  const navigate = useNavigate();
+
   //custom hooks
   const { formatNumber } = useNumberFormat();
-  const handleNavigate = useNavigatePage();
 
   //state
   const [observation, setObservation] = useState('');
@@ -67,7 +68,7 @@ const ProductSelection = () => {
 
   //retur page
   const handleReturnPage = () => {
-    handleNavigate('/');
+    navigate('/');
     setCardProductSelection(false);
   };
 
