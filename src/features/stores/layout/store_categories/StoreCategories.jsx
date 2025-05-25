@@ -1,7 +1,5 @@
 //css
 import './store_categories.css';
-//custom hooks
-import useExpanded from '../../hooks/useExpanded';
 //icons
 import { MdOutlineFastfood, MdStarOutline } from 'react-icons/md';
 //components
@@ -10,16 +8,6 @@ import HeaderCategoryList from '../../components/header_category_list/HeaderCate
 import StoreCardFoodList from '../../components/store_card_food_list/StoreCardFoodList';
 
 const StoreCategories = () => {
-  //global
-  const { isExpanded, handleToggleViewProducts } = useExpanded({
-    initialValue: false,
-  });
-
-  //handle collapse
-  const handleIsExpanded = () => {
-    handleToggleViewProducts();
-  };
-
   const ProductsTest = {
     id: 'e3388b60-0b04-4900-9d2b-1b07639a1d9b',
     name: 'D.M.O Delicias',
@@ -152,11 +140,7 @@ const StoreCategories = () => {
       {/* promotions */}
       <div className="container_promotions_category container_category">
         {/* header */}
-        <HeaderCategoryList
-          title="Promociones"
-          isExpanded={isExpanded}
-          handleIsExpanded={handleIsExpanded}
-        />
+        <HeaderCategoryList title="Promociones" />
 
         {/* category list */}
         <ul className="list_promotions_category_list list_categories_list">
@@ -183,11 +167,7 @@ const StoreCategories = () => {
       {/* Favorites */}
       <div className="container_favorites_category container_category">
         {/* header */}
-        <HeaderCategoryList
-          title="Favoritos"
-          isExpanded={isExpanded}
-          handleIsExpanded={handleIsExpanded}
-        />
+        <HeaderCategoryList title="Favoritos" />
 
         {/* category list */}
         <ul className="list_promotions_category_list list_categories_list">
@@ -214,11 +194,7 @@ const StoreCategories = () => {
       {/* Recomendados */}
       <div className="container_favorites_category container_category">
         {/* header */}
-        <HeaderCategoryList
-          title="Recomendados"
-          isExpanded={isExpanded}
-          handleIsExpanded={handleIsExpanded}
-        />
+        <HeaderCategoryList title="Recomendados" />
 
         {/* category list */}
         <ul className="list_recommended_category_list">
