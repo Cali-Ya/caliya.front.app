@@ -1,11 +1,9 @@
 //css
 import './store_product_card_medium.css';
-//custom hooks
-import useProductSelection from '../../../store/buy_product.store';
 //components
 import CardDetails from '../../../../../components/card_details/CardDetails';
 import IconAddShoppingCard from '../../icons/IconAddShoppingCard';
-import { useNavigate } from 'react-router-dom';
+//lib
 import useHandleBuyProduct from '../../../../../lib/shared/useHandleBuyProduct';
 
 const StoreProductCardMedium = ({
