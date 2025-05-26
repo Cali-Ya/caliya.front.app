@@ -8,7 +8,7 @@ import useCartStore from '../../../../store/cart.store';
 //icons
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 //components
-import DropDownAdditionals from '../../dropdown_additionals/DropdownAdditionals';
+import DropDownAdditionals from '../../components/dropdown_additionals/DropdownAdditionals';
 import CardDetails from '../../../../components/card_details/CardDetails';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputComponent from '../../../../components/input_component/InputComponent';

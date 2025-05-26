@@ -1,11 +1,11 @@
 //css
 import './dropdown_additionals.css';
 //icons
-import CaretIconRigth from '../../../components/caret_icons/caret_icon_rigth/CaretIconRight';
+import CaretIconRigth from '../../../../components/caret_icons/caret_icon_rigth/CaretIconRight';
 //components
-import Checkbox from '../components/checkbox/Checkbox';
+import Checkbox from '../checkbox/Checkbox';
 //custom hooks
-import useToggle from '../../../hooks/useToggle';
+import useToggle from '../../../../hooks/useToggle';
 //react
 import { useState, useImperativeHandle, forwardRef } from 'react';
 
