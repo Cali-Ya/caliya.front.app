@@ -7,15 +7,17 @@ const useBuyProduct = create((set) => ({
     name: '',
     description: '',
     price: 0,
+    prev_price: 0,
     image: '',
   },
   setPurcharseInformationProduct: (product) =>
     set(() => ({
-      purcharse_information_product: {
+      purcharseInformationProduct: {
         id: product.id,
         name: product.name,
         description: product.description,
         price: product.price,
+        prev_price: product.prev_price,
         image: product.image,
       },
     })),

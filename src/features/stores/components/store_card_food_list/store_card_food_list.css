@@ -1,7 +1,6 @@
 .store_food_list__item {
   display: flex;
   justify-content: space-between;
-  margin: 0.5em 0;
   padding: 0.9em 0.7em;
   transition: all 0.4s ease;
   cursor: pointer;
@@ -31,6 +30,12 @@
 
     .store_food_list_title {
       color: var(--active-color-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
 
     .store_food_list_description {

@@ -3,7 +3,7 @@
   height: 100%;
   padding: 0.8em 0.6em;
   color: var(--active-color-white);
-  background-color: var(--active-color-primary);
+  background: var(--background-linear-primary);
   border-radius: 0.4em;
   font-size: 1em;
   outline: none;

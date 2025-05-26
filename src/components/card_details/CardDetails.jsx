@@ -11,6 +11,7 @@ const CardDetails = ({
   size_title,
   size_description,
   size_price,
+  with_price,
   activeElipsis,
   icon,
 }) => {
@@ -40,6 +41,7 @@ const CardDetails = ({
       >
         {title}
       </h2>
+
       <p
         className="product_card_details__description"
         style={{
@@ -50,17 +52,21 @@ const CardDetails = ({
         {description}
       </p>
 
-      <span
-        className="product_card_details__price"
-        style={{
-          fontSize: size_price,
-        }}
-      >
-        {price_format} COP
-      </span>
-      <span className="product_card_details__discount">
-        {prev_price_format} COP
-      </span>
+      <article className="content_prices">
+        <span
+          className="product_card_details__price"
+          style={{
+            fontSize: size_price,
+            width: with_price,
+          }}
+        >
+          {price_format} COP
+        </span>
+        <span className="product_card_details__discount">
+          {prev_price_format} COP
+        </span>
+      </article>
+
       {IconDiscount && <IconDiscount className="icon_discount" />}
     </section>
   );

@@ -151,7 +151,7 @@ const StoreCategories = () => {
                 id={product.id}
                 icon={MdOutlineFastfood}
                 image={product.image}
-                title={product.name}
+                name={product.name}
                 description={product.description}
                 price={product.price}
                 prev_price={product.price}
@@ -178,7 +178,7 @@ const StoreCategories = () => {
                 id={product.id}
                 icon={MdStarOutline}
                 image={product.image}
-                title={product.name}
+                name={product.name}
                 description={product.description}
                 price={product.price}
                 prev_price={product.price}
@@ -203,7 +203,7 @@ const StoreCategories = () => {
               <StoreCardFoodList
                 key={product.id + index}
                 id={product.id}
-                title={product.name}
+                name={product.name}
                 description={product.description}
                 price={product.price}
                 image={product.image}

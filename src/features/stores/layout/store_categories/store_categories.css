@@ -15,5 +15,5 @@
 .list_recommended_category_list {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.4em;
 }

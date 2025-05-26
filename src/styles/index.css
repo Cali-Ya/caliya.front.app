@@ -19,9 +19,16 @@
   --accents-color-secondary: #395998;
   --accents-color-secondary-light: #4285f4;
 
+  /* background colors */
+  --background-linear-primary: linear-gradient(
+    90deg,
+    rgba(245, 151, 19, 1) 35%,
+    rgba(238, 167, 52, 1) 100%
+  );
+
   /* Global */
   --border-radius: 0.4rem;
-  --shadow: 0 0 4px #d9d9d9;
+  --shadow: 0 0 4px #ababab;
 }
 
 * {

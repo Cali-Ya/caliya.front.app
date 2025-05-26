@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { features_pages as Features } from '../features/features_exports';
 
+const indexActive = true;
+
 const RoutesSystem = createBrowserRouter([
   {
     path: '/',
@@ -11,24 +13,24 @@ const RoutesSystem = createBrowserRouter([
     element: <Features.store_page.StorePage />,
   },
   {
-    path: '/add_to_cart',
-    element: <Features.store_page.ProductSelection />,
+    path: '/buy_product',
+    element: <Features.store_page.BuyProduct />,
   },
-  /*  {
-    path: '/order/',
-    element: <Features.order_page.OrderPage />,
+  {
+    path: '/cart/',
+    element: <Features.shopping_cart_page.OrderPage />,
 
     children: [
       {
         index: indexActive,
-        element: <Features.order_page.CartStorePage />,
+        element: <Features.shopping_cart_page.CartStorePage />,
       },
       {
         path: 'purcharse_data_form',
-        element: <Features.order_page.PurcharseDataForm />,
+        element: <Features.shopping_cart_page.PurcharseDataForm />,
       },
     ],
-  }, */
+  },
 ]);
 
 export default RoutesSystem;

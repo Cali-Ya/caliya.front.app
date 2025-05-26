@@ -15,7 +15,7 @@ const useHandleBuyProduct = () => {
 
   const handleBuyProduct = ({
     id,
-    title,
+    name,
     description,
     price,
     prev_price,
@@ -23,11 +23,11 @@ const useHandleBuyProduct = () => {
   }) => {
     setPurcharseInformationProduct({
       id: id,
-      name: title,
-      description: description,
-      price: price,
+      name,
+      description,
+      price,
       prev_price,
-      image: image,
+      image,
     });
 
     const openBuyProduct = true;

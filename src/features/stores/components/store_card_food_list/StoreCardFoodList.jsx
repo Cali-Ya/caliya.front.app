@@ -8,7 +8,7 @@ import useHandleBuyProduct from '../../../../lib/shared/useHandleBuyProduct';
 
 const StoreCardFoodList = ({
   id,
-  title,
+  name,
   description,
   image,
   price,
@@ -24,7 +24,7 @@ const StoreCardFoodList = ({
   //buy product
   const purcharse_product_information = {
     id: id,
-    title: title,
+    name: name,
     description: description,
     image: image,
     price: price,
@@ -40,7 +40,7 @@ const StoreCardFoodList = ({
       onClick={() => handleBuyProduct(purcharse_product_information)}
     >
       <article className="store_food_list__info">
-        <h3 className="store_food_list_title">{title}</h3>
+        <h3 className="store_food_list_title">{name}</h3>
         <p className="store_food_list_description">{description}</p>
 
         <div className="store_food_list_prices">
@@ -54,7 +54,7 @@ const StoreCardFoodList = ({
       <figure className="container_food_list_image">
         <img
           src={image}
-          alt={title + description}
+          alt={name + description}
           className="food_list__image"
         />
 

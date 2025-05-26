@@ -10,7 +10,7 @@ const StoreProductCardMedium = ({
   id,
   icon,
   image,
-  title,
+  name,
   description,
   price,
   prev_price,
@@ -22,11 +22,11 @@ const StoreProductCardMedium = ({
   //handle buy product
   const purcharse_product_information = {
     id: id,
-    title: title,
-    description: description,
-    image: image,
-    price: price,
-    prev_price: prev_price,
+    name,
+    description,
+    image,
+    price,
+    prev_price,
   };
 
   const handleBuyProduct = useHandleBuyProduct();
@@ -45,7 +45,7 @@ const StoreProductCardMedium = ({
         <p className="discount_store_product_card_medium">60% cada 3 compras</p>
 
         <CardDetails
-          title={title}
+          title={name}
           description={description}
           price={price}
           prev_price={price}
@@ -53,6 +53,7 @@ const StoreProductCardMedium = ({
           size_title={size_title}
           size_description={size_description}
           size_price={size_price}
+          with_price="100%"
           icon={icon}
         />
       </article>

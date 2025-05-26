@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  gap: 0.3em;
 
   .product_card_details__title {
     color: var(--active-color-secondary);
@@ -16,20 +17,24 @@
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 400;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
-  .product_card_details__price {
-    width: max-content;
-    color: var(--active-color-primary);
-  }
+  .content_prices {
+    display: flex;
+    gap: 0.2em;
+    flex-wrap: wrap;
 
-  .product_card_details__discount {
-    font-size: 0.9em;
-    text-decoration: line-through;
+    .product_card_details__price {
+      color: var(--active-color-primary);
+    }
+
+    .product_card_details__discount {
+      font-size: 0.9em;
+      text-decoration: line-through;
+    }
   }
 
   .icon_discount {
