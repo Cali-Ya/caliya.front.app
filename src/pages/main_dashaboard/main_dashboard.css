@@ -14,21 +14,20 @@
     background-color: var(--active-color-white);
   }
 
-  .products_sections_main_dashboard {
+  .container_products_main_dashboard {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1em;
 
-    .promotions_section_main_dashaboard {
+    .container_promotions_main_dashaboard {
       display: flex;
       flex-direction: column;
-
-      .title_promotions_section_main_dashboard {
+      .title_promotions_main_dashboard {
         font-size: 1.3em;
         font-weight: 300;
       }
 
-      .content_promotions_section_main_dasboard {
+      .content_promotions_main_dasboard {
         width: 100%;
         display: grid;
         grid-auto-flow: column;
@@ -36,6 +35,17 @@
         grid-auto-columns: minmax(180px, 1fr);
         gap: 1em;
         overflow-x: auto;
+      }
+    }
+
+    .container_shops_main_dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      .title_shops_main_dashboard {
+        font-size: 1.3em;
+        font-weight: 300;
       }
     }
   }

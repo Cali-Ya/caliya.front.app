@@ -2,11 +2,10 @@
 import './store_page.css';
 //custom hooks
 import useScroll from '../../../../hooks/useScroll';
-import useFetchProducts from '../../store/fetch_products.store';
 //layouts
 import StoreCategories from '../../../stores/layout/store_categories/StoreCategories';
 //react
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 //logos
 import { logos } from '../../../../assets/assets_exports';
 //components
@@ -20,7 +19,6 @@ import ShoppingCartIcon from '../../../../components/shopping_cart_icon/Shopping
 
 const ProductsPage = () => {
   //fetch products
-  const { products, getProducts } = useFetchProducts();
 
   //react
   //refs
@@ -37,10 +35,6 @@ const ProductsPage = () => {
   const handleNavigate = () => {
     navigate(AllPathRoutes.main_dashboard);
   };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <section className="container_store_page" ref={containerRef}>

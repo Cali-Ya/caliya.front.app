@@ -1,0 +1,38 @@
+.container_shop_card {
+  display: flex;
+  gap: 1em;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 0.8em 0.6em;
+  border: 1px solid transparent;
+
+  &:hover {
+    transition: border 0.3s ease-in-out;
+    border: 1px solid var(--accents-color-primary);
+  }
+
+  &:active {
+    transition: transform 0.2s;
+    transform: scale(0.95);
+  }
+
+  .container_logo_shop_card {
+    width: 30%;
+    display: flex;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  .content_description_shop_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.3em;
+  }
+}
