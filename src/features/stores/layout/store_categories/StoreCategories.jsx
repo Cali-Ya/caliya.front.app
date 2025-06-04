@@ -15,10 +15,7 @@ const StoreCategories = ({ allCategories }) => {
   };
 
   //const
-
   const combos = 'Combos';
-
-  console.log(allCategories[0]);
 
   return (
     <section className="container_store_categories">
@@ -100,6 +97,7 @@ const StoreCategories = ({ allCategories }) => {
                     description={product.description}
                     price={product.price}
                     image={product.image}
+                    score={product.score}
                   />
                 ))
               : null

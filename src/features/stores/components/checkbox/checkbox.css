@@ -9,13 +9,13 @@
   justify-content: center;
   margin-right: 8px;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  transition: all 0.2s;
   outline: none;
 }
 
 .custom-check.checked {
-  background: #007bff;
-  border-color: #007bff;
+  background: var(--active-color-primary);
+  border-color: var(--active-color-primary);
 }
 
 .custom-check svg {
@@ -23,5 +23,5 @@
 }
 
 .custom-check:focus {
-  box-shadow: 0 0 0 2px #007bff55;
+  box-shadow: 0 0 0 2px var(--accents-color-primary);
 }

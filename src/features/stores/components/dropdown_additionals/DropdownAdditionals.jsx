@@ -14,7 +14,7 @@ const DropDownAdditionals = forwardRef(
     const [iconRotate, setIconRotate] = useState(false);
     const [checkedItems, setCheckedItems] = useState([]);
 
-    const [state, handleToggle] = useToggle();
+    const [state, handleToggle] = useToggle(true);
 
     // Permite limpiar los checks desde el padre
     useImperativeHandle(ref, () => ({
@@ -52,7 +52,7 @@ const DropDownAdditionals = forwardRef(
           <CaretIconRigth
             preferColor={false}
             type="dropdown"
-            isCaretRight={iconRotate}
+            isCaretRight={!iconRotate}
           />
         </article>
 

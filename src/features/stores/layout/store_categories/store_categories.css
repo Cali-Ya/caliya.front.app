@@ -15,6 +15,7 @@
   grid-auto-flow: column;
   gap: 0.4em;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .list_recommended_category_list {

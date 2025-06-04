@@ -2,11 +2,12 @@
 import './main_dashboard.css';
 //components
 import SearchComponent from '../../components/search_component/SearchComponent';
-import PromotionCard from '../../features/main_dashboard/components/promotion_card/PromotionCard';
-import ShoppingCartIcon from '../../components/shopping_cart_icon/ShoppingCartIcon';
-import { useEffect, useState } from 'react';
-import getAllShops from '../../features/main_dashboard/services/get_all_shops';
+import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
+//servcies
+import getAllShops from '../../features/main_dashboard/services/get_all_shops';
+//react
+import { useEffect, useState } from 'react';
 
 const MainDashboard = () => {
   //shops
@@ -16,6 +17,8 @@ const MainDashboard = () => {
   useEffect(() => {
     getAllShops(setShops);
   }, []);
+
+  console.log(shops);
 
   return (
     <main className="main_dashboard">
@@ -27,11 +30,10 @@ const MainDashboard = () => {
 
       {/* all products */}
       <section className="container_products_main_dashboard">
-        {/*    <section className="container_promotions_main_dashaboard">
+        {/*   <section className="container_promotions_main_dashaboard">
           <h1 className="title_promotions_main_dashboard">
-            ¡Promociones Especiales!
+            ¡Combos Especiales!
           </h1>
-
         
           <div className="content_promotions_main_dasboard">
             <PromotionCard />
@@ -46,9 +48,8 @@ const MainDashboard = () => {
                 key={shop.id}
                 id_shop={shop.id}
                 name={shop.name}
-                logo={shop.logo_image}
+                logo={shop.logo}
                 score={shop.score}
-                home_phone={shop.home_phone}
                 address={shop.address}
                 type={shop.type}
                 opened={shop.opened}

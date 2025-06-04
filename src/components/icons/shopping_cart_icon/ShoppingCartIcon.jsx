@@ -3,7 +3,7 @@ import './shopping_cart_icon.css';
 //icons
 import { MdOutlineShoppingCart } from 'react-icons/md';
 //const
-import { AllPathRoutes } from '../../const/AllPathRoutes';
+import { AllPathRoutes } from '../../../const/AllPathRoutes';
 //react hooks
 import { useNavigate } from 'react-router-dom';
 

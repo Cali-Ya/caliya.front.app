@@ -51,9 +51,5 @@
       color: var(--active-color-secondary-light);
       font-weight: 400;
     }
-
-    .description_shop_card__home_phone {
-      font-size: 0.9em;
-    }
   }
 }

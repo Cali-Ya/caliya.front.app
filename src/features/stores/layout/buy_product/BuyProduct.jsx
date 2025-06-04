@@ -13,12 +13,12 @@ import CardDetails from '../../../../components/card_details/CardDetails';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
+import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 //custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 //react
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { AllPathRoutes } from '../../../../const/AllPathRoutes';
 
 const BuyProduct = () => {
   const ADDITIONALS = [
@@ -107,7 +107,7 @@ const BuyProduct = () => {
   const handleReturnPage = () => {
     const returnPage = false;
     setTogglePageBuyProduct(returnPage);
-    navigate(AllPathRoutes.store_page);
+    navigate(-1);
   };
 
   useEffect(() => {
@@ -132,6 +132,7 @@ const BuyProduct = () => {
             additionalsRef.current?.clearChecks();
           }}
         />
+        <ShoppingCartIcon isColor={false} />
       </header>
 
       <figure className="image_buy_product_container">

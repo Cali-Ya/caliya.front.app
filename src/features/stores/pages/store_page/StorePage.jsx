@@ -6,8 +6,6 @@ import useScroll from '../../../../hooks/useScroll';
 import StoreCategories from '../../../stores/layout/store_categories/StoreCategories';
 //react
 import { useEffect, useRef, useState } from 'react';
-//logos
-import { logos } from '../../../../assets/assets_exports';
 //components
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import SearchComponent from '../../../../components/search_component/SearchComponent';
@@ -15,7 +13,7 @@ import SearchComponent from '../../../../components/search_component/SearchCompo
 import { AllPathRoutes } from '../../../../const/AllPathRoutes';
 //react
 import { useNavigate, useParams } from 'react-router-dom';
-import ShoppingCartIcon from '../../../../components/shopping_cart_icon/ShoppingCartIcon';
+import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 import getAllCategories from '../../services/get_all_categories';
 
 const StorePage = () => {

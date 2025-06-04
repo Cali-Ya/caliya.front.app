@@ -5,6 +5,8 @@ import IconAddShoppingCard from '../icons/IconAddShoppingCard';
 //custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useHandleBuyProduct from '../../../../lib/shared/useHandleBuyProduct';
+import useFloatFormat from '../../../../hooks/useFloatNumber';
+import ScoreStar from '../../../../components/icons/score_star/ScoreStar';
 
 const StoreCardFoodList = ({
   id,
@@ -13,6 +15,7 @@ const StoreCardFoodList = ({
   image,
   price,
   prev_price,
+  score,
 }) => {
   //custom hook
   //format number
@@ -34,6 +37,13 @@ const StoreCardFoodList = ({
   //handle buy product
   const handleBuyProduct = useHandleBuyProduct();
 
+  //float format
+  const { formatFloat } = useFloatFormat();
+
+  //format score
+  const decimalsScore = 1;
+  const formattedScore = formatFloat(score, decimalsScore);
+
   return (
     <li
       className="store_food_list__item"
@@ -49,6 +59,11 @@ const StoreCardFoodList = ({
             <p className="store_food_list_prices__discount">{prevePrice}</p>
           )}
         </div>
+
+        <p className="store_food_list_prices__score">
+          <ScoreStar />
+          {formattedScore}
+        </p>
       </article>
 
       <figure className="container_food_list_image">
