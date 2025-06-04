@@ -19,13 +19,24 @@ import useNumberFormat from '../../../../hooks/useNumberFormat';
 //react
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import useFullHeight from '../../../../hooks/useFullHeight';
 
 const BuyProduct = () => {
   const ADDITIONALS = [
     { name: 'Queso', price: 2000 },
     { name: 'Tocineta', price: 2500 },
     { name: 'Salsas', price: 1000 },
+    { name: 'Queso', price: 2000 },
+    { name: 'Tocineta', price: 2500 },
+    { name: 'Salsas', price: 1000 },
+    { name: 'Queso', price: 2000 },
+    { name: 'Tocineta', price: 2500 },
+    { name: 'Salsas', price: 1000 },
   ];
+
+  //full height
+  useFullHeight();
+
   //const
   const country = 'es-CO';
 
@@ -182,7 +193,7 @@ const BuyProduct = () => {
             <FaPlus className="add_product__icons" onClick={handleAddPreBuy} />
           </div>
 
-          <p className="total_price">{preTotalPrice}</p>
+          <p className="total_price">$ {preTotalPrice}</p>
         </article>
         <PrimaryButtonComponent
           text="Añadir al Carrito"

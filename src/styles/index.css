@@ -29,6 +29,12 @@
   /* Global */
   --border-radius: 0.4rem;
   --shadow: 0 0 4px #ababab;
+
+  /* max height */
+  /* vh */
+  --vh: 1vh;
+  /* config vh phone*/
+  --full-height: calc(var(--vh, 1vh) * 100);
 }
 
 * {

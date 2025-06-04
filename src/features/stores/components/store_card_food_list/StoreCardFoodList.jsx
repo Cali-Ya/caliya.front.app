@@ -21,8 +21,8 @@ const StoreCardFoodList = ({
   //format number
   const { formatNumber } = useNumberFormat();
   const country = 'es-CO';
-  const Price = formatNumber(price, country);
-  const prevePrice = formatNumber(prev_price, country);
+  const formatPrice = formatNumber(price, country);
+  const formatPrevePrice = formatNumber(prev_price, country);
 
   //buy product
   const purcharse_product_information = {
@@ -54,9 +54,11 @@ const StoreCardFoodList = ({
         <p className="store_food_list_description">{description}</p>
 
         <div className="store_food_list_prices">
-          <p className="store_food_list_prices__price">{Price}</p>
+          <p className="store_food_list_prices__price">$ {formatPrice}</p>
           {prev_price && (
-            <p className="store_food_list_prices__discount">{prevePrice}</p>
+            <p className="store_food_list_prices__discount">
+              $ {formatPrevePrice}
+            </p>
           )}
         </div>
 

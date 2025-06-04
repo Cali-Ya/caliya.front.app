@@ -18,8 +18,6 @@ const MainDashboard = () => {
     getAllShops(setShops);
   }, []);
 
-  console.log(shops);
-
   return (
     <main className="main_dashboard">
       {/* header */}
