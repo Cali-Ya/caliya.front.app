@@ -27,27 +27,23 @@ const MainDashboard = () => {
 
       {/* all products */}
       <section className="container_products_main_dashboard">
-        {/* promotions */}
-        <section className="container_promotions_main_dashaboard">
+        {/*    <section className="container_promotions_main_dashaboard">
           <h1 className="title_promotions_main_dashboard">
             ¡Promociones Especiales!
           </h1>
 
-          {/* promotions  */}
+        
           <div className="content_promotions_main_dasboard">
             <PromotionCard />
-            <PromotionCard />
-            <PromotionCard />
-            <PromotionCard />
           </div>
-        </section>
+        </section> */}
 
         {/* shops */}
         <section className="container_shops_main_dashboard">
-          <h1 className="title_shops_main_dashboard">Tiendas</h1>
           {shops &&
             shops.map((shop) => (
               <ShopCard
+                key={shop.id}
                 id_shop={shop.id}
                 name={shop.name}
                 logo={shop.logo_image}

@@ -1,6 +1,5 @@
 .main_dashboard {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 1.2em 1em;
@@ -17,7 +16,7 @@
   .container_products_main_dashboard {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
 
     .container_promotions_main_dashaboard {
       display: flex;
@@ -42,11 +41,6 @@
       display: flex;
       flex-direction: column;
       gap: 1em;
-
-      .title_shops_main_dashboard {
-        font-size: 1.3em;
-        font-weight: 300;
-      }
     }
   }
 }

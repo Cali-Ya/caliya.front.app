@@ -9,7 +9,7 @@ const RoutesSystem = createBrowserRouter([
     element: <Features.MainDashboard />,
   },
   {
-    path: '/store_page',
+    path: '/store_page/:shop_id',
     element: <Features.store_page.StorePage />,
   },
   {

@@ -1,5 +1,6 @@
 .container_shop_card {
   display: flex;
+  justify-content: flex-start;
   gap: 1em;
   cursor: pointer;
   border-radius: var(--border-radius);
@@ -18,11 +19,10 @@
   }
 
   .container_logo_shop_card {
-    width: 30%;
     display: flex;
 
     img {
-      width: 100%;
+      width: 120px;
       aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: var(--border-radius);
@@ -32,7 +32,28 @@
   .content_description_shop_card {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     gap: 0.3em;
+
+    .description_shop_card__name {
+      font-size: 1.1em;
+    }
+
+    .description_shop_card__score {
+      display: flex;
+      align-items: center;
+      gap: 0.2em;
+      font-size: 0.9em;
+      color: var(--active-color-primary);
+    }
+
+    .description_shop_card__address {
+      font-size: 0.8em;
+      color: var(--active-color-secondary-light);
+      font-weight: 400;
+    }
+
+    .description_shop_card__home_phone {
+      font-size: 0.9em;
+    }
   }
 }

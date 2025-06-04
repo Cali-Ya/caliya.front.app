@@ -1,5 +1,5 @@
 .promotion_card_container {
-  width: 100%;
+  width: 180px;
   box-shadow: var(--shadow);
   background-color: var(--active-color-white);
   border-radius: var(--border-radius);

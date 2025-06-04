@@ -42,13 +42,13 @@ const StoreProductCardMedium = ({
       </figure>
 
       <article className="container_details_store_product_card_medium">
-        <p className="discount_store_product_card_medium">60% cada 3 compras</p>
+        {/*   <p className="discount_store_product_card_medium">60% cada 3 compras</p> */}
 
         <CardDetails
           title={name}
           description={description}
           price={price}
-          prev_price={price}
+          prev_price={prev_price}
           activeElipsis={activeElipsis}
           size_title={size_title}
           size_description={size_description}
