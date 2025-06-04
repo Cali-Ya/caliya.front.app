@@ -34,7 +34,6 @@
   /* vh */
   --vh: 1vh;
   /* config vh phone*/
-  --full-height: calc(var(--vh, 1vh) * 100);
 }
 
 * {
@@ -59,4 +58,7 @@ body {
 
 ul {
   list-style-type: none;
+}
+
+@media screen and (400 <= width <= 500) {
 }

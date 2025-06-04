@@ -1,6 +1,6 @@
 .buy_product__container {
   width: 100%;
-  height: var(--full-height);
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
   gap: 1.2em;
@@ -9,7 +9,7 @@
   .header_buy_product {
     position: absolute;
     width: 100%;
-    padding: 0.8em;
+    padding: 0.8em 0 0 0.8em;
     top: 0;
     display: flex;
     justify-content: space-between;

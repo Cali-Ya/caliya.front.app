@@ -24,7 +24,6 @@ const StorePage = () => {
   useEffect(() => {
     getAllCategories(setShop, shop_id);
   }, [shop_id]);
-  console.log(shop);
 
   //react
   //refs
