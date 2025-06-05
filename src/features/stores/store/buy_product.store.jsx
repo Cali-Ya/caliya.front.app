@@ -4,6 +4,7 @@ const useBuyProduct = create((set) => ({
   //buy product
   purcharseInformationProduct: {
     id: '',
+    category_id: '',
     name: '',
     description: '',
     price: 0,
@@ -14,6 +15,7 @@ const useBuyProduct = create((set) => ({
     set(() => ({
       purcharseInformationProduct: {
         id: product.id,
+        category_id: product.category_id,
         name: product.name,
         description: product.description,
         price: product.price,

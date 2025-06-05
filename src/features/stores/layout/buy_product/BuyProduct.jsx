@@ -20,19 +20,11 @@ import useNumberFormat from '../../../../hooks/useNumberFormat';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import useFullHeight from '../../../../hooks/useFullHeight';
+import getAdditionals from '../../services/get_additionals';
 
 const BuyProduct = () => {
-  const ADDITIONALS = [
-    { name: 'Queso', price: 2000 },
-    { name: 'Tocineta', price: 2500 },
-    { name: 'Salsas', price: 1000 },
-    { name: 'Queso', price: 2000 },
-    { name: 'Tocineta', price: 2500 },
-    { name: 'Salsas', price: 1000 },
-    { name: 'Queso', price: 2000 },
-    { name: 'Tocineta', price: 2500 },
-    { name: 'Salsas', price: 1000 },
-  ];
+  //additionals
+  const [additionals, setAdditionals] = useState();
 
   //full height
   useFullHeight();
@@ -68,14 +60,14 @@ const BuyProduct = () => {
 
   // calculate price unitary
   const additionalsTotal = selectedAdditionals.reduce((sum, add) => {
-    const found = ADDITIONALS.find((ad) => ad.name === add);
+    const found = additionals.find((ad) => ad.name === add);
     return sum + (found ? found.price : 0);
   }, 0);
   const unitPrice = (purcharseInformationProduct.price || 0) + additionalsTotal;
   const preTotalPrice = formatNumber(
     ((purcharseInformationProduct.price || 0) +
       selectedAdditionals.reduce((sum, add) => {
-        const found = ADDITIONALS.find((ad) => ad.name === add);
+        const found = additionals.find((ad) => ad.name === add);
         return sum + (found ? found.price : 0);
       }, 0)) *
       quantity,
@@ -121,8 +113,10 @@ const BuyProduct = () => {
     navigate(-1);
   };
 
+  //render first page
   useEffect(() => {
     window.scrollTo(0, 0);
+    getAdditionals(setAdditionals, purcharseInformationProduct.category_id);
   }, []);
 
   return (
@@ -172,14 +166,14 @@ const BuyProduct = () => {
           />
           <p className="obersvations_text"></p>
         </div>
-        <DropDownAdditionals
-          ref={additionalsRef}
-          list={ADDITIONALS.map((a) => `${a.name}  +$${a.price}`)}
-          title="Adicionales"
-          onChangeAdditionals={(selected) => {
-            setSelectedAdditionals(selected.map((s) => s.split('  +$')[0]));
-          }}
-        />
+        {additionals && (
+          <DropDownAdditionals
+            ref={additionalsRef}
+            list={additionals}
+            title="Adicionales"
+            onChangeAdditionals={setSelectedAdditionals}
+          />
+        )}
       </section>
 
       <footer className="footer_buy_product">

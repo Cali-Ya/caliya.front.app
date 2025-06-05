@@ -38,6 +38,7 @@ const StoreCategories = ({ allCategories }) => {
                 <StoreProductCardMedium
                   key={combo.id}
                   id={combo.id}
+                  category_id={category.id}
                   icon={MdOutlineFastfood}
                   image={combo.logo_image}
                   name={combo.name}
@@ -93,6 +94,7 @@ const StoreCategories = ({ allCategories }) => {
                   <StoreCardFoodList
                     key={product.id + index}
                     id={product.id}
+                    category_id={category.id}
                     name={product.name}
                     description={product.description}
                     price={product.price}

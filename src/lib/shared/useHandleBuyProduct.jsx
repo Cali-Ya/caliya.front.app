@@ -15,6 +15,7 @@ const useHandleBuyProduct = () => {
 
   const handleBuyProduct = ({
     id,
+    category_id,
     name,
     description,
     price,
@@ -22,7 +23,8 @@ const useHandleBuyProduct = () => {
     image,
   }) => {
     setPurcharseInformationProduct({
-      id: id,
+      id,
+      category_id,
       name,
       description,
       price,

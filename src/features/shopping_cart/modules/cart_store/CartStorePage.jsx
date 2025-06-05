@@ -60,20 +60,28 @@ const CartStorePage = () => {
                   </p>
                 </article>
                 <p className="subtotal_item_cart_store">
-                  {formatNumber(item.price * item.quantity, country)} COP
+                  $ {formatNumber(item.price * item.quantity, country)}
                 </p>
               </section>
 
               {item.additionals.length !== 0 && (
                 <article className="content_additionals_list_item_cart_store">
-                  <h4 className="title_additionals_list_item_cart_store">
-                    Adicionales:
-                  </h4>
-                  {item.additionals.map((additionals, index) => (
-                    <p className="additionals_list_item_cart_store" key={index}>
-                      {additionals}
-                    </p>
-                  ))}
+                  {item.additionals.length !== 0 && (
+                    <article className="content_additionals_list_item_cart_store">
+                      <h4 className="title_additionals_list_item_cart_store">
+                        Adicionales:
+                      </h4>
+                      <p className="additionals_list_item_cart_store">
+                        {[
+                          ...new Set(
+                            item.additionals.map(
+                              (additional) => additional.name
+                            )
+                          ),
+                        ].join(', ')}
+                      </p>
+                    </article>
+                  )}
                 </article>
               )}
               {item.observation && (
@@ -92,7 +100,7 @@ const CartStorePage = () => {
                   }
                   className="action_add_item_list_cart_store actions_item_list_cart_store"
                 >
-                  Añadir Otro
+                  Añadir
                 </button>
                 <button
                   onClick={() => removeItemQuantity(item)}
@@ -114,7 +122,7 @@ const CartStorePage = () => {
           <div className="content_total_price_cart_store">
             <p className="title_total_price_cart_store">Total</p>
             <p className="description_total_price_cart_store">
-              {formatNumber(getTotal(), country)}
+              $ {formatNumber(getTotal(), country)}
             </p>
           </div>
 

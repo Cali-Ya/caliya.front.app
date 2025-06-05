@@ -8,6 +8,7 @@ import useHandleBuyProduct from '../../../../../lib/shared/useHandleBuyProduct';
 
 const StoreProductCardMedium = ({
   id,
+  category_id,
   icon,
   image,
   name,
@@ -21,7 +22,8 @@ const StoreProductCardMedium = ({
 }) => {
   //handle buy product
   const purcharse_product_information = {
-    id: id,
+    id,
+    category_id,
     name,
     description,
     image,

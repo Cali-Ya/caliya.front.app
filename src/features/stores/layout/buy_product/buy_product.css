@@ -30,7 +30,7 @@
   }
 
   .buy_product_content {
-    padding: 0 0.8em 2em 0.8em;
+    padding: 0 0.8em 5em 0.8em;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

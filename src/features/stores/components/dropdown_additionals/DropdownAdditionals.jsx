@@ -62,12 +62,28 @@ const DropDownAdditionals = forwardRef(
             {list.map((item, idx) => (
               <li
                 className="item_dropdown_select_additionals"
-                key={idx}
+                key={item.id}
                 onClick={() => handleCheck(idx)}
-                style={{ cursor: 'pointer' }}
               >
-                <p className="options_dropdown_select_additionals">{item}</p>
-                <Checkbox checked={checkedItems.includes(idx)} />
+                {/* information */}
+                <div className="info_dropdown_select_additionals">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="info_dropdown_select_additionals__image"
+                  />
+                  <span className="info_dropdown_select_additionals__name">
+                    {item.name}
+                  </span>
+                </div>
+
+                {/* add addtional */}
+                <span className="add_addtional_dropdown_select_additionals">
+                  <span className="add_addtional_dropdown_select_additionals__price">
+                    ${item.price}
+                  </span>
+                  <Checkbox checked={checkedItems.includes(idx)} />
+                </span>
               </li>
             ))}
           </ul>

@@ -7,16 +7,26 @@
   gap: 1em;
 
   .header_cart_store {
-    position: relative;
+    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    position: relative;
+    min-height: 30px;
 
     .caret_left_children {
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
+    }
+
+    .header_cart_store__title {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      font-weight: 400;
+      font-size: 1.2em;
+      pointer-events: none;
     }
   }
 }

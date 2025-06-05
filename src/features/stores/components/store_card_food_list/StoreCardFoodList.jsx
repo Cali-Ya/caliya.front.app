@@ -10,6 +10,7 @@ import ScoreStar from '../../../../components/icons/score_star/ScoreStar';
 
 const StoreCardFoodList = ({
   id,
+  category_id,
   name,
   description,
   image,
@@ -26,12 +27,13 @@ const StoreCardFoodList = ({
 
   //buy product
   const purcharse_product_information = {
-    id: id,
-    name: name,
-    description: description,
-    image: image,
-    price: price,
-    prev_price: prev_price,
+    id,
+    category_id,
+    name,
+    description,
+    image,
+    price,
+    prev_price,
   };
 
   //handle buy product
