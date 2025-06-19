@@ -24,7 +24,7 @@ const StoreCategories = ({ allCategories }) => {
       {/* combos */}
       <div className="container_promotions_category container_category">
         {/* header */}
-        <HeaderCategoryList title="Promociones" />
+        <HeaderCategoryList title="Combos" />
 
         {/* combos list */}
         <ul className="list_combos_category_list list_categories_list">
@@ -40,7 +40,7 @@ const StoreCategories = ({ allCategories }) => {
                   id={combo.id}
                   category_id={category.id}
                   icon={MdOutlineFastfood}
-                  image={combo.logo_image}
+                  image={combo.image}
                   name={combo.name}
                   description={combo.description}
                   price={combo.price}

@@ -7,8 +7,8 @@ const getAdditionals = async (setAdditionals, shop_id) => {
     );
 
     if (response.status === 200) {
-      const data = response.data;
-      setAdditionals(data);
+      const additionals = response.data;
+      setAdditionals(additionals);
     }
   } catch (error) {
     console.log(error);

@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import useFullHeight from '../../../../hooks/useFullHeight';
 import getAdditionals from '../../services/get_additionals';
+import { logos } from '../../../../assets/assets_exports';
 
 const BuyProduct = () => {
   //additionals
@@ -166,13 +167,21 @@ const BuyProduct = () => {
           />
           <p className="obersvations_text"></p>
         </div>
-        {additionals && (
+        {additionals ? (
           <DropDownAdditionals
             ref={additionalsRef}
             list={additionals}
             title="Adicionales"
             onChangeAdditionals={setSelectedAdditionals}
           />
+        ) : (
+          <div className="buy_product_content__container_not_additionals_image">
+            <img
+              src={logos.CaliYa.Isologo}
+              alt={logos.CaliYa.Isologo}
+              className="buy_product_content__not_additionals_image"
+            />
+          </div>
         )}
       </section>
 

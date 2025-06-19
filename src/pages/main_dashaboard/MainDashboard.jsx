@@ -8,14 +8,18 @@ import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCar
 import getAllShops from '../../features/main_dashboard/services/get_all_shops';
 //react
 import { useEffect, useState } from 'react';
+import getCombos from '../../features/main_dashboard/services/get_combos';
 
 const MainDashboard = () => {
   //shops
   const [shops, setShops] = useState();
+  //combos
+  const [combos, setCombos] = useState();
 
   //get all shops
   useEffect(() => {
     getAllShops(setShops);
+    getCombos(setCombos);
   }, []);
 
   return (
@@ -32,11 +36,17 @@ const MainDashboard = () => {
           <h1 className="title_promotions_main_dashboard">
             ¡Combos Especiales!
           </h1>
-        
+
           <div className="content_promotions_main_dasboard">
             <PromotionCard />
           </div>
-        </section> */}
+        </section>
+ */}
+
+        {/* combos */}
+        <section className="container_combos_main_dashboard">
+          <h1 className="title_combos_main_dashboard">Combos</h1>
+        </section>
 
         {/* shops */}
         <section className="container_shops_main_dashboard">
