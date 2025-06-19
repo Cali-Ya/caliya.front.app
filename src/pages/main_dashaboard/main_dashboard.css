@@ -18,22 +18,14 @@
     flex-direction: column;
     gap: 2em;
 
-    .container_promotions_main_dashaboard {
+    .container_combos_main_dashboard {
       display: flex;
       flex-direction: column;
-      .title_promotions_main_dashboard {
-        font-size: 1.3em;
-        font-weight: 300;
-      }
+      gap: 0.5em;
 
-      .content_promotions_main_dasboard {
-        width: 100%;
-        display: grid;
-        grid-auto-flow: column;
-        padding: 0.8em 0;
-        grid-auto-columns: minmax(180px, 1fr);
-        gap: 1em;
-        overflow-x: auto;
+      .title_combos_main_dashboard {
+        font-size: 1.3em;
+        font-weight: 600;
       }
     }
 

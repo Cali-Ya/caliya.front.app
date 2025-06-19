@@ -12,28 +12,24 @@ const CombosLayout = ({ combos }) => {
     size_price: '1rem',
   };
 
-  console.log(combos);
-
   return (
     <ul className="container_list_combos_layout">
-      {combos.map((combo) =>
-        combo.items.map((product, index) => (
-          <ProductCardMedium
-            key={product.id + index}
-            id={product.id}
-            category_id={combo.id}
-            icon={MdOutlineFastfood}
-            image={product.image}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-            activeElipsis="true"
-            size_title={size_details.size_title}
-            size_description={size_details.size_description}
-            size_price={size_details.size_price}
-          />
-        ))
-      )}
+      {combos.map((combo, index) => (
+        <ProductCardMedium
+          key={combo.id + index}
+          id={combo.id}
+          category_id={combo.id}
+          icon={MdOutlineFastfood}
+          image={combo.image}
+          name={combo.name}
+          description={combo.description}
+          price={combo.price}
+          activeElipsis="true"
+          size_title={size_details.size_title}
+          size_description={size_details.size_description}
+          size_price={size_details.size_price}
+        />
+      ))}
     </ul>
   );
 };

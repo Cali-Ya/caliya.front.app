@@ -25,6 +25,8 @@ const StorePage = () => {
     getAllCategories(setShop, shop_id);
   }, [shop_id]);
 
+  console.log(shop);
+
   //react
   //refs
   const containerRef = useRef(null);

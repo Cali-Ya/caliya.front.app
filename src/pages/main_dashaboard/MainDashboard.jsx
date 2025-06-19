@@ -4,11 +4,13 @@ import './main_dashboard.css';
 import SearchComponent from '../../components/search_component/SearchComponent';
 import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
+//layouts
+import CombosLayout from '../../layout/combos/CombosLayout';
 //servcies
 import getAllShops from '../../features/main_dashboard/services/get_all_shops';
+import getCombos from '../../features/main_dashboard/services/get_combos';
 //react
 import { useEffect, useState } from 'react';
-import getCombos from '../../features/main_dashboard/services/get_combos';
 
 const MainDashboard = () => {
   //shops
@@ -32,20 +34,10 @@ const MainDashboard = () => {
 
       {/* all products */}
       <section className="container_products_main_dashboard">
-        {/*   <section className="container_promotions_main_dashaboard">
-          <h1 className="title_promotions_main_dashboard">
-            ¡Combos Especiales!
-          </h1>
-
-          <div className="content_promotions_main_dasboard">
-            <PromotionCard />
-          </div>
-        </section>
- */}
-
         {/* combos */}
         <section className="container_combos_main_dashboard">
-          <h1 className="title_combos_main_dashboard">Combos</h1>
+          <h1 className="title_combos_main_dashboard">¡Los mejores Combos!</h1>
+          {combos && <CombosLayout combos={combos} />}
         </section>
 
         {/* shops */}

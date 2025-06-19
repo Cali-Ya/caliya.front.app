@@ -11,6 +11,7 @@ const StoreCategories = ({ allCategories }) => {
   const CombosFiltered = allCategories.filter(
     (combo) => combo.name === comboFilter
   );
+  const combosItems = CombosFiltered.length > 0 ? CombosFiltered[0].items : [];
 
   return (
     <section className="container_store_categories">
@@ -23,7 +24,7 @@ const StoreCategories = ({ allCategories }) => {
 
         {/* combos list */}
         <ul className="list_combos_category_list list_categories_list">
-          <CombosLayout combos={CombosFiltered} />
+          {combosItems && <CombosLayout combos={combosItems} />}
         </ul>
       </div>
 
