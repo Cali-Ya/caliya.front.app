@@ -10,14 +10,6 @@
   }
 }
 
-.list_categories_list {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 0.4em;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
 .list_recommended_category_list {
   display: flex;
   flex-direction: column;

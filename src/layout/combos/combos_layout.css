@@ -1,0 +1,7 @@
+.container_list_combos_layout {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+}

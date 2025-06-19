@@ -1,7 +1,7 @@
 //css
 import './store_card_food_list.css';
 //icons
-import IconAddShoppingCard from '../icons/IconAddShoppingCard';
+import IconAddShoppingCard from '../../../../components/icons/IconAddShoppingCard';
 //custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useHandleBuyProduct from '../../../../lib/shared/useHandleBuyProduct';

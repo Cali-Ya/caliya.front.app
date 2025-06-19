@@ -1,7 +1,7 @@
 //css
 import './card_details.css';
 //custom hoook
-import useNumberFormat from '../../hooks/useNumberFormat';
+import useNumberFormat from '../../../hooks/useNumberFormat';
 
 const CardDetails = ({
   title,

@@ -9,7 +9,7 @@ import useCartStore from '../../../../store/cart.store';
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 //components
 import DropDownAdditionals from '../../components/dropdown_additionals/DropdownAdditionals';
-import CardDetails from '../../../../components/card_details/CardDetails';
+import CardDetails from '../../../../components/cards/card_details/CardDetails';
 import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';

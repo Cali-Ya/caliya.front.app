@@ -1,12 +1,12 @@
 //css
-import './store_product_card_medium.css';
+import './product_card_medium.css';
 //components
-import CardDetails from '../../../../../components/card_details/CardDetails';
+import CardDetails from '../card_details/CardDetails';
 import IconAddShoppingCard from '../../icons/IconAddShoppingCard';
 //lib
-import useHandleBuyProduct from '../../../../../lib/shared/useHandleBuyProduct';
+import useHandleBuyProduct from '../../../lib/shared/useHandleBuyProduct';
 
-const StoreProductCardMedium = ({
+const ProductCardMedium = ({
   id,
   category_id,
   icon,
@@ -35,16 +35,16 @@ const StoreProductCardMedium = ({
 
   return (
     <li
-      className="container_store_product_card_medium"
+      className="container_product_card_medium"
       onClick={() => handleBuyProduct(purcharse_product_information)}
     >
-      <figure className="container_image_store_card_medium">
-        <img src={image} alt={image} className="image_store_card_medium" />
+      <figure className="container_image_card_medium">
+        <img src={image} alt={image} className="image_card_medium" />
         <IconAddShoppingCard />
       </figure>
 
-      <article className="container_details_store_product_card_medium">
-        {/*   <p className="discount_store_product_card_medium">60% cada 3 compras</p> */}
+      <article className="container_details_product_card_medium">
+        {/*   <p className="discount_product_card_medium">60% cada 3 compras</p> */}
 
         <CardDetails
           title={name}
@@ -63,4 +63,4 @@ const StoreProductCardMedium = ({
   );
 };
 
-export default StoreProductCardMedium;
+export default ProductCardMedium;

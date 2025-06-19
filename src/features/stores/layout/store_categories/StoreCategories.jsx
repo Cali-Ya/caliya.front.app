@@ -1,21 +1,16 @@
 //css
 import './store_categories.css';
-//icons
-import { MdOutlineFastfood } from 'react-icons/md';
 //components
 import HeaderCategoryList from '../../components/header_category_list/HeaderCategoryList';
 import StoreCardFoodList from '../../components/store_card_food_list/StoreCardFoodList';
-import StoreProductCardMedium from '../../components/store_product_cards/store_product_card_medium/StoreProductCardMedium';
+import CombosLayout from '../../../../layout/combos/CombosLayout';
 
 const StoreCategories = ({ allCategories }) => {
-  const size_details = {
-    size_title: '1.1rem',
-    size_description: '.9rem',
-    size_price: '1rem',
-  };
-
-  //const
-  const combos = 'Combos';
+  //filtered combos
+  const comboFilter = 'Combos';
+  const CombosFiltered = allCategories.filter(
+    (combo) => combo.name === comboFilter
+  );
 
   return (
     <section className="container_store_categories">
@@ -28,29 +23,7 @@ const StoreCategories = ({ allCategories }) => {
 
         {/* combos list */}
         <ul className="list_combos_category_list list_categories_list">
-          {allCategories
-            .filter(
-              (category) =>
-                category.name === combos && Array.isArray(category.items)
-            )
-            .flatMap((category) =>
-              category.items.map((combo) => (
-                <StoreProductCardMedium
-                  key={combo.id}
-                  id={combo.id}
-                  category_id={category.id}
-                  icon={MdOutlineFastfood}
-                  image={combo.image}
-                  name={combo.name}
-                  description={combo.description}
-                  price={combo.price}
-                  prev_price={combo.prev_price}
-                  size_title={size_details.size_title}
-                  size_description={size_details.size_description}
-                  size_price={size_details.size_price}
-                />
-              ))
-            )}
+          <CombosLayout combos={CombosFiltered} />
         </ul>
       </div>
 
