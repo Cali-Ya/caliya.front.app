@@ -9,9 +9,9 @@ const CaretIconRigth = ({
   className = '',
 }) => {
   const Types = {
-    expand: isCaretRight
-      ? 'caret_icon_right_expanded--rotate'
-      : 'caret_icon_right_expanded--starting',
+    dropdown: isCaretRight
+      ? 'caret_icon_right_rotate--rotate'
+      : 'caret_icon_right_rotate--starting',
     normal: 'caret_icon_right_normal',
   };
 

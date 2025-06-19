@@ -1,0 +1,55 @@
+.container_shop_card {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 0.8em 0.6em;
+  border: 1px solid transparent;
+
+  &:hover {
+    transition: border 0.3s ease-in-out;
+    border: 1px solid var(--accents-color-primary);
+  }
+
+  &:active {
+    transition: transform 0.2s;
+    transform: scale(0.95);
+  }
+
+  .container_logo_shop_card {
+    display: flex;
+
+    img {
+      width: 120px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  .content_description_shop_card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+
+    .description_shop_card__name {
+      font-size: 1.1em;
+    }
+
+    .description_shop_card__score {
+      display: flex;
+      align-items: center;
+      gap: 0.2em;
+      font-size: 0.9em;
+      color: var(--active-color-primary);
+    }
+
+    .description_shop_card__address {
+      font-size: 0.8em;
+      color: var(--active-color-secondary-light);
+      font-weight: 400;
+    }
+  }
+}

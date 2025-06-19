@@ -1,0 +1,31 @@
+.container_shopping_cart_icon {
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0.4em 0.5em;
+  gap: 0.2em;
+
+  &:hover {
+    transition: box-shadow 0.3s;
+    box-shadow: var(--shadow);
+  }
+}
+
+.container_shopping_cart_icon__active {
+  background-color: var(--active-color-primary);
+  margin-right: 0.4em;
+
+  .shopping_cart_icon {
+    color: var(--active-color-white) !important;
+  }
+
+  .shopping_cart_icon_lenght {
+    color: var(--active-color-white) !important;
+  }
+}
+
+.shopping_cart_icon {
+  font-size: 1.7em;
+}

@@ -2,7 +2,7 @@
 import MainDashboard from '../pages/main_dashaboard/MainDashboard';
 //stores
 import StorePage from './stores/pages/store_page/StorePage';
-import ProductSelection from './stores/layout/product_selection/ProductSelection';
+import BuyProduct from './stores/layout/buy_product/BuyProduct';
 
 //shopping cart
 import CartStorePage from './shopping_cart/modules/cart_store/CartStorePage';
@@ -14,12 +14,12 @@ export const features_pages = {
 
   store_page: {
     StorePage,
-    ProductSelection,
+    BuyProduct,
   },
 
-  /*  shopping_cart_page: {
+  shopping_cart_page: {
     OrderPage,
     CartStorePage,
     PurcharseDataForm,
-  }, */
+  },
 };

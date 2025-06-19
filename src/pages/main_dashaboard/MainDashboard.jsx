@@ -2,10 +2,28 @@
 import './main_dashboard.css';
 //components
 import SearchComponent from '../../components/search_component/SearchComponent';
-import PromotionCard from '../../features/main_dashboard/components/promotion_card/PromotionCard';
-import ShoppingCartIcon from '../../components/shopping_cart_icon/ShoppingCartIcon';
+import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/ShoppingCartIcon';
+import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
+//layouts
+import CombosLayout from '../../layout/combos/CombosLayout';
+//servcies
+import getAllShops from '../../features/main_dashboard/services/get_all_shops';
+import getCombos from '../../features/main_dashboard/services/get_combos';
+//react
+import { useEffect, useState } from 'react';
 
 const MainDashboard = () => {
+  //shops
+  const [shops, setShops] = useState();
+  //combos
+  const [combos, setCombos] = useState();
+
+  //get all shops
+  useEffect(() => {
+    getAllShops(setShops);
+    getCombos(setCombos);
+  }, []);
+
   return (
     <main className="main_dashboard">
       {/* header */}
@@ -15,21 +33,29 @@ const MainDashboard = () => {
       </header>
 
       {/* all products */}
-      <section className="products_sections_main_dashboard">
-        {/* promotions */}
-        <figure className="promotions_section_main_dashaboard">
-          <h1 className="title_promotions_section_main_dashboard">
-            ¡Promociones Especiales!
-          </h1>
+      <section className="container_products_main_dashboard">
+        {/* combos */}
+        <section className="container_combos_main_dashboard">
+          <h1 className="title_combos_main_dashboard">¡Los mejores Combos!</h1>
+          {combos && <CombosLayout combos={combos} />}
+        </section>
 
-          {/* all promotions  */}
-          <div className="content_promotions_section_main_dasboard">
-            <PromotionCard />
-            <PromotionCard />
-            <PromotionCard />
-            <PromotionCard />
-          </div>
-        </figure>
+        {/* shops */}
+        <section className="container_shops_main_dashboard">
+          {shops &&
+            shops.map((shop) => (
+              <ShopCard
+                key={shop.id}
+                id_shop={shop.id}
+                name={shop.name}
+                logo={shop.logo}
+                score={shop.score}
+                address={shop.address}
+                type={shop.type}
+                opened={shop.opened}
+              />
+            ))}
+        </section>
       </section>
     </main>
   );
