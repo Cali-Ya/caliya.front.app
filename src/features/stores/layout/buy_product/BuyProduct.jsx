@@ -166,7 +166,9 @@ const BuyProduct = () => {
         )}
       </section>
 
+      {/* footer */}
       <footer className="footer_buy_product">
+        {/* total buy product */}
         <article className="total_buy_product">
           <div className="add_product_container">
             <FaMinus
@@ -179,10 +181,14 @@ const BuyProduct = () => {
 
           <p className="total_price">$ {preTotalPrice}</p>
         </article>
-        <PrimaryButtonComponent
-          text="Añadir al Carrito"
-          onClick={handleAddToCart}
-        />
+
+        {/* button */}
+        <div className="footer_buy_product__content_button">
+          <PrimaryButtonComponent
+            text="Añadir al Carrito"
+            onClick={handleAddToCart}
+          />
+        </div>
       </footer>
     </aside>
   );

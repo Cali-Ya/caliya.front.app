@@ -64,19 +64,17 @@
   }
   .footer_buy_product {
     display: flex;
-    width: 100vw;
-    z-index: 1100;
-    padding: 0.4em 0.3em;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6em 0.8em;
     background-color: var(--active-color-light);
     box-shadow: var(--shadow);
     border-radius: 12px 12px 0 0;
-    gap: 0.5em;
 
     .total_buy_product {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      width: 100%;
       gap: 0.5em;
       border-radius: var(--border-radius);
 
@@ -99,9 +97,15 @@
       }
 
       .total_price {
-        font-size: 1.2em;
+        font-size: 1em;
         color: var(--active-color-primary);
       }
+    }
+
+    .footer_buy_product__content_button {
+      width: 150px;
+      display: flex;
+      align-items: flex-end;
     }
   }
 }
