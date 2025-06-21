@@ -53,6 +53,8 @@ const MainDashboard = () => {
                 address={shop.address}
                 type={shop.type}
                 opened={shop.opened}
+                tag={shop.tag}
+                home_phone={shop.home_phone}
               />
             ))}
         </section>

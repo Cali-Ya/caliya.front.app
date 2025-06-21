@@ -3,13 +3,13 @@
   height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
-  gap: 1.2em;
+  gap: 0.5em;
   overflow: hidden;
 
   .header_buy_product {
     position: absolute;
     width: 100%;
-    padding: 0.8em 0 0 0.8em;
+    padding: 0.8em;
     top: 0;
     display: flex;
     justify-content: space-between;
@@ -30,7 +30,7 @@
   }
 
   .buy_product_content {
-    padding: 0 0.8em 5em 0.8em;
+    padding: 0.8em;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
@@ -64,17 +64,13 @@
   }
   .footer_buy_product {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100vw;
     z-index: 1100;
-    padding: 0.5em;
+    padding: 0.4em 0.3em;
     background-color: var(--active-color-light);
     box-shadow: var(--shadow);
     border-radius: 12px 12px 0 0;
+    gap: 0.5em;
 
     .total_buy_product {
       display: flex;

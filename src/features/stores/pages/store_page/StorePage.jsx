@@ -25,6 +25,8 @@ const StorePage = () => {
     getAllCategories(setShop, shop_id);
   }, [shop_id]);
 
+  const { categories, ...shopInfo } = shop;
+
   //refs
   const containerRef = useRef(null);
 
@@ -75,7 +77,7 @@ const StorePage = () => {
           </article>
         </header>
 
-        <StoreCategories allCategories={shop?.categories || []} />
+        <StoreCategories allCategories={categories || []} shopInfo={shopInfo} />
       </section>
     </section>
   );

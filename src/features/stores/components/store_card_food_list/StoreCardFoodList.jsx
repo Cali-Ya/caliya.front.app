@@ -11,6 +11,7 @@ import ScoreStar from '../../../../components/icons/score_star/ScoreStar';
 const StoreCardFoodList = ({
   id,
   category_id,
+  shopInfo,
   name,
   description,
   image,
@@ -29,6 +30,7 @@ const StoreCardFoodList = ({
   const purcharse_product_information = {
     id,
     category_id,
+    shopInfo,
     name,
     description,
     image,

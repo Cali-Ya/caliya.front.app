@@ -7,8 +7,7 @@ import { AllPathRoutes } from '../../const/AllPathRoutes';
 
 const useHandleBuyProduct = () => {
   //global
-  const { setPurcharseInformationProduct, setTogglePageBuyProduct } =
-    useBuyProduct();
+  const { setPurcharseInformationProduct } = useBuyProduct();
 
   //navigate
   const navigate = useNavigate();
@@ -16,6 +15,7 @@ const useHandleBuyProduct = () => {
   const handleBuyProduct = ({
     id,
     category_id,
+    shopInfo,
     name,
     description,
     price,
@@ -24,6 +24,7 @@ const useHandleBuyProduct = () => {
   }) => {
     setPurcharseInformationProduct({
       id,
+      shopInfo,
       category_id,
       name,
       description,
@@ -32,8 +33,6 @@ const useHandleBuyProduct = () => {
       image,
     });
 
-    const openBuyProduct = true;
-    setTogglePageBuyProduct(openBuyProduct);
     navigate(AllPathRoutes.buy_product);
   };
 

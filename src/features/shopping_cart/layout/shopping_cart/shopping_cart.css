@@ -1,0 +1,163 @@
+.shopping_cart_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+
+  .empty_shopping_cart {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .cart_group_by_shop {
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .title_shopping_cart {
+      text-align: center;
+      font-size: 1.3em;
+      color: var(--active-color-secondary);
+    }
+
+    .list_shopping_cart {
+      display: flex;
+      flex-direction: column;
+      gap: 3em;
+
+      .list_item_shopping_cart {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+
+        .details_list_item_shopping_cart {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2em;
+        }
+
+        .observations_item_shopping_cart {
+          color: var(--active-color-secondary);
+          font-weight: 400;
+          border-bottom: solid 1px var(--active-color-secondary-light);
+          padding-bottom: 0.8em;
+        }
+
+        .description_item_shopping_cart {
+          border-bottom: solid 1px var(--active-color-secondary-light);
+          padding-bottom: 0.8em;
+        }
+
+        .content_details_item_shopping_cart {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.6em;
+
+          .details__image_and_title_item_shopping_cart {
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+
+            .details__image_item_shopping_cart {
+              width: 50px;
+              border-radius: var(--border-radius);
+              aspect-ratio: 1/1;
+            }
+
+            .details__title_item_shopping_cart {
+              color: var(--active-color-secondary);
+              font-size: 1.2em;
+            }
+          }
+
+          .details__quantity_and_subtotal_item_shopping_cart {
+            display: flex;
+            gap: 1.5em;
+
+            .details__quantity_item_shopping_cart {
+              color: var(--active-color-secondary-light);
+            }
+
+            .subtotal_item_shopping_cart {
+              color: var(--active-color-primary);
+            }
+          }
+        }
+
+        .content_additionals_list_item_shopping_cart {
+          .title_additionals_list_item_shopping_cart {
+            color: var(--active-color-secondary);
+            font-weight: 400;
+          }
+
+          .additionals_list_item_shopping_cart {
+            display: flex;
+            gap: 0.5em;
+            color: var(--active-color-secondary-light);
+
+            .additionals_list_item_shopping_cart__price {
+              font-size: 0.9em;
+              font-weight: 400;
+            }
+          }
+        }
+
+        .actions_item_list_shopping_cart {
+          display: flex;
+          gap: 0.7em;
+
+          .actions_item_list_shopping_cart {
+            outline: none;
+            border: none;
+            padding: 0.5em 0.8em;
+            font-size: 0.9em;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+          }
+
+          .action_add_item_list_shopping_cart {
+            background-color: var(--active-color-primary);
+            color: var(--active-color-white);
+
+            &:hover {
+              box-shadow: 0 0 5px var(--active-color-primary);
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+          }
+
+          .action_remove_item_list_shopping_cart {
+            &:hover {
+              box-shadow: 0 0 3px var(--active-color-secondary-light);
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+          }
+        }
+      }
+    }
+
+    .total_shop_section {
+      margin: 0.3em 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .total_shop_section__strong {
+        color: var(--active-color-secondary);
+        font-size: 1.4em;
+        width: 100%;
+      }
+    }
+  }
+}

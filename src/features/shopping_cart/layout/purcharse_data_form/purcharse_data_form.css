@@ -1,0 +1,101 @@
+.container_place_order {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1.5em 0.8em;
+
+  .form_delevery {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    .form_header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      .form_header__title {
+        color: var(--active-color-secondary);
+        font-size: 1.2em;
+        font-weight: 400;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .inputs_form {
+      height: 100%;
+    }
+  }
+
+  .order_sumary {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 1em 0.8em;
+    gap: 1em;
+
+    .order_sumary__list {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      .order_sumary__item {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.2em;
+
+        .order_sumary__item-image {
+          width: 60px;
+          height: 60px;
+          border-radius: var(--border-radius);
+          object-fit: cover;
+        }
+
+        .order_sumary__content_details {
+          display: flex;
+          gap: 0.5em;
+
+          .order_sumary__content_details_text {
+            display: flex;
+            flex-direction: column;
+
+            .order_sumary__item-name {
+              font-size: 1.1em;
+            }
+
+            .order_sumary__item-additionals {
+              color: var(--active-color-secondary-light);
+              font-weight: 400;
+              font-size: 0.9em;
+            }
+          }
+        }
+
+        .order_sumary__content_quantity_and_price {
+          display: flex;
+          align-items: center;
+          gap: 1em;
+
+          .order_sumary__item-quantity {
+            color: var(--active-color-secondary-light);
+            font-weight: 400;
+          }
+
+          .order_sumary__item-price {
+            color: var(--active-color-primary);
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .order_sumary__total {
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+  }
+}

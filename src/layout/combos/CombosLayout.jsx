@@ -14,22 +14,25 @@ const CombosLayout = ({ combos }) => {
 
   return (
     <ul className="container_list_combos_layout">
-      {combos.map((combo, index) => (
-        <ProductCardMedium
-          key={combo.id + index}
-          id={combo.id}
-          category_id={combo.id}
-          icon={MdOutlineFastfood}
-          image={combo.image}
-          name={combo.name}
-          description={combo.description}
-          price={combo.price}
-          activeElipsis="true"
-          size_title={size_details.size_title}
-          size_description={size_details.size_description}
-          size_price={size_details.size_price}
-        />
-      ))}
+      {combos &&
+        combos.map((combo, index) => (
+          <ProductCardMedium
+            key={combo.id + index}
+            id={combo.id}
+            category_id={combo.id}
+            shopInfo={combo.shopInfo || combo.shop}
+            combos={combos.shop_id}
+            icon={MdOutlineFastfood}
+            image={combo.image}
+            name={combo.name}
+            description={combo.description}
+            price={combo.price}
+            activeElipsis="true"
+            size_title={size_details.size_title}
+            size_description={size_details.size_description}
+            size_price={size_details.size_price}
+          />
+        ))}
     </ul>
   );
 };

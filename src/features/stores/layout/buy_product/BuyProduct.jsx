@@ -1,10 +1,10 @@
 //css
 import './buy_product.css';
-//clsx
-import clsx from 'clsx';
 //global
 import useBuyProduct from '../../store/buy_product.store';
 import useCartStore from '../../../../store/cart.store';
+//assets
+import { logos } from '../../../../assets/assets_exports';
 //icons
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 //components
@@ -16,16 +16,16 @@ import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/Ca
 import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 //custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
+import useFullHeight from '../../../../hooks/useFullHeight';
+//services
+import getAdditionals from '../../services/get_additionals';
 //react
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import useFullHeight from '../../../../hooks/useFullHeight';
-import getAdditionals from '../../services/get_additionals';
-import { logos } from '../../../../assets/assets_exports';
 
 const BuyProduct = () => {
   //additionals
-  const [additionals, setAdditionals] = useState();
+  const [additionals, setAdditionals] = useState(null);
 
   //full height
   useFullHeight();
@@ -53,27 +53,15 @@ const BuyProduct = () => {
   const [quantity, setQuantity] = useState(1);
 
   //select product
-  const {
-    purcharseInformationProduct,
-    togglePageBuyProduct,
-    setTogglePageBuyProduct,
-  } = useBuyProduct();
+  const { purcharseInformationProduct } = useBuyProduct();
 
   // calculate price unitary
-  const additionalsTotal = selectedAdditionals.reduce((sum, add) => {
-    const found = additionals.find((ad) => ad.name === add);
-    return sum + (found ? found.price : 0);
-  }, 0);
+  const additionalsTotal = Array.isArray(selectedAdditionals)
+    ? selectedAdditionals.reduce((sum, a) => sum + (a.price || 0), 0)
+    : 0;
+
   const unitPrice = (purcharseInformationProduct.price || 0) + additionalsTotal;
-  const preTotalPrice = formatNumber(
-    ((purcharseInformationProduct.price || 0) +
-      selectedAdditionals.reduce((sum, add) => {
-        const found = additionals.find((ad) => ad.name === add);
-        return sum + (found ? found.price : 0);
-      }, 0)) *
-      quantity,
-    country
-  );
+  const preTotalPrice = formatNumber(unitPrice * quantity, country);
 
   //clear pre-buy is open modal
   useEffect(() => {
@@ -91,9 +79,10 @@ const BuyProduct = () => {
       additionals: selectedAdditionals,
       observation: observation.trim(),
       quantity,
-      price: unitPrice,
+      price: purcharseInformationProduct.price, // SOLO el precio base
       prev_price: purcharseInformationProduct.prev_price,
       name: purcharseInformationProduct.name,
+      shopInfo: purcharseInformationProduct.shopInfo,
       description: purcharseInformationProduct.description,
     });
 
@@ -109,8 +98,6 @@ const BuyProduct = () => {
 
   //handle return page
   const handleReturnPage = () => {
-    const returnPage = false;
-    setTogglePageBuyProduct(returnPage);
     navigate(-1);
   };
 
@@ -121,16 +108,10 @@ const BuyProduct = () => {
   }, []);
 
   return (
-    <aside
-      className={clsx('buy_product__container', {
-        'buy_product__container--active': !togglePageBuyProduct,
-        'buy_product__container--inactive': togglePageBuyProduct,
-      })}
-    >
+    <aside className="buy_product__container">
       <header className="header_buy_product">
         <CaretIconLeft
           onClick={() => {
-            setTogglePageBuyProduct(false);
             setSelectedAdditionals([]);
             setObservation('');
             setQuantity(1);
@@ -167,7 +148,7 @@ const BuyProduct = () => {
           />
           <p className="obersvations_text"></p>
         </div>
-        {additionals ? (
+        {Array.isArray(additionals) && additionals.length > 0 ? (
           <DropDownAdditionals
             ref={additionalsRef}
             list={additionals}

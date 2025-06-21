@@ -4,6 +4,7 @@ const useBuyProduct = create((set) => ({
   //buy product
   purcharseInformationProduct: {
     id: '',
+    shopInfo: {},
     category_id: '',
     name: '',
     description: '',
@@ -15,6 +16,7 @@ const useBuyProduct = create((set) => ({
     set(() => ({
       purcharseInformationProduct: {
         id: product.id,
+        shopInfo: product.shopInfo,
         category_id: product.category_id,
         name: product.name,
         description: product.description,
@@ -22,13 +24,6 @@ const useBuyProduct = create((set) => ({
         prev_price: product.prev_price,
         image: product.image,
       },
-    })),
-
-  //toggle page buy product
-  togglePageBuyProduct: false,
-  setTogglePageBuyProduct: (value) =>
-    set(() => ({
-      cardProductSelection: value,
     })),
 }));
 

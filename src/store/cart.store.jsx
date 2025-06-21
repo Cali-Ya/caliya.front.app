@@ -8,33 +8,26 @@ const getCartFromStorage = () => {
 const useCartStore = create((set, get) => ({
   cart: getCartFromStorage(),
 
-  addItem: (product) =>
+  addItem: (newItem) =>
     set((state) => {
-      // Clave única: id + additionals + observation
-      const additionalsKey = (product.additionals || []).sort().join(',');
-      const observationKey = product.observation?.trim() || '';
-      const existingIndex = state.cart.findIndex(
+      const exists = state.cart.find(
         (item) =>
-          item.id === product.id &&
-          (item.additionals || []).sort().join(',') === additionalsKey &&
-          (item.observation?.trim() || '') === observationKey
+          item.id === newItem.id &&
+          JSON.stringify(item.additionals) === JSON.stringify(newItem.additionals) &&
+          item.observation === newItem.observation
       );
-      let newCart;
-      if (existingIndex !== -1) {
-        newCart = [...state.cart];
-        newCart[existingIndex].quantity =
-          (newCart[existingIndex].quantity || 1) + (product.quantity || 1);
-      } else {
-        newCart = [
-          ...state.cart,
-          {
-            ...product,
-            quantity: product.quantity || 1,
-          },
-        ];
+      if (exists) {
+        return {
+          cart: state.cart.map((item) =>
+            item.id === newItem.id &&
+            JSON.stringify(item.additionals) === JSON.stringify(newItem.additionals) &&
+            item.observation === newItem.observation
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        };
       }
-      localStorage.setItem('cart', JSON.stringify(newCart));
-      return { cart: newCart };
+      return { cart: [...state.cart, { ...newItem, quantity: 1 }] };
     }),
 
   removeItemQuantity: (product) =>
@@ -64,6 +57,13 @@ const useCartStore = create((set, get) => ({
     localStorage.setItem('cart', JSON.stringify([]));
     set({ cart: [] });
   },
+
+  removeShopItems: (shopId) =>
+    set((state) => {
+      const newCart = state.cart.filter((item) => item.shopInfo?.id !== shopId);
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      return { cart: newCart };
+    }),
 
   getTotal: () => {
     return get().cart.reduce(

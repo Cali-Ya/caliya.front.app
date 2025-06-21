@@ -18,18 +18,11 @@ const RoutesSystem = createBrowserRouter([
   },
   {
     path: '/cart/',
-    element: <Features.shopping_cart_page.OrderPage />,
-
-    children: [
-      {
-        index: indexActive,
-        element: <Features.shopping_cart_page.CartStorePage />,
-      },
-      {
-        path: 'purcharse_data_form',
-        element: <Features.shopping_cart_page.PurcharseDataForm />,
-      },
-    ],
+    element: <Features.shopping_cart_page.ShoppingCartPage />,
+  },
+  {
+    path: '/cart/add_direction',
+    element: <Features.shopping_cart_page.PurcharseDataForm />,
   },
 ]);
 

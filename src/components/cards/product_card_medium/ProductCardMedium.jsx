@@ -9,12 +9,13 @@ import useHandleBuyProduct from '../../../lib/shared/useHandleBuyProduct';
 const ProductCardMedium = ({
   id,
   category_id,
+  shopInfo,
   icon,
   image,
   name,
   description,
   price,
-  prev_price,
+  prev_price = 0,
   activeElipsis,
   size_title,
   size_description,
@@ -24,6 +25,7 @@ const ProductCardMedium = ({
   const purcharse_product_information = {
     id,
     category_id,
+    shopInfo,
     name,
     description,
     image,

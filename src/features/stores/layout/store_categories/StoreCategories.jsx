@@ -5,13 +5,19 @@ import HeaderCategoryList from '../../components/header_category_list/HeaderCate
 import StoreCardFoodList from '../../components/store_card_food_list/StoreCardFoodList';
 import CombosLayout from '../../../../layout/combos/CombosLayout';
 
-const StoreCategories = ({ allCategories }) => {
+const StoreCategories = ({ allCategories, shopInfo }) => {
   //filtered combos
   const comboFilter = 'Combos';
   const CombosFiltered = allCategories.filter(
     (combo) => combo.name === comboFilter
   );
   const combosItems = CombosFiltered.length > 0 ? CombosFiltered[0].items : [];
+
+  const combosWithShop = combosItems.map((combo) => ({
+    ...combo,
+    shop: shopInfo, // O usa shopInfo si quieres la misma estructura que MainDashboard
+    shopInfo, // O usa shopInfo si tus componentes esperan esa prop
+  }));
 
   return (
     <section className="container_store_categories">
@@ -24,7 +30,7 @@ const StoreCategories = ({ allCategories }) => {
 
         {/* combos list */}
         <ul className="list_combos_category_list list_categories_list">
-          {combosItems && <CombosLayout combos={combosItems} />}
+          {combosItems && <CombosLayout combos={combosWithShop} />}
         </ul>
       </div>
 
@@ -69,6 +75,7 @@ const StoreCategories = ({ allCategories }) => {
                     key={product.id + index}
                     id={product.id}
                     category_id={category.id}
+                    shopInfo={shopInfo}
                     name={product.name}
                     description={product.description}
                     price={product.price}
@@ -81,7 +88,6 @@ const StoreCategories = ({ allCategories }) => {
         </ul>
       </div>
     </section>
-    /* </section> */
   );
 };
 
