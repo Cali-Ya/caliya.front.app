@@ -170,7 +170,7 @@ const FormDelevery = () => {
                   x{item.quantity}
                 </span>
                 <span className="order_sumary__item-price">
-                  $ {formatNumber(item.subtotal, 'es-CO')}
+                  ${formatNumber(item.subtotal, 'es-CO')}
                 </span>
               </div>
             </li>

@@ -64,11 +64,11 @@ const CardDetails = ({
             width: with_price,
           }}
         >
-          $ {price_format}
+          ${price_format}
         </span>
         <span className="product_card_details__discount">
           {prev_price_format === prevPriceLegth
-            ? `$ ${prev_price_format}`
+            ? `$${prev_price_format}`
             : null}
         </span>
       </article>

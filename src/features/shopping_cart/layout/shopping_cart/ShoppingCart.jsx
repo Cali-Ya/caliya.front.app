@@ -96,7 +96,7 @@ const CartStorePage = () => {
                           </p>
                           {/* precio unitario del producto */}
                           <p className="subtotal_item_shopping_cart">
-                            $ {formatNumber(item.price, country)}
+                            ${formatNumber(item.price, country)}
                           </p>
                         </div>
                       </article>
@@ -120,7 +120,7 @@ const CartStorePage = () => {
                           >
                             <li>{additional.name}:</li>
                             <li className="additionals_list_item_shopping_cart__price">
-                              $ {formatNumber(additional.price, country)}
+                              ${formatNumber(additional.price, country)}
                             </li>
                           </ul>
                         ))}
@@ -167,7 +167,8 @@ const CartStorePage = () => {
               {/* Total de la tienda */}
               <div className="total_shop_section">
                 <strong className="total_shop_section__strong">
-                  Total $ {formatNumber(totalShop, country)}
+                  <span>Total: </span>
+                  <span>${formatNumber(totalShop, country)}</span>
                 </strong>
                 <PrimaryButtonComponent
                   text="Hacer pedido"

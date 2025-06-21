@@ -6,8 +6,6 @@ import clsx from 'clsx';
 import useCartStore from '../../../store/cart.store';
 //icons
 import { MdOutlineShoppingCart } from 'react-icons/md';
-//components
-import CaretIconRigth from '../../caret_icons/caret_icon_rigth/CaretIconRight';
 //const
 import { AllPathRoutes } from '../../../const/AllPathRoutes';
 //react hooks
@@ -41,10 +39,10 @@ const ShoppingCartIcon = ({ isColor = true }) => {
         container_shopping_cart_icon__active: cartLenght,
         container_shopping_cart_icon__desactive: !cartLenght,
       })}
+      onClick={handleOpenCartStore}
     >
       <MdOutlineShoppingCart
         className="shopping_cart_icon"
-        onClick={handleOpenCartStore}
         style={{
           color: isColor
             ? 'var(--active-color-secondary)'

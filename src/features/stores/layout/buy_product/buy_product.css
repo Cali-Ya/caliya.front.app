@@ -81,14 +81,15 @@
       .add_product_container {
         display: flex;
         align-items: center;
-        gap: 0.6em;
+        gap: 0.3em;
         background: var(--background-linear-primary);
         border-radius: var(--border-radius);
         color: var(--active-color-white);
-        padding: 0.4em 0.6em;
+        padding: 0.3em 0;
       }
 
       .add_product__icons {
+        width: 30px;
         font-size: 1.2em;
         cursor: pointer;
       }
