@@ -16,6 +16,7 @@ import { preprocessCartItems } from '../../../../lib/shared/cartUtils';
 import CardErrorMessage from '../../../../components/errors_messages/card_error_message/CardErrorMessage';
 
 const FormDelevery = () => {
+  scrollTo(0, 0);
   //global
   //cart store
   const { cart, removeShopItems } = useCartStore();
@@ -135,6 +136,10 @@ const FormDelevery = () => {
         />
       </form>
 
+      {isPurchaseDataComplete ? null : (
+        <CardErrorMessage error_message={error_message} />
+      )}
+
       <div className="order_sumary">
         <h3 className="order_sumary__title">Resumen de tu pedido</h3>
         <ul className="order_sumary__list">
@@ -195,10 +200,6 @@ const FormDelevery = () => {
         text="Enviar Pedido"
         disabled={!isPurchaseDataComplete}
       />
-
-      {isPurchaseDataComplete ? null : (
-        <CardErrorMessage error_message={error_message} />
-      )}
     </section>
   );
 };
