@@ -41,6 +41,11 @@ const ProductCardMedium = ({
       onClick={() => handleBuyProduct(purcharse_product_information)}
     >
       <figure className="container_image_card_medium">
+        <img
+          src={shopInfo.logo_image}
+          alt={shopInfo.logo_image}
+          className="shop_image_card_medium"
+        />
         <img src={image} alt={image} className="image_card_medium" />
         <IconAddShoppingCard />
       </figure>
