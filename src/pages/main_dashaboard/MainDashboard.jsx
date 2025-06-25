@@ -47,6 +47,7 @@ const MainDashboard = () => {
               <ShopCard
                 key={shop.id}
                 id_shop={shop.id}
+                tag_shop={shop.tag}
                 name={shop.name}
                 logo={shop.logo}
                 score={shop.score}

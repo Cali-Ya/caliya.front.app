@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ShopCard = ({
   id_shop,
+  tag_shop,
   name,
   logo,
   score,
@@ -30,7 +31,7 @@ const ShopCard = ({
 
   //
   const handleNavigation = () => {
-    navigate(`/store_page/${id_shop}`);
+    navigate(`/${tag_shop}`);
   };
 
   return (

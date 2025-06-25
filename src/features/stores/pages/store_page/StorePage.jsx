@@ -20,10 +20,10 @@ const StorePage = () => {
   //shop
   const [shop, setShop] = useState({});
 
-  const { shop_id } = useParams();
+  const { tag_shop } = useParams();
   useEffect(() => {
-    getAllCategories(setShop, shop_id);
-  }, [shop_id]);
+    getAllCategories(setShop, tag_shop);
+  }, [tag_shop]);
 
   const { categories, ...shopInfo } = shop;
 
