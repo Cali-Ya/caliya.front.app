@@ -67,7 +67,8 @@
               font-size: 1.1em;
             }
 
-            .order_sumary__item-additionals {
+            .order_sumary__item-additionals,
+            .order_sumary__item-observation {
               color: var(--active-color-secondary-light);
               font-weight: 400;
               font-size: 0.9em;

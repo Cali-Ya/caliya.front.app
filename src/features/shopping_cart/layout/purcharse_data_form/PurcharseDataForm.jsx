@@ -8,12 +8,12 @@ import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/Ca
 import useCartStore from '../../../../store/cart.store';
 import usePlaceOrderStore from '../../store/place_order.store';
 import useNumberFormat from '../../../../hooks/useNumberFormat';
-import useScroll from '../../../../hooks/useScroll';
 //react
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { buildWhatsAppMessage } from '../../../../lib/shared/buildWhatsappMessageOrder';
 import { preprocessCartItems } from '../../../../lib/shared/cartUtils';
+import CardErrorMessage from '../../../../components/errors_messages/card_error_message/CardErrorMessage';
 
 const FormDelevery = () => {
   //global
@@ -34,11 +34,14 @@ const FormDelevery = () => {
     direction: '',
   });
 
+  // Check if all fields in purchaseData are filled
+  const isPurchaseDataComplete = Object.values(purchaseData).every(
+    (value) => value && value.trim() !== ''
+  );
+
   //Si hay un pedido en curso, usa solo esos productos
   const items = placeOrder ? placeOrder.items : cart;
   const shopName = placeOrder ? placeOrder.shopName : '';
-
-  useScroll(0);
 
   //handle remove all products
   const ReturnCart = () => {
@@ -92,6 +95,8 @@ const FormDelevery = () => {
 
   //vars
   const caretBlack = false;
+  const error_message =
+    'Por favor, completa todos los campos antes de enviar el pedido.';
 
   return (
     <section className="container_place_order">
@@ -148,7 +153,7 @@ const FormDelevery = () => {
                   <span className="order_sumary__item-name">{item.name}</span>
 
                   {/* observations */}
-                  <span>
+                  <span className="order_sumary__item-observation">
                     {item.observation &&
                       `Observaciones: 
                   ${item.observation}`}
@@ -188,7 +193,12 @@ const FormDelevery = () => {
       <PrimaryButtonComponent
         onClick={handleSendWhatsApp}
         text="Enviar Pedido"
+        disabled={!isPurchaseDataComplete}
       />
+
+      {isPurchaseDataComplete ? null : (
+        <CardErrorMessage error_message={error_message} />
+      )}
     </section>
   );
 };

@@ -1,14 +1,17 @@
 .primary_button_component {
   width: 100%;
   padding: 0.8em 0.6em;
-  color: var(--active-color-white);
-  background: var(--background-linear-primary);
   border-radius: 0.4em;
   font-size: 1em;
   outline: none;
   border: none;
-  cursor: pointer;
   transition: all 0.1s ease;
+}
+
+.primary_button_component_enabled {
+  background: var(--background-linear-primary);
+  color: var(--active-color-white);
+  cursor: pointer;
 
   &:hover {
     background-color: var(--accents-color-primary);
@@ -17,4 +20,10 @@
   &:active {
     scale: 0.95;
   }
+}
+.primary_button_component_disabled {
+  background-color: var(--active-color-light);
+  box-shadow: var(--shadow);
+  color: var(--active-color-secondary-light);
+  cursor: not-allowed;
 }

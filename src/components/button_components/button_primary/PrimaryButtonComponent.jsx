@@ -13,7 +13,11 @@ const PrimaryButtonComponent = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`primary_button_component ${className}`}
+      className={`primary_button_component ${className} ${
+        disabled
+          ? 'primary_button_component_disabled'
+          : 'primary_button_component_enabled'
+      }`}
     >
       {text}
     </button>

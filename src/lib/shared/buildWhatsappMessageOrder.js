@@ -23,41 +23,39 @@ export function buildWhatsAppMessage(
     const subtotal = totalUnitPrice + totalAdditionals;
     total += subtotal;
 
-    // Línea principal del producto: SOLO el precio base unitario
-    message += `* ${item.name} x${quantity} - $${formatNumber(
-      unitPrice,
-      'es-CO'
-    )}\n`;
-    message += `Precio total: $${formatNumber(totalUnitPrice, 'es-CO')}\n`;
+    // Producto y detalles
+    message += `Producto: ${item.name}\n`;
+    message += `* Cantidad: ${quantity}\n`;
+    message += `* Precio unitario: $${formatNumber(unitPrice, 'es-CO')}\n`;
+    message += `* Precio total: $${formatNumber(totalUnitPrice, 'es-CO')}\n\n`;
 
     // Observaciones (si existen)
     if (item.observation && item.observation.trim() !== '') {
-      message += `Observaciones: ${item.observation}\n`;
+      message += `Observaciones: ${item.observation}\n\n`;
     }
 
     // Adicionales (si existen)
     if (additionals.length > 0) {
-      message += `Adicionales: \n`;
+      message += `Adicionales:\n`;
       additionals.forEach((a) => {
-        message += `${a.name} - $${formatNumber(a.price, 'es-CO')}\n`;
+        message += `- ${a.name}: $${formatNumber(a.price, 'es-CO')}\n`;
       });
+      message += `* Precio total: $${formatNumber(totalAdditionals, 'es-CO')}\n\n`;
     }
 
-    // Subtotal (producto + adicionales)
-    message += `\nSubtotal: $${formatNumber(subtotal, 'es-CO')}\n`;
+    message += `Subtotal:  $${formatNumber(subtotal, 'es-CO')}\n`;
 
-    // Separador visual entre productos (solo si hay más de uno)
+    // Separador visual entre productos
     if (items.length > 1 && idx < items.length - 1) {
-      message += '------------------------\n\n';
+      message += '-------------------------\n\n';
     } else {
       message += '\n';
     }
   });
 
-  message += `------------------------\n\n`;
-  message += `Total A Pagar: $${formatNumber(total, 'es-CO')}\n\n`;
-  message += `Datos del comprador:\n\n`;
-
+  message += `---------------------------------------\n\n`;
+  message += `Total a pagar: $${formatNumber(total, 'es-CO')}\n\n`;
+  message += `Datos del comprador:\n`;
   if (purchaseData.full_name) message += `Nombre: ${purchaseData.full_name}\n`;
   if (purchaseData.direction)
     message += `Dirección: ${purchaseData.direction}\n`;
