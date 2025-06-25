@@ -7,8 +7,8 @@ export function buildWhatsAppMessage(
   items = Array.isArray(items) ? items : [];
 
   let total = 0;
-  let message = '¡Hola! Quiero hacer el siguiente pedido:%0A%0A';
-  if (shopName) message += `Tienda: ${shopName}%0A%0A`;
+  let message = '¡Hola! Quiero hacer el siguiente pedido:\n\n';
+  if (shopName) message += `Tienda: ${shopName}\n\n`;
 
   items.forEach((item, idx) => {
     const additionals = Array.isArray(item.additionals) ? item.additionals : [];
@@ -17,56 +17,60 @@ export function buildWhatsAppMessage(
       0
     );
     const unitPrice = item.price || 0;
-    const subtotal = (unitPrice + additionalsTotal) * (item.quantity || 1);
+    const quantity = item.quantity || 1;
+    const totalUnitPrice = unitPrice * quantity;
+    const totalAdditionals = additionalsTotal * quantity;
+    const subtotal = totalUnitPrice + totalAdditionals;
     total += subtotal;
 
     // Línea principal del producto: SOLO el precio base unitario
-    message += `• ${item.name} x${item.quantity} - $${formatNumber(
+    message += `* ${item.name} x${quantity} - $${formatNumber(
       unitPrice,
       'es-CO'
-    )}%0A`;
+    )}\n`;
+    message += `Precio total: $${formatNumber(totalUnitPrice, 'es-CO')}\n`;
 
     // Observaciones (si existen)
     if (item.observation && item.observation.trim() !== '') {
-      message += `Observaciones: ${item.observation}%0A`;
+      message += `Observaciones: ${item.observation}\n`;
     }
 
     // Adicionales (si existen)
     if (additionals.length > 0) {
-      message += `%0AAdicionales:%20%0A`;
+      message += `Adicionales: \n`;
       additionals.forEach((a) => {
-        message += `${a.name} - $${formatNumber(a.price, 'es-CO')}%0A`;
+        message += `${a.name} - $${formatNumber(a.price, 'es-CO')}\n`;
       });
     }
 
     // Subtotal (producto + adicionales)
-    message += `%0ASubtotal: $${formatNumber(subtotal, 'es-CO')}%0A`;
+    message += `\nSubtotal: $${formatNumber(subtotal, 'es-CO')}\n`;
 
     // Separador visual entre productos (solo si hay más de uno)
     if (items.length > 1 && idx < items.length - 1) {
-      message += '------------------------%0A%0A';
+      message += '------------------------\n\n';
     } else {
-      message += '%0A';
+      message += '\n';
     }
   });
 
-  message += `------------------------%0A%0A`;
-  message += `Total A Pagar: $${formatNumber(total, 'es-CO')}%0A%0A`;
-  message += `Datos del comprador:%0A%0A`;
+  message += `------------------------\n\n`;
+  message += `Total A Pagar: $${formatNumber(total, 'es-CO')}\n\n`;
+  message += `Datos del comprador:\n\n`;
 
-  // Pago con (si existe)
+  if (purchaseData.full_name) message += `Nombre: ${purchaseData.full_name}\n`;
+  if (purchaseData.direction)
+    message += `Dirección: ${purchaseData.direction}\n`;
+  if (purchaseData.neighborhood)
+    message += `Barrio: ${purchaseData.neighborhood}\n`;
+  if (purchaseData.whatsapp) message += `Whatsapp: ${purchaseData.whatsapp}\n`;
   if (purchaseData.payment_amount) {
     message += `Pago con: $${formatNumber(
       purchaseData.payment_amount,
       'es-CO'
-    )}%0A`;
+    )}\n`;
   }
-  if (purchaseData.full_name) message += `Nombre: ${purchaseData.full_name}%0A`;
-  if (purchaseData.direction)
-    message += `Dirección: ${purchaseData.direction}%0A`;
-  if (purchaseData.neighborhood)
-    message += `Barrio: ${purchaseData.neighborhood}%0A`;
-  if (purchaseData.whatsapp) message += `Whatsapp: ${purchaseData.whatsapp}%0A`;
 
-  return message;
+  // Codifica todo el mensaje para WhatsApp
+  return encodeURIComponent(message);
 }
