@@ -22,12 +22,12 @@ const useCartStore = create((set, get) => ({
             item.id === newItem.id &&
             JSON.stringify(item.additionals) === JSON.stringify(newItem.additionals) &&
             item.observation === newItem.observation
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: item.quantity + (newItem.quantity || 1) } // <-- suma la cantidad seleccionada
               : item
           ),
         };
       }
-      return { cart: [...state.cart, { ...newItem, quantity: 1 }] };
+      return { cart: [...state.cart, { ...newItem, quantity: newItem.quantity || 1 }] };
     }),
 
   removeItemQuantity: (product) =>

@@ -146,7 +146,7 @@ const CartStorePage = () => {
                         onClick={() =>
                           addItem({
                             ...item,
-                            quantity: item.quantity + 1,
+                            quantity: 1, // Solo sumar 1 unidad
                           })
                         }
                         className="action_add_item_list_shopping_cart actions_item_list_shopping_cart"
