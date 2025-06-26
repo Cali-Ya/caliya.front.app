@@ -12,7 +12,7 @@ import { AllPathRoutes } from '../../../const/AllPathRoutes';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const ShoppingCartIcon = ({ isColor = true }) => {
+const ShoppingCartIcon = () => {
   // cart lenght
   const [cartLenght, setCartLenght] = useState();
 
@@ -44,9 +44,7 @@ const ShoppingCartIcon = ({ isColor = true }) => {
       <MdOutlineShoppingCart
         className="shopping_cart_icon"
         style={{
-          color: isColor
-            ? 'var(--active-color-secondary)'
-            : 'var(--active-color-white)',
+          color: 'var(--active-color-secondary)',
         }}
       />
       {cartLenght !== cart_clenear ? (

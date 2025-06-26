@@ -119,7 +119,7 @@ const BuyProduct = () => {
             additionalsRef.current?.clearChecks();
           }}
         />
-        <ShoppingCartIcon isColor={false} />
+        <ShoppingCartIcon />
       </header>
 
       <figure className="image_buy_product_container">

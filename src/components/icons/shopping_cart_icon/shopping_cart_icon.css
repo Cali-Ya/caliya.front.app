@@ -25,7 +25,11 @@
     color: var(--active-color-white) !important;
   }
 }
+.container_shopping_cart_icon__desactive {
+  background-color: var(--active-color-white);
+}
 
 .shopping_cart_icon {
   font-size: 1.7em;
+  color: inherit;
 }
