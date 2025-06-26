@@ -28,7 +28,7 @@ const MainDashboard = () => {
     <main className="main_dashboard">
       {/* header */}
       <header className="header_main_dashboard">
-        <SearchComponent />
+        {/* <SearchComponent /> */}
         <ShoppingCartIcon />
       </header>
 
