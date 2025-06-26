@@ -6,15 +6,13 @@ import clsx from 'clsx';
 import useCartStore from '../../../store/cart.store';
 //icons
 import { MdOutlineShoppingCart } from 'react-icons/md';
-//components
-import CaretIconRigth from '../../caret_icons/caret_icon_rigth/CaretIconRight';
 //const
 import { AllPathRoutes } from '../../../const/AllPathRoutes';
 //react hooks
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const ShoppingCartIcon = ({ isColor = true }) => {
+const ShoppingCartIcon = () => {
   // cart lenght
   const [cartLenght, setCartLenght] = useState();
 
@@ -41,14 +39,12 @@ const ShoppingCartIcon = ({ isColor = true }) => {
         container_shopping_cart_icon__active: cartLenght,
         container_shopping_cart_icon__desactive: !cartLenght,
       })}
+      onClick={handleOpenCartStore}
     >
       <MdOutlineShoppingCart
         className="shopping_cart_icon"
-        onClick={handleOpenCartStore}
         style={{
-          color: isColor
-            ? 'var(--active-color-secondary)'
-            : 'var(--active-color-white)',
+          color: 'var(--active-color-secondary)',
         }}
       />
       {cartLenght !== cart_clenear ? (

@@ -47,12 +47,15 @@ const MainDashboard = () => {
               <ShopCard
                 key={shop.id}
                 id_shop={shop.id}
+                tag_shop={shop.tag}
                 name={shop.name}
                 logo={shop.logo}
                 score={shop.score}
                 address={shop.address}
                 type={shop.type}
                 opened={shop.opened}
+                tag={shop.tag}
+                home_phone={shop.home_phone}
               />
             ))}
         </section>

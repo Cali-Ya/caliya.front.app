@@ -14,6 +14,7 @@ const InputComponent = ({
   onFocus,
   onBlur,
   placeholder = 'placeholder',
+  autoComplete = 'on',
 }) => {
   const [isMoveLabel, setIsMoveLabel] = useState(false);
   const [valueInputText, setValueInputText] = useState('');
@@ -80,6 +81,7 @@ const InputComponent = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         disabled={disabled}
+        autoComplete={autoComplete}
       />
     </div>
   );

@@ -24,11 +24,20 @@ const DropDownAdditionals = forwardRef(
 
     const handleCheck = (idx) => {
       setCheckedItems((prev) => {
-        const newChecked = prev.includes(idx)
-          ? prev.filter((i) => i !== idx)
-          : [...prev, idx];
+        let newChecked;
+        if (prev.includes(idx)) {
+          newChecked = prev.filter((i) => i !== idx);
+        } else {
+          newChecked = [...prev, idx];
+        }
+        // Evita duplicados por id
+        const selected = newChecked.map((i) => list[i]);
+        const unique = selected.filter(
+          (item, index, self) =>
+            self.findIndex((i) => i.id === item.id) === index
+        );
         if (onChangeAdditionals) {
-          onChangeAdditionals(newChecked.map((i) => list[i]));
+          onChangeAdditionals(unique);
         }
         return newChecked;
       });
@@ -59,33 +68,34 @@ const DropDownAdditionals = forwardRef(
         {/* list */}
         {state && (
           <ul className="list_dropdown_select_additionals">
-            {list.map((item, idx) => (
-              <li
-                className="item_dropdown_select_additionals"
-                key={item.id}
-                onClick={() => handleCheck(idx)}
-              >
-                {/* information */}
-                <div className="info_dropdown_select_additionals">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="info_dropdown_select_additionals__image"
-                  />
-                  <span className="info_dropdown_select_additionals__name">
-                    {item.name}
-                  </span>
-                </div>
+            {list &&
+              list.map((item, idx) => (
+                <li
+                  className="item_dropdown_select_additionals"
+                  key={item.id}
+                  onClick={() => handleCheck(idx)}
+                >
+                  {/* information */}
+                  <div className="info_dropdown_select_additionals">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="info_dropdown_select_additionals__image"
+                    />
+                    <span className="info_dropdown_select_additionals__name">
+                      {item.name}
+                    </span>
+                  </div>
 
-                {/* add addtional */}
-                <span className="add_addtional_dropdown_select_additionals">
-                  <span className="add_addtional_dropdown_select_additionals__price">
-                    ${item.price}
+                  {/* add addtional */}
+                  <span className="add_addtional_dropdown_select_additionals">
+                    <span className="add_addtional_dropdown_select_additionals__price">
+                      ${item.price}
+                    </span>
+                    <Checkbox checked={checkedItems.includes(idx)} />
                   </span>
-                  <Checkbox checked={checkedItems.includes(idx)} />
-                </span>
-              </li>
-            ))}
+                </li>
+              ))}
           </ul>
         )}
       </div>

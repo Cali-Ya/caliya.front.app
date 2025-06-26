@@ -16,6 +16,18 @@
       object-fit: cover;
       border-radius: var(--border-radius);
     }
+
+    .shop_image_card_medium {
+      position: absolute;
+      top: 0.5em;
+      left: 0.5em;
+      width: 40px;
+      height: 40px;
+      border-radius: 20%;
+      object-fit: cover;
+      background-color: var(--active-color-white);
+      padding: 1px;
+    }
   }
 
   .container_details_product_card_medium {

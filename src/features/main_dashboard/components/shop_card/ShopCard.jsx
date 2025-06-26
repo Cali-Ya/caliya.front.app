@@ -7,7 +7,18 @@ import ScoreStar from '../../../../components/icons/score_star/ScoreStar';
 //react router dom
 import { useNavigate } from 'react-router-dom';
 
-const ShopCard = ({ id_shop, name, logo, score, address, type, opened }) => {
+const ShopCard = ({
+  id_shop,
+  tag_shop,
+  name,
+  logo,
+  score,
+  address,
+  type,
+  opened,
+  tag,
+  home_phone,
+}) => {
   //navigate
   const navigate = useNavigate();
 
@@ -20,7 +31,7 @@ const ShopCard = ({ id_shop, name, logo, score, address, type, opened }) => {
 
   //
   const handleNavigation = () => {
-    navigate(`/store_page/${id_shop}`);
+    navigate(`/${tag_shop}`);
   };
 
   return (

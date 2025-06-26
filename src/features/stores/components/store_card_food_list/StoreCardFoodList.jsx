@@ -11,6 +11,7 @@ import ScoreStar from '../../../../components/icons/score_star/ScoreStar';
 const StoreCardFoodList = ({
   id,
   category_id,
+  shopInfo,
   name,
   description,
   image,
@@ -29,6 +30,7 @@ const StoreCardFoodList = ({
   const purcharse_product_information = {
     id,
     category_id,
+    shopInfo,
     name,
     description,
     image,
@@ -56,10 +58,10 @@ const StoreCardFoodList = ({
         <p className="store_food_list_description">{description}</p>
 
         <div className="store_food_list_prices">
-          <p className="store_food_list_prices__price">$ {formatPrice}</p>
+          <p className="store_food_list_prices__price">${formatPrice}</p>
           {prev_price && (
             <p className="store_food_list_prices__discount">
-              $ {formatPrevePrice}
+              ${formatPrevePrice}
             </p>
           )}
         </div>

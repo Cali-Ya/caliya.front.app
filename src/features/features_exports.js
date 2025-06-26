@@ -5,9 +5,8 @@ import StorePage from './stores/pages/store_page/StorePage';
 import BuyProduct from './stores/layout/buy_product/BuyProduct';
 
 //shopping cart
-import CartStorePage from './shopping_cart/modules/cart_store/CartStorePage';
-import PurcharseDataForm from './shopping_cart/modules/purcharse_data_form/PurcharseDataForm';
-import OrderPage from './shopping_cart/page/OrderPage';
+import ShoppingCartPage from './shopping_cart/page/ShoppingCartPage';
+import PurcharseDataForm from './shopping_cart/layout/purcharse_data_form/PurcharseDataForm';
 
 export const features_pages = {
   MainDashboard,
@@ -18,8 +17,7 @@ export const features_pages = {
   },
 
   shopping_cart_page: {
-    OrderPage,
-    CartStorePage,
+    ShoppingCartPage,
     PurcharseDataForm,
   },
 };
