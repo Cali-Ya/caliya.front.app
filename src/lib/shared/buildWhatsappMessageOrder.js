@@ -38,9 +38,12 @@ export function buildWhatsAppMessage(
     if (additionals.length > 0) {
       message += `Adicionales:\n`;
       additionals.forEach((a) => {
-        message += `- ${a.name}: $${formatNumber(a.price, 'es-CO')}\n`;
+        message += `- ${a.name}: $${formatNumber(a.price, 'es-CO')} x${quantity}\n`;
       });
-      message += `* Precio total: $${formatNumber(totalAdditionals, 'es-CO')}\n\n`;
+      message += `* Precio total: $${formatNumber(
+        totalAdditionals,
+        'es-CO'
+      )}\n\n`;
     }
 
     message += `Subtotal:  $${formatNumber(subtotal, 'es-CO')}\n`;
