@@ -24,6 +24,14 @@ const RoutesSystem = createBrowserRouter([
     path: '/cart/add_direction',
     element: <Features.shopping_cart_page.PurcharseDataForm />,
   },
+  {
+    path: '/auth/sign_up',
+    element: <Features.register_customers.RegisterCustomers />,
+  },
+  {
+    path: '/auth/login',
+    element: <h1>Inicia Seccion</h1>,
+  },
 ]);
 
 export default RoutesSystem;

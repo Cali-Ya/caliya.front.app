@@ -8,6 +8,9 @@ import BuyProduct from './stores/layout/buy_product/BuyProduct';
 import ShoppingCartPage from './shopping_cart/page/ShoppingCartPage';
 import PurcharseDataForm from './shopping_cart/layout/purcharse_data_form/PurcharseDataForm';
 
+//register customers
+import RegisterCustomers from './auth/register_customers/page/RegisterCustomers';
+
 export const features_pages = {
   MainDashboard,
 
@@ -19,5 +22,9 @@ export const features_pages = {
   shopping_cart_page: {
     ShoppingCartPage,
     PurcharseDataForm,
+  },
+
+  register_customers: {
+    RegisterCustomers,
   },
 };

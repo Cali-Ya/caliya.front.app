@@ -1,3 +1,9 @@
+.container_input_component {
+  margin: 0.3em 0;
+  width: 100%;
+  height: 100%;
+}
+
 .input_component {
   width: 100%;
   height: 100%;
@@ -15,9 +21,19 @@
     position: absolute;
     padding: 0.4em 0;
     cursor: text;
+    transition: all 0.2s ease-in-out;
   }
+
+  .label_input_component--error {
+    color: var(--active-color-red);
+  }
+
+  .input_component__input--error {
+    border-color: var(--active-color-red) !important;
+  }
+
   .label_input_component--active {
-    transform: translateY(-100%);
+    transform: translateY(-80%);
     font-size: 0.8em;
   }
   .label_input_component--inactive {
@@ -32,10 +48,17 @@
     border: none;
     outline: none;
     border-bottom: 1px solid var(--active-color-secondary);
+    transition: all 0.2s ease-in-out;
   }
 
   /*  &:hover {
     background-color: var(--accents-color-primary);
     color: var(--active-color-white);
   } */
+}
+
+.input_component__error {
+  color: var(--active-color-red);
+  font-size: 0.9em;
+  margin: 0 0.2em;
 }
