@@ -1,5 +1,7 @@
 //css
 import './store_page.css';
+//store
+import useCaliyaLoader from '../../../../store/caliya_loader.store';
 //custom hooks
 import useScroll from '../../../../hooks/useScroll';
 //layouts
@@ -9,20 +11,25 @@ import { useEffect, useRef, useState } from 'react';
 //components
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import SearchComponent from '../../../../components/search_component/SearchComponent';
+//icons
+import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
+//services
+import getAllCategories from '../../services/get_all_categories';
 //const
 import { AllPathRoutes } from '../../../../const/AllPathRoutes';
 //react
 import { useNavigate, useParams } from 'react-router-dom';
-import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
-import getAllCategories from '../../services/get_all_categories';
 
 const StorePage = () => {
+  //loader
+  const { setStateCaliyaLoader } = useCaliyaLoader();
+
   //shop
   const [shop, setShop] = useState({});
 
   const { tag_shop } = useParams();
   useEffect(() => {
-    getAllCategories(setShop, tag_shop);
+    getAllCategories(setShop, tag_shop, setStateCaliyaLoader);
   }, [tag_shop]);
 
   const { categories, ...shopInfo } = shop;

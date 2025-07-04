@@ -3,6 +3,7 @@ import './buy_product.css';
 //global
 import useBuyProduct from '../../store/buy_product.store';
 import useCartStore from '../../../../store/cart.store';
+import useCaliyaLoader from '../../../../store/caliya_loader.store';
 //assets
 import { logos } from '../../../../assets/assets_exports';
 //icons
@@ -24,6 +25,10 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 const BuyProduct = () => {
+  //loader
+  const { setStateCaliyaLoader } = useCaliyaLoader();
+  //loader local
+  const [isLoading, setIsLoading] = useState(true);
   //additionals
   const [additionals, setAdditionals] = useState(null);
 
@@ -63,6 +68,20 @@ const BuyProduct = () => {
   const unitPrice = (purcharseInformationProduct.price || 0) + additionalsTotal;
   const preTotalPrice = formatNumber(unitPrice * quantity, country);
 
+  //render first page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setStateCaliyaLoader(true);
+    setIsLoading(true);
+    getAdditionals(
+      setAdditionals,
+      purcharseInformationProduct.category_id
+    ).finally(() => {
+      setStateCaliyaLoader(false);
+      setIsLoading(false);
+    });
+  }, [purcharseInformationProduct.category_id]);
+
   //clear pre-buy is open modal
   useEffect(() => {
     setSelectedAdditionals([]);
@@ -71,6 +90,9 @@ const BuyProduct = () => {
     additionalsRef.current?.clearChecks();
     window.scrollTo(0, 0);
   }, [purcharseInformationProduct.id]);
+
+  // Si está cargando, no renderices el contenido
+  if (isLoading) return null;
 
   //add to cart
   const handleAddToCart = () => {
@@ -100,12 +122,6 @@ const BuyProduct = () => {
   const handleReturnPage = () => {
     navigate(-1);
   };
-
-  //render first page
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    getAdditionals(setAdditionals, purcharseInformationProduct.category_id);
-  }, []);
 
   return (
     <aside className="buy_product__container">
@@ -148,6 +164,8 @@ const BuyProduct = () => {
           />
           <p className="obersvations_text"></p>
         </div>
+
+        {/* additionals */}
         {Array.isArray(additionals) && additionals.length > 0 ? (
           <DropDownAdditionals
             ref={additionalsRef}

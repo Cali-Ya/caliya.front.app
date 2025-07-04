@@ -11,18 +11,36 @@ import getAllShops from '../../features/main_dashboard/services/get_all_shops';
 import getCombos from '../../features/main_dashboard/services/get_combos';
 //react
 import { useEffect, useState } from 'react';
+import useCaliyaLoader from '../../store/caliya_loader.store';
 
 const MainDashboard = () => {
   //shops
   const [shops, setShops] = useState();
   //combos
   const [combos, setCombos] = useState();
+  // loader local
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { setStateCaliyaLoader } = useCaliyaLoader();
 
   //get all shops
   useEffect(() => {
-    getAllShops(setShops);
-    getCombos(setCombos);
+    const fetchData = async () => {
+      setStateCaliyaLoader(true);
+      setIsLoading(true);
+
+      await Promise.all([getAllShops(setShops), getCombos(setCombos)]);
+
+      setIsLoading(false);
+      setStateCaliyaLoader(false);
+    };
+    fetchData();
   }, []);
+
+  if (isLoading) {
+    // Puedes mostrar solo el spinner aquí
+    return null;
+  }
 
   return (
     <main className="main_dashboard">
