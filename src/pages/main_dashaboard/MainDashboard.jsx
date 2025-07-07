@@ -37,10 +37,7 @@ const MainDashboard = () => {
     fetchData();
   }, []);
 
-  if (isLoading) {
-    // Puedes mostrar solo el spinner aquí
-    return null;
-  }
+  if (isLoading) null;
 
   return (
     <main className="main_dashboard">
