@@ -75,24 +75,40 @@ const InputComponent = ({
     }
   };
 
-  //existing error
-
   return (
     <div className="container_input_component">
+      {/* component */}
       <div className="input_component">
+        {/* label */}
         <label
           htmlFor={id}
           className={clsx('label_input_component', {
             'label_input_component--active': isMoveLabel,
             'label_input_component--inactive': !isMoveLabel,
             'label_input_component--error': errors && errors[name],
+            'label_input_component--success':
+              !(errors && errors[name]) &&
+              ((isUsingRegister &&
+                document.getElementsByName(name)[0]?.value?.trim().length >
+                  0) ||
+                (!isUsingRegister && valueInputText.trim().length > 0)),
           })}
         >
           {label}
         </label>
+
+        {/* input */}
         <input
           className={clsx('input_component__input', {
+            'input_component__input--active': isMoveLabel,
+            'input_component__input--inactive': !isMoveLabel,
             'input_component__input--error': errors && errors[name],
+            'input_component__input--success':
+              !(errors && errors[name]) &&
+              ((isUsingRegister &&
+                document.getElementsByName(name)[0]?.value?.trim().length >
+                  0) ||
+                (!isUsingRegister && valueInputText.trim().length > 0)),
           })}
           id={id}
           type={typePassword && isPasswordVisible ? 'text' : type}
@@ -117,6 +133,8 @@ const InputComponent = ({
                 onBlur: handleBlur,
               })}
         />
+
+        {/* type password active eyes */}
         {typePassword ? (
           isPasswordVisible ? (
             <IoMdEyeOff
@@ -131,6 +149,8 @@ const InputComponent = ({
           )
         ) : null}
       </div>
+
+      {/* errros */}
       {errors && errors[name] && (
         <p className="input_component__error">{errors[name].message}</p>
       )}

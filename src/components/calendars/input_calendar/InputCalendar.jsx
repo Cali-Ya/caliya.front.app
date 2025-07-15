@@ -23,16 +23,22 @@ const InputCalendar = ({ name, register, setValue, errors, title }) => {
     setValue(name, iso, { shouldValidate: true });
   }, [year, month, day]);
 
+  // Determinar si hay valor (fecha seleccionada)
+  const value = new Date(year, month, day).toISOString().split('T')[0];
+  const hasValue = value && value.trim().length > 0;
+
   return (
     <section
       className={clsx('input_calendar', {
         'input_calendar--error': errors[name],
+        'input_calendar--success': !errors[name] && hasValue,
       })}
     >
       {title && (
         <p
           className={clsx('input_calendar__title', {
             'input_calendar__title--error': errors[name],
+            'input_calendar__title--success': !errors[name] && hasValue,
           })}
         >
           {title}

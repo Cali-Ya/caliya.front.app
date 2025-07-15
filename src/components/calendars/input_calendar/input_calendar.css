@@ -39,3 +39,14 @@
     border-bottom: 1px solid var(--active-color-red);
   }
 }
+
+.input_calendar--success {
+  /* Aplica borde verde a los selects */
+  .input_calendar__content_selects {
+    border-bottom: 1px solid var(--active-color-green) !important;
+  }
+
+  .input_calendar__title--success {
+    color: var(--active-color-green) !important;
+  }
+}
