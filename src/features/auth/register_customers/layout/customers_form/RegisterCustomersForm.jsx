@@ -3,13 +3,17 @@ import './register_customers_form.css';
 //components
 import InputComponent from '../../../../../components/input_component/InputComponent';
 import PrimaryButtonComponent from '../../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
 //services
 import register_customer from '../../services/register_customer';
 //react
 import { useForm } from 'react-hook-form';
-import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
+import { useState } from 'react';
 
 const RegisterCustomersForm = () => {
+  //toggle button spinner
+  const [toggleSpinner, setToggleSpinner] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -20,7 +24,7 @@ const RegisterCustomersForm = () => {
 
   const onSubmit = (data) => {
     data.phone = `+57${data.phone}`;
-    register_customer(data);
+    register_customer(data, setToggleSpinner);
   };
 
   return (
@@ -210,7 +214,11 @@ const RegisterCustomersForm = () => {
       />
 
       {/* submit */}
-      <PrimaryButtonComponent text="Registrarse" type="submit" />
+      <PrimaryButtonComponent
+        text="Registrarse"
+        type="submit"
+        toggleSpinner={toggleSpinner}
+      />
     </form>
   );
 };

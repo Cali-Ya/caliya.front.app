@@ -1,10 +1,12 @@
 //css
 import './caliya_loader.css';
+//components
+import Spinner from '../../spinner/Spinner';
 
 const CaliyaLoader = () => {
   return (
     <div className="loader_container">
-      <span className="loader"></span>
+      <Spinner className="caliya_loader_spinner" />
     </div>
   );
 };
