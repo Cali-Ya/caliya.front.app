@@ -30,6 +30,7 @@
   /* Global */
   --border-radius: 0.4rem;
   --shadow: 0 0 4px #ababab;
+  --padding-main: 1.2em 1em;
 
   /* max height */
   /* vh */
@@ -61,5 +62,24 @@ ul {
   list-style-type: none;
 }
 
-@media screen and (400 <= width <= 500) {
+a {
+  text-decoration: none;
+  color: var(--accents-color-primary);
+
+  &:hover {
+    color: var(--active-color-primary);
+    text-decoration: underline;
+  }
+}
+
+/* Quitar flechitas de input[type="number"] en Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Quitar flechitas en Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

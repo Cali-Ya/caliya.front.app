@@ -9,6 +9,8 @@ const getAdditionals = async (setAdditionals, shop_id) => {
     if (response.status === 200) {
       const additionals = response.data;
       setAdditionals(additionals);
+
+      return;
     }
   } catch (error) {
     console.log(error);

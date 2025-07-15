@@ -1,0 +1,6 @@
+.register_customers_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7em;
+}

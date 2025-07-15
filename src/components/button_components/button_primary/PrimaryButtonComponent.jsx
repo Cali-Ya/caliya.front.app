@@ -1,4 +1,5 @@
 //css
+import Spinner from '../../spinner/Spinner';
 import './primary_button_component.css';
 
 const PrimaryButtonComponent = ({
@@ -7,6 +8,7 @@ const PrimaryButtonComponent = ({
   type = 'button',
   disabled = false,
   className = '',
+  toggleSpinner = false,
 }) => {
   return (
     <button
@@ -19,7 +21,7 @@ const PrimaryButtonComponent = ({
           : 'primary_button_component_enabled'
       }`}
     >
-      {text}
+      {toggleSpinner ? <Spinner className="spinner_button_component" /> : text}
     </button>
   );
 };
