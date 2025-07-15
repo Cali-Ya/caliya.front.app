@@ -27,6 +27,9 @@ const RegisterCustomersForm = () => {
     register_customer(data, setToggleSpinner);
   };
 
+  //const
+  const isUsingPassoword = true;
+
   return (
     <form className="register_customers_form" onSubmit={handleSubmit(onSubmit)}>
       {/* name */}
@@ -144,6 +147,7 @@ const RegisterCustomersForm = () => {
         autoComplete="off"
         register={register}
         errors={errors}
+        typePassword={isUsingPassoword}
         rules={{
           required: {
             value: true,
@@ -169,6 +173,7 @@ const RegisterCustomersForm = () => {
         autoComplete="off"
         register={register}
         errors={errors}
+        typePassword={isUsingPassoword}
         rules={{
           required: {
             value: true,

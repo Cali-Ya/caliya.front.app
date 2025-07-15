@@ -1,5 +1,7 @@
 //css
 import './input_component.css';
+//icons
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 //clsx
 import clsx from 'clsx';
 //react
@@ -20,9 +22,11 @@ const InputComponent = ({
   name = 'name',
   errors,
   rules = {},
+  typePassword = false,
 }) => {
   const [isMoveLabel, setIsMoveLabel] = useState(false);
   const [valueInputText, setValueInputText] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const isUsingRegister = !!register && !!name;
 
   /* label animation */
@@ -91,7 +95,7 @@ const InputComponent = ({
             'input_component__input--error': errors && errors[name],
           })}
           id={id}
-          type={type}
+          type={typePassword && isPasswordVisible ? 'text' : type}
           {...(isUsingRegister
             ? {
                 ...register(name, rules),
@@ -113,6 +117,19 @@ const InputComponent = ({
                 onBlur: handleBlur,
               })}
         />
+        {typePassword ? (
+          isPasswordVisible ? (
+            <IoMdEyeOff
+              onClick={() => setIsPasswordVisible(false)}
+              className="input_components__icons_eyes"
+            />
+          ) : (
+            <IoMdEye
+              onClick={() => setIsPasswordVisible(true)}
+              className="input_components__icons_eyes"
+            />
+          )
+        ) : null}
       </div>
       {errors && errors[name] && (
         <p className="input_component__error">{errors[name].message}</p>
