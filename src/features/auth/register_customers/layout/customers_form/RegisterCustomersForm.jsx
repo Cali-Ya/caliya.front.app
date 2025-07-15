@@ -7,6 +7,7 @@ import PrimaryButtonComponent from '../../../../../components/button_components/
 import register_customer from '../../services/register_customer';
 //react
 import { useForm } from 'react-hook-form';
+import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
 
 const RegisterCustomersForm = () => {
   const {
@@ -14,12 +15,28 @@ const RegisterCustomersForm = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm();
 
   const onSubmit = (data) => {
     data.phone = `+57${data.phone}`;
-    console.log(data);
     register_customer(data);
+  };
+
+  const validateAdult = (dateStr) => {
+    const today = new Date();
+    const birthDate = new Date(dateStr);
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    if (
+      age > 18 ||
+      (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)))
+    ) {
+      return true;
+    }
+    return 'Debes ser mayor de edad';
   };
 
   return (
@@ -181,6 +198,34 @@ const RegisterCustomersForm = () => {
         }}
       />
 
+      {/* birthday date */}
+      <InputCalendar
+        title="Fecha de nacimiento"
+        name="birth_date"
+        register={register('birth_date', {
+          required: 'La fecha de nacimiento es obligatoria',
+          validate: (dateStr) => {
+            const today = new Date();
+            const birthDate = new Date(dateStr);
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            if (
+              age > 18 ||
+              (age === 18 &&
+                (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)))
+            ) {
+              return true;
+            }
+            return 'Debes ser mayor de edad';
+          },
+        })}
+        setValue={setValue}
+        errors={errors}
+      />
+
+      {/* submit */}
       <PrimaryButtonComponent text="Registrarse" type="submit" />
     </form>
   );
