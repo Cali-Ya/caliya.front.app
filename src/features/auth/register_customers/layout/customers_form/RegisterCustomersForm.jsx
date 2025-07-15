@@ -23,22 +23,6 @@ const RegisterCustomersForm = () => {
     register_customer(data);
   };
 
-  const validateAdult = (dateStr) => {
-    const today = new Date();
-    const birthDate = new Date(dateStr);
-    const age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    const dayDiff = today.getDate() - birthDate.getDate();
-
-    if (
-      age > 18 ||
-      (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)))
-    ) {
-      return true;
-    }
-    return 'Debes ser mayor de edad';
-  };
-
   return (
     <form className="register_customers_form" onSubmit={handleSubmit(onSubmit)}>
       {/* name */}
@@ -201,8 +185,8 @@ const RegisterCustomersForm = () => {
       {/* birthday date */}
       <InputCalendar
         title="Fecha de nacimiento"
-        name="birth_date"
-        register={register('birth_date', {
+        name="birthday_date"
+        register={register('birthday_date', {
           required: 'La fecha de nacimiento es obligatoria',
           validate: (dateStr) => {
             const today = new Date();
