@@ -40,8 +40,20 @@ const RoutesSystem = createBrowserRouter([
         element: <h1>Inicia Seccion</h1>,
       },
       {
-        path: '/account_settings',
-        element: <TapBar />,
+        path: '/profile_settings',
+        element: <Features.profile_settings.ProfileSettingsPage />,
+      },
+      {
+        path: '/profile_settings/account_information',
+        element: <h1>Mi info</h1>,
+      },
+      {
+        path: '/profile_settings/change_password',
+        element: <h1>Camibar contraseña</h1>,
+      },
+      {
+        path: '/profile_settings/edit_locations',
+        element: <h1>Mis ubicaciónes</h1>,
       },
     ],
   },

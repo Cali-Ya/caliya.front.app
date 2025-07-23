@@ -11,6 +11,9 @@ import PurcharseDataForm from './shopping_cart/layout/purcharse_data_form/Purcha
 //register customers
 import RegisterCustomers from './auth/register_customers/page/RegisterCustomers';
 
+//profile settings
+import ProfileSettingsPage from './profile_settings/page/ProfileSettingsPage';
+
 export const features_pages = {
   MainDashboard,
 
@@ -26,5 +29,9 @@ export const features_pages = {
 
   register_customers: {
     RegisterCustomers,
+  },
+
+  profile_settings: {
+    ProfileSettingsPage,
   },
 };
