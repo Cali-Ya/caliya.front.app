@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { features_pages as Features } from '../features/features_exports';
 import MainPage from '../pages/MainPage';
+import TapBar from '../components/bars/tap_bar/TapBar';
 
 const indexActive = true;
 
@@ -37,6 +38,10 @@ const RoutesSystem = createBrowserRouter([
       {
         path: '/auth/login',
         element: <h1>Inicia Seccion</h1>,
+      },
+      {
+        path: '/account_settings',
+        element: <TapBar />,
       },
     ],
   },

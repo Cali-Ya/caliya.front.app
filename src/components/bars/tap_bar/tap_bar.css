@@ -1,0 +1,30 @@
+.tap_bar {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: var(--active-color-white);
+  border-top: 1px solid var(--active-color-extra-light);
+
+  .tap_bar_options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0;
+  }
+
+  .tap_bar__option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .tap_bar__icon {
+      font-size: 1.4rem;
+
+      &:hover {
+        transition: color 0.3s ease;
+        color: var(--accents-color-primary);
+      }
+    }
+  }
+}
