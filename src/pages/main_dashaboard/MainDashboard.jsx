@@ -1,20 +1,26 @@
 //css
 import './main_dashboard.css';
 //components
-import SearchComponent from '../../components/search_component/SearchComponent';
 import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
+import PrimaryButtonComponent from '../../components/button_components/button_primary/PrimaryButtonComponent';
 //layouts
 import CombosLayout from '../../layout/combos/CombosLayout';
 import TapBar from '../../components/bars/tap_bar/TapBar';
 //servcies
 import getAllShops from '../../features/main_dashboard/services/get_all_shops';
 import getCombos from '../../features/main_dashboard/services/get_combos';
+//custom hooks
+import useCaliyaLoader from '../../store/caliya_loader.store';
+//utils
+import { getDecryptedItem } from '../../utils/encryptionUtilities';
 //react
 import { useEffect, useState } from 'react';
-import useCaliyaLoader from '../../store/caliya_loader.store';
+import { data, useNavigate } from 'react-router-dom';
 
 const MainDashboard = () => {
+  //navigate
+  const navigate = useNavigate();
   //shops
   const [shops, setShops] = useState();
   //combos
@@ -38,13 +44,37 @@ const MainDashboard = () => {
     fetchData();
   }, []);
 
+  //validate user session
+  const [userData, setUserData] = useState({
+    session: false,
+    data: null,
+  });
+
+  useEffect(() => {
+    const user_session = 'user_session';
+
+    const user_data = getDecryptedItem(user_session);
+    setUserData(user_data);
+  }, []);
+
   if (isLoading) null;
 
   return (
     <main className="main_dashboard">
       {/* header */}
       <header className="header_main_dashboard">
-        {/* <SearchComponent /> */}
+        <div className="header_main_dashboard__title">
+          {userData.session ? (
+            <h3 className="header_main_dashboard__title__text">
+              Bienvenido, {userData.data.name}
+            </h3>
+          ) : (
+            <PrimaryButtonComponent
+              text="Registrate"
+              onClick={() => navigate('/auth/sign_up')}
+            />
+          )}
+        </div>
         <ShoppingCartIcon />
       </header>
 
