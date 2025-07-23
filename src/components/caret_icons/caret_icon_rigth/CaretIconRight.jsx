@@ -4,7 +4,7 @@ import './caret_icon_right.css';
 const CaretIconRigth = ({
   onClick,
   preferColor = true,
-  type = 'caret',
+  type = 'normal',
   isCaretRight,
   className = '',
 }) => {

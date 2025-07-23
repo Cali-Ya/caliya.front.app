@@ -67,7 +67,7 @@ const StorePage = () => {
           className="header_store_page__icon"
           onClick={handleNavigate}
         />
-        {scrolled ? <SearchComponent /> : null}
+        {/* {scrolled ? <SearchComponent /> : null} */}
         <ShoppingCartIcon isColor={scrolled} className />
       </header>
       {/* category */}
