@@ -6,6 +6,7 @@ import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/Shopping
 import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
 //layouts
 import CombosLayout from '../../layout/combos/CombosLayout';
+import TapBar from '../../components/bars/tap_bar/TapBar';
 //servcies
 import getAllShops from '../../features/main_dashboard/services/get_all_shops';
 import getCombos from '../../features/main_dashboard/services/get_combos';
@@ -75,6 +76,9 @@ const MainDashboard = () => {
             ))}
         </section>
       </section>
+
+      {/* footer */}
+      <TapBar />
     </main>
   );
 };
