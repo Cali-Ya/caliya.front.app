@@ -1,23 +1,32 @@
 import api from '../../../../lib/api';
 
-const register_customer = async (data, setToggleSpinner) => {
-  //active spinner
-  const activeSpinner = true;
-  setToggleSpinner(activeSpinner);
+const register_customer = async (
+  data,
+  setToggleSpinner,
+  setEncryptedItem,
+  navigate
+) => {
+  // Activa el spinner
+  setToggleSpinner(true);
 
-  //request to register customer
   try {
     const response = await api.post('/customers', data);
 
     if (response.status === 201) {
-      console.log(response);
+      // Actualiza el user_session con los datos de la respuesta
+      const user_session = 'user_session';
+      const userSession = {
+        session: true,
+        data: response.data,
+      };
+      setEncryptedItem(user_session, userSession);
+      navigate('/');
     }
   } catch (error) {
     console.log(error);
   } finally {
-    //desactive spinner
-    const desactiveSpinner = false;
-    setToggleSpinner(desactiveSpinner);
+    // Desactiva el spinner
+    setToggleSpinner(false);
   }
 };
 

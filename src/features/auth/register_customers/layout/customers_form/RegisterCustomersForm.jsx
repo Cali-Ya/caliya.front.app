@@ -4,13 +4,18 @@ import './register_customers_form.css';
 import InputComponent from '../../../../../components/input_component/InputComponent';
 import PrimaryButtonComponent from '../../../../../components/button_components/button_primary/PrimaryButtonComponent';
 import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
+//utils
+import { setEncryptedItem } from '../../../../../utils/encryptionUtilities';
 //services
 import register_customer from '../../services/register_customer';
 //react
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterCustomersForm = () => {
+  //navigate
+  const navigate = useNavigate();
   //toggle button spinner
   const [toggleSpinner, setToggleSpinner] = useState(false);
 
@@ -24,7 +29,7 @@ const RegisterCustomersForm = () => {
 
   const onSubmit = (data) => {
     data.phone = `+57${data.phone}`;
-    register_customer(data, setToggleSpinner);
+    register_customer(data, setToggleSpinner, setEncryptedItem, navigate);
   };
 
   //const
