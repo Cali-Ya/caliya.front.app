@@ -22,7 +22,6 @@ const ShoppingCartPage = () => {
     <main className="container_shopping_cart_page">
       <header className="header_cart_store">
         <CaretIconLeft onClick={handleReturnPage} preferColor={caretBlack} />
-        <h3 className="header_cart_store__title">Tus ordenes</h3>
       </header>
 
       <section>
