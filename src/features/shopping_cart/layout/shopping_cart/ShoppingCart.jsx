@@ -7,6 +7,8 @@ import SecondaryButtonComponent from '../../../../components/button_components/b
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useCartStore from '../../../../store/cart.store';
 import usePlaceOrderStore from '../../store/place_order.store';
+//assets
+import { ilustrations } from '../../../../assets/assets_exports';
 //react
 import { useNavigate } from 'react-router-dom';
 import { preprocessCartItems } from '../../../../lib/shared/cartUtils';
@@ -50,11 +52,22 @@ const CartStorePage = () => {
 
   //vars
   const country = 'es-CO';
+  const cartEmpty = 0;
 
   return (
     <section className="shopping_cart_container">
-      {cart.length === 0 ? (
-        <p className="empty_shopping_cart">El carrito esta vacio</p>
+      {cart.length === cartEmpty ? (
+        <div className="empty_shopping_cart_container">
+          <img
+            src={ilustrations.CarritoIlustration}
+            alt={ilustrations.CarritoIlustration}
+            className="empty_shopping_cart__img"
+          />
+          <h1 className="empty_shopping_cart__title">El carrito esta vacio</h1>
+          <p className="empty_shopping_cart__description">
+            Aqui estaran todos tus pedidos
+          </p>
+        </div>
       ) : (
         Object.entries(groupedByShop).map(([shopId, group]) => {
           // Calcula el total de la tienda
@@ -182,13 +195,15 @@ const CartStorePage = () => {
       )}
 
       {/* actions */}
-      <section className="actions_item_shopping_cart">
-        <SecondaryButtonComponent
-          text="Quitar todo del carrito"
-          onClick={handleRemoveAllProducts}
-          className="actions__button_item_shopping_cart"
-        />
-      </section>
+      {cart.length === cartEmpty ? null : (
+        <section className="actions_item_shopping_cart">
+          <SecondaryButtonComponent
+            text="Quitar todo del carrito"
+            onClick={handleRemoveAllProducts}
+            className="actions__button_item_shopping_cart"
+          />
+        </section>
+      )}
     </section>
   );
 };

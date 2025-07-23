@@ -1,6 +1,6 @@
 .profile_settings_container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -79,5 +79,25 @@
 
   .profile_settings_option__logout {
     margin-top: auto;
+  }
+
+  .profile_settings_no_session {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+
+    .profile_settings_no_session__title {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: var(--active-color-secondary);
+      text-align: center;
+      width: 100%;
+    }
+    .profile_settings_no_session__description {
+      color: var(--active-color-secondary-light);
+    }
   }
 }

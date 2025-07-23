@@ -19,6 +19,7 @@ const MainPage = () => {
     const user_session = 'user_session';
     const userSession = {
       session: false,
+      data: null,
     };
 
     const user_data = getDecryptedItem(user_session);

@@ -18,14 +18,23 @@
       font-weight: 400;
     }
 
-    .container_register_customers__signup_text {
+    .container_register_customers_header__signup_text {
       color: var(--active-color-secondary-light);
       font-weight: 400;
     }
   }
 
+  .register_customers__text_login {
+    width: 100%;
+    text-align: center;
+    color: var(--active-color-secondary-light);
+    margin-top: 0.7em;
+    font-weight: 400;
+  }
+
   .container_register_customers__terms {
     color: var(--active-color-secondary-light);
     text-align: center;
+    margin-top: 0.5em;
   }
 }
