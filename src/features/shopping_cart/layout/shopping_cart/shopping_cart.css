@@ -11,6 +11,10 @@
     align-items: center;
     gap: 1em;
 
+    .empty_shopping_cart__img {
+      width: 90%;
+    }
+
     .empty_shopping_cart__description {
       color: var(--active-color-secondary-light);
       font-size: 1.1em;

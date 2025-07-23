@@ -59,8 +59,8 @@ const CartStorePage = () => {
       {cart.length === cartEmpty ? (
         <div className="empty_shopping_cart_container">
           <img
-            src={ilustrations.PizzaIlustration}
-            alt={ilustrations.PizzaIlustration}
+            src={ilustrations.CarritoIlustration}
+            alt={ilustrations.CarritoIlustration}
             className="empty_shopping_cart__img"
           />
           <h1 className="empty_shopping_cart__title">El carrito esta vacio</h1>

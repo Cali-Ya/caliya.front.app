@@ -8,6 +8,7 @@ import D_M_O_logo from './logos/d.m.o/eslogan_dmo_hrz.webp';
 //ilustrations
 import MotoIlustration from './illustrations/moto_ilustration.svg';
 import PizzaIlustration from './illustrations/pizza_illustration.svg';
+import CarritoIlustration from './illustrations/carrito_illustration.svg';
 
 export const logos = {
   CaliYa: {
@@ -22,4 +23,5 @@ export const logos = {
 export const ilustrations = {
   MotoIlustration,
   PizzaIlustration,
+  CarritoIlustration,
 };
