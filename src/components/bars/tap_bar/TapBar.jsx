@@ -21,7 +21,7 @@ const TapBar = () => {
       : 'var(--active-color-secondary-light)';
   //account settings path
   const activeColorAccount =
-    currentPath === '/account_settings'
+    currentPath === '/profile_settings'
       ? 'var(--active-color-primary)'
       : 'var(--active-color-secondary-light)';
 
@@ -39,7 +39,7 @@ const TapBar = () => {
           <FaUser
             className="tap_bar__icon"
             style={{ color: activeColorAccount }}
-            onClick={() => navigate('/account_settings')}
+            onClick={() => navigate('/profile_settings')}
           />
         </li>
       </ul>
