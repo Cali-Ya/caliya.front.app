@@ -5,11 +5,11 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 //clsx
 import clsx from 'clsx';
 //react
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const InputComponent = ({
   id = 'id',
-  label = 'Label',
+  label = 'label',
   type = 'text',
   disabled,
   onChange,
@@ -23,6 +23,7 @@ const InputComponent = ({
   errors,
   rules = {},
   typePassword = false,
+  forceMoveLabel = false,
 }) => {
   const [isMoveLabel, setIsMoveLabel] = useState(false);
   const [valueInputText, setValueInputText] = useState('');
@@ -76,15 +77,8 @@ const InputComponent = ({
   };
 
   useEffect(() => {
-    let hasValue = false;
-    if (isUsingRegister) {
-      const inputEl = document.getElementsByName(name)[0];
-      hasValue = inputEl && inputEl.value && inputEl.value.trim().length > 0;
-    } else {
-      hasValue = valueInputText.trim().length > 0;
-    }
-    setIsMoveLabel(hasValue);
-  }, [valueInputText, name, isUsingRegister]);
+    if (forceMoveLabel) setIsMoveLabel(true);
+  }, [forceMoveLabel]);
 
   return (
     <div className="container_input_component">

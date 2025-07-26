@@ -17,6 +17,9 @@ const CustomerLocations = () => {
   const [loadingLocation, setLoadingLocation] = useState(false);
   const [gpsAddress, setGpsAddress] = useState('');
 
+  //force label
+  const [forceMoveLabel, setForceMoveLabel] = useState(false);
+
   //form
   const {
     register,
@@ -105,6 +108,7 @@ const CustomerLocations = () => {
             autoComplete="off"
             register={register}
             errors={errors}
+            forceMoveLabel={forceMoveLabel}
             rules={{
               required: {
                 value: true,
@@ -141,6 +145,7 @@ const CustomerLocations = () => {
                       onClick={() => {
                         setValue('address', gpsAddress);
                         setShowAddressHint(false);
+                        setForceMoveLabel(true);
                         setGpsAddress('');
                       }}
                     >
