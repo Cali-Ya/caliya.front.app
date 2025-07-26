@@ -1,0 +1,135 @@
+.customer_locations_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+  padding: var(--padding-main);
+
+  .customer_locations_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4em;
+
+    .customer_locations_form__content_input_address {
+      position: relative;
+
+      .customer_locations_form__content_location {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--active-color-white);
+        border-radius: var(--border-radius);
+        border: 1px solid #ccc;
+        padding: 0.6em 0.8em;
+        z-index: 10;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+
+        .customer_locations_form__content_location__title {
+          font-size: 1em;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          gap: 0.6em;
+        }
+
+        .customer_locations_form__content_location__button {
+          padding: 0.6em 0.6em;
+          border-radius: var(--border-radius);
+          outline: none;
+          border: none;
+          height: 2.5em;
+          width: 5em;
+          cursor: pointer;
+          background-color: var(--accents-color-primary);
+          color: var(--active-color-white);
+
+          &:active {
+            background-color: var(--active-color-primary);
+          }
+        }
+
+        .customer_locations_form__content_location__spinner_button {
+          width: 20px;
+          height: 20px;
+        }
+
+        .customer_locations_form__content_location__gps_address {
+          font-size: 0.9em;
+          color: var(--active-color-secondary-light);
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          gap: 1em;
+        }
+      }
+    }
+  }
+
+  .customer_locations_title {
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-top: 1em;
+  }
+
+  .customer_locations__locations {
+    display: flex;
+    gap: 0.6em;
+    color: var(--active-color-secondary-light);
+
+    &:hover {
+      .customer_locations__locations_icon,
+      .customer_locations__address,
+      .customer_locations__address_name {
+        transition: all 0.1s ease-in-out;
+      }
+
+      .customer_locations__locations_icon {
+        color: var(--active-color-primary);
+      }
+      .customer_locations__address {
+        border-color: var(--active-color-primary);
+      }
+
+      .customer_locations__address_name {
+        color: var(--active-color-primary);
+      }
+
+      .customer_locations__address_description {
+        color: var(--active-color-secondary);
+      }
+    }
+
+    .customer_locations__locations_icon {
+      font-size: 1.8em;
+    }
+
+    .customer_locations__address {
+      border-bottom: 1px solid;
+      padding-bottom: 0.7em;
+
+      .customer_locations__address_name {
+        font-size: 1.2em;
+      }
+    }
+
+    .customer_locations__action_content {
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      align-self: center;
+
+      &:hover {
+        color: var(--active-color-secondary);
+      }
+
+      .customer_locations__action_content__icon {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

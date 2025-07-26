@@ -45,15 +45,15 @@ const RoutesSystem = createBrowserRouter([
       },
       {
         path: '/profile_settings/account_information',
-        element: <h1>Mi info</h1>,
+        element: <Features.profile_settings.ProfileInformation />,
       },
       {
         path: '/profile_settings/change_password',
-        element: <h1>Camibar contraseña</h1>,
+        element: <Features.profile_settings.ChangePassword />,
       },
       {
-        path: '/profile_settings/edit_locations',
-        element: <h1>Mis ubicaciónes</h1>,
+        path: '/profile_settings/my_locations',
+        element: <Features.profile_settings.CustomerLocations />,
       },
     ],
   },

@@ -5,7 +5,7 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 //clsx
 import clsx from 'clsx';
 //react
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const InputComponent = ({
   id = 'id',
@@ -23,6 +23,7 @@ const InputComponent = ({
   errors,
   rules = {},
   typePassword = false,
+  forceMoveLabel = false,
 }) => {
   const [isMoveLabel, setIsMoveLabel] = useState(false);
   const [valueInputText, setValueInputText] = useState('');
@@ -74,6 +75,10 @@ const InputComponent = ({
       }
     }
   };
+
+  useEffect(() => {
+    if (forceMoveLabel) setIsMoveLabel(true);
+  }, [forceMoveLabel]);
 
   return (
     <div className="container_input_component">
