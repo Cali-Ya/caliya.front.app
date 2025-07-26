@@ -1,0 +1,33 @@
+.profile_information {
+  width: 100%;
+  height: 100%;
+  padding: var(--padding-main);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  .profile_information_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+  }
+}
+
+.profile_settings_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .profile_settings_header__caret_left {
+    position: absolute;
+    left: 0;
+  }
+
+  .profile_settings_header__title {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+  }
+}
