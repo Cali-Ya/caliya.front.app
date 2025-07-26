@@ -13,6 +13,9 @@ import RegisterCustomers from './auth/register_customers/page/RegisterCustomers'
 
 //profile settings
 import ProfileSettingsPage from './profile_settings/page/ProfileSettingsPage';
+import ProfileInformation from './profile_settings/layouts/profile_information/ProfileInformation';
+import ChangePassword from './profile_settings/layouts/change_password/ChangePassword';
+import CustomerLocations from './profile_settings/layouts/customer_locations/CustomerLocations';
 
 export const features_pages = {
   MainDashboard,
@@ -33,5 +36,8 @@ export const features_pages = {
 
   profile_settings: {
     ProfileSettingsPage,
+    ProfileInformation,
+    ChangePassword,
+    CustomerLocations,
   },
 };

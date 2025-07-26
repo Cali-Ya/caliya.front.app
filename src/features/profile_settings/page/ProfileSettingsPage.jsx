@@ -101,7 +101,7 @@ const ProfileSettingsPage = () => {
             <li
               className="profile_settings_option"
               onClick={() => {
-                navigate('/profile_settings/edit_locations');
+                navigate('/profile_settings/my_locations');
               }}
             >
               <MdLocationOn className="profile_settings_option__icon" />

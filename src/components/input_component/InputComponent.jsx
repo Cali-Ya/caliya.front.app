@@ -5,11 +5,11 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 //clsx
 import clsx from 'clsx';
 //react
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const InputComponent = ({
   id = 'id',
-  label = 'label',
+  label = 'Label',
   type = 'text',
   disabled,
   onChange,
@@ -74,6 +74,17 @@ const InputComponent = ({
       }
     }
   };
+
+  useEffect(() => {
+    let hasValue = false;
+    if (isUsingRegister) {
+      const inputEl = document.getElementsByName(name)[0];
+      hasValue = inputEl && inputEl.value && inputEl.value.trim().length > 0;
+    } else {
+      hasValue = valueInputText.trim().length > 0;
+    }
+    setIsMoveLabel(hasValue);
+  }, [valueInputText, name, isUsingRegister]);
 
   return (
     <div className="container_input_component">
