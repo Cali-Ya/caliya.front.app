@@ -44,10 +44,6 @@ const CustomerLocations = () => {
     };
   }, [showAddressHint]);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
   //get location
   const handleGetLocation = async () => {
     setLoadingLocation(true);
@@ -55,6 +51,10 @@ const CustomerLocations = () => {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
+          setValue('coords', {
+            latitude: latitude,
+            longitude: longitude,
+          });
           // Usar Nominatim para obtener la dirección
           const response = await fetch(
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
@@ -74,6 +74,10 @@ const CustomerLocations = () => {
     }
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <section className="customer_locations_container">
       <ProfileSettingsHeader title="Mis ubicaciones" />
@@ -87,6 +91,7 @@ const CustomerLocations = () => {
           id="location_name"
           name="location_name"
           label="Nombre de la ubicación"
+          autoComplete="off"
           register={register}
           errors={errors}
           rules={{
@@ -143,7 +148,10 @@ const CustomerLocations = () => {
                   <div>
                     <button
                       onClick={() => {
-                        setValue('address', gpsAddress);
+                        setValue('address', gpsAddress, {
+                          shouldValidate: true,
+                          shouldTouch: true,
+                        });
                         setShowAddressHint(false);
                         setForceMoveLabel(true);
                         setGpsAddress('');
