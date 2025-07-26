@@ -80,6 +80,15 @@ const InputComponent = ({
     if (forceMoveLabel) setIsMoveLabel(true);
   }, [forceMoveLabel]);
 
+  useEffect(() => {
+    if (isUsingRegister) {
+      const inputEl = document.getElementsByName(name)[0];
+      if (inputEl && inputEl.value && inputEl.value.trim().length > 0) {
+        setIsMoveLabel(true);
+      }
+    }
+  }, [isUsingRegister, name]);
+
   return (
     <div className="container_input_component">
       {/* component */}
