@@ -22,19 +22,16 @@ const RegisterCustomers = () => {
 
       <RegisterCustomersForm />
 
-      <span className="register_customers__text_login">¿Ya tienes cuenta?</span>
+      <footer className="register_customers__footer">
+        <span className="register_customers__footer__link">
+          ¿Ya tienes cuenta? <a href="/auth/login">Inicia sección</a>
+        </span>
 
-      <div className="container_register_customers__signup">
-        <SecondaryButtomComponent
-          text="Inicia Sección"
-          onClick={() => navigate('/auth/login')}
-        />
-      </div>
-
-      <p className="container_register_customers__terms">
-        Al registrarse, acepta nuestros Términos, Condiciones y Política de
-        privacidad.
-      </p>
+        <p className="register_customers__footer__terms">
+          Al registrarse, acepta nuestros Términos, Condiciones y Política de
+          privacidad.
+        </p>
+      </footer>
     </section>
   );
 };

@@ -6,17 +6,16 @@
   width: 100%;
   height: 100%;
 
-  .register_customers__text_login {
-    width: 100%;
-    text-align: center;
+  .register_customers__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
     color: var(--active-color-secondary-light);
-    margin-top: 0.7em;
-    font-weight: 400;
-  }
 
-  .container_register_customers__terms {
-    color: var(--active-color-secondary-light);
-    text-align: center;
-    margin-top: 0.5em;
+    .register_customers__footer__terms {
+      text-align: center;
+      margin-top: 0.5em;
+    }
   }
 }

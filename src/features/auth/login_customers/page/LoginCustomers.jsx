@@ -20,7 +20,8 @@ const LoginCustomers = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    data.email_or_phone = `+57${data.email_or_phone}`;
+    data.phone_number = `+57${data.phone_number}`;
+    console.log(data);
     login_customers(data, navigate);
   };
 
@@ -37,28 +38,22 @@ const LoginCustomers = () => {
       />
 
       <form className="login_customers_form" onSubmit={handleSubmit(onSubmit)}>
-        {/* email or phone */}
         <InputComponent
-          id="email_or_phone"
-          name="email_or_phone"
-          label="Correo o Número de télefono"
+          id="phone_number"
+          name="phone_number"
+          label="Número de télefono"
           type="text"
           autoComplete="off"
           register={register}
           errors={errors}
           rules={{
             required: 'Este campo es obligatorio',
-            validate: (value) => {
-              const emailRegex =
-                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-              const phoneRegex = /^[1-9][0-9]{9}$/; // 10 digits, no leading zero
-              if (emailRegex.test(value)) return true;
-              if (phoneRegex.test(value)) return true;
-              return 'Ingresa un correo válido o un número de télefono';
+            pattern: {
+              value: /^[1-9][0-9]{9}$/, // 10 dígitos, sin cero inicial
+              message: 'Ingresa un número de télefono válido',
             },
           }}
         />
-        {/* password */}
         <InputComponent
           id="password"
           name="password"
