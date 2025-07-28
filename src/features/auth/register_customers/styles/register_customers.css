@@ -7,23 +7,6 @@
   height: 100%;
   padding: var(--padding-main);
 
-  .container_register_customers__header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-
-    .container_register_customers__title {
-      font-size: 1.8em;
-      font-weight: 400;
-    }
-
-    .container_register_customers_header__signup_text {
-      color: var(--active-color-secondary-light);
-      font-weight: 400;
-    }
-  }
-
   .register_customers__text_login {
     width: 100%;
     text-align: center;

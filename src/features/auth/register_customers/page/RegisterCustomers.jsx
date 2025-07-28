@@ -6,18 +6,20 @@ import RegisterCustomersForm from '../layout/customers_form/RegisterCustomersFor
 import SecondaryButtomComponent from '../../../../components/button_components/button_secondary/SecondaryButtonComponent';
 //react
 import { useNavigate } from 'react-router-dom';
+import AuthHeader from '../../components/AuthHeader/AuthHeader';
 
 const RegisterCustomers = () => {
   const navigate = useNavigate();
 
   return (
     <section className="container_register_customers">
-      <header className="container_register_customers__header">
-        <h1 className="container_register_customers__title">Registrate</h1>
-        <p className="container_register_customers_header__signup_text">
-          Volver a la <a href="/">Página Principal</a>
-        </p>
-      </header>
+      <AuthHeader
+        title="Registrate"
+        description="Registrate para poder realizar pedidos."
+        text_link="De vuelta al menú"
+        return_link="/"
+      />
+
       <RegisterCustomersForm />
 
       <span className="register_customers__text_login">¿Ya tienes cuenta?</span>

@@ -16,9 +16,11 @@ import ProfileSettingsPage from './profile_settings/page/ProfileSettingsPage';
 import ProfileInformation from './profile_settings/layouts/profile_information/ProfileInformation';
 import ChangePassword from './profile_settings/layouts/change_password/ChangePassword';
 import CustomerLocations from './profile_settings/layouts/customer_locations/CustomerLocations';
+import LoginCustomers from './auth/login_customers/page/LoginCustomers';
 
 export const features_pages = {
   MainDashboard,
+  LoginCustomers,
 
   store_page: {
     StorePage,

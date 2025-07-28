@@ -37,7 +37,7 @@ const RoutesSystem = createBrowserRouter([
       },
       {
         path: '/auth/login',
-        element: <h1>Inicia Seccion</h1>,
+        element: <Features.LoginCustomers />,
       },
       {
         path: '/profile_settings',

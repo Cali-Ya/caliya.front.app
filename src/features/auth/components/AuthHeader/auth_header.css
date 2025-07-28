@@ -1,0 +1,16 @@
+.container_auth_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  .container_auth_header__title {
+    font-size: 1.8em;
+    font-weight: 400;
+  }
+
+  .container_auth_header_header__signup_text {
+    color: var(--active-color-secondary-light);
+    font-weight: 400;
+  }
+}
