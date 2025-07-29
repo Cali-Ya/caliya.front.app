@@ -11,7 +11,7 @@ import { FaMinus, FaPlus } from 'react-icons/fa6';
 //components
 import DropDownAdditionals from '../../components/dropdown_additionals/DropdownAdditionals';
 import CardDetails from '../../../../components/cards/card_details/CardDetails';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
@@ -202,10 +202,7 @@ const BuyProduct = () => {
 
         {/* button */}
         <div className="footer_buy_product__content_button">
-          <PrimaryButtonComponent
-            text="Añadir al Carrito"
-            onClick={handleAddToCart}
-          />
+          <ButtonPrimary text="Añadir al Carrito" onClick={handleAddToCart} />
         </div>
       </footer>
     </aside>

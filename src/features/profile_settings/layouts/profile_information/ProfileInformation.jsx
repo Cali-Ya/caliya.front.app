@@ -2,7 +2,7 @@
 import './profile_information.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent.jsx';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent.jsx';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents.jsx';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader.jsx';
 //utilts
 import { getDecryptedItem } from '../../../../utils/encryptionUtilities.js';
@@ -146,7 +146,7 @@ const ProfileInformation = () => {
           />
         </div>
 
-        <PrimaryButtonComponent type="submit" text="Cambiar información" />
+        <ButtonPrimary type="submit" text="Cambiar información" />
       </form>
     </section>
   );

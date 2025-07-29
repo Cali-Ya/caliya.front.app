@@ -2,7 +2,7 @@
 import './login_customers.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 import AuthHeader from '../../components/AuthHeader/AuthHeader';
 //services
 import login_customers from '../services/login_customers';
@@ -70,7 +70,7 @@ const LoginCustomers = () => {
             },
           }}
         />
-        <PrimaryButtonComponent type="submit" text="Ir a la página principal" />
+        <ButtonPrimary type="submit" text="Ir a la página principal" />
       </form>
 
       <footer className="login_customer_footer">

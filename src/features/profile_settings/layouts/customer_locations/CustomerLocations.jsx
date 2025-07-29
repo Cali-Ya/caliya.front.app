@@ -3,13 +3,15 @@ import './customer_locations.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from '../../../../components/button_components/ButttonsComponents';
 //icons
 import { MdLocationOn, MdDelete } from 'react-icons/md';
 //react
 import { useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
-import Spinner from '../../../../components/spinner/Spinner';
 
 const CustomerLocations = () => {
   //detected location
@@ -129,24 +131,19 @@ const CustomerLocations = () => {
             >
               <h4 className="customer_locations_form__content_location__title">
                 Obten tu ubicación actual o escribe tu dirección.
-                <button
+                <ButtonPrimary
                   type="button"
+                  text="Buscar"
+                  toggleSpinner={loadingLocation}
                   onClick={handleGetLocation}
-                  className="customer_locations_form__content_location__button"
-                  disabled={loadingLocation}
-                >
-                  {loadingLocation ? (
-                    <Spinner className="customer_locations_form__content_location__spinner_button" />
-                  ) : (
-                    'Obtener'
-                  )}
-                </button>
+                />
               </h4>
               {gpsAddress && (
                 <div className="customer_locations_form__content_location__gps_address">
                   {gpsAddress}.
                   <div>
-                    <button
+                    <ButtonSecondary
+                      text="Usar ubicación"
                       onClick={() => {
                         setValue('address', gpsAddress, {
                           shouldValidate: true,
@@ -156,9 +153,7 @@ const CustomerLocations = () => {
                         setForceMoveLabel(true);
                         setGpsAddress('');
                       }}
-                    >
-                      Usar Ubicación
-                    </button>
+                    />
                   </div>
                 </div>
               )}
@@ -166,7 +161,7 @@ const CustomerLocations = () => {
           )}
         </div>
 
-        <PrimaryButtonComponent type="submit" text="Añadir ubicación" />
+        <ButtonPrimary type="submit" text="Añadir ubicación" />
       </form>
 
       <h3 className="customer_locations_title">Ubicaciones guardadas</h3>
