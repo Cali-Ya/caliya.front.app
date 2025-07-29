@@ -1,0 +1,58 @@
+/* buttons general */
+.button_component_enabled {
+  cursor: pointer;
+  transition: scale 0.2s ease-in, background-color 0.3s ease;
+
+  &:active {
+    scale: 0.95;
+  }
+}
+.button_component_disabled {
+  cursor: not-allowed;
+  background-color: var(--active-color-white) !important;
+  box-shadow: var(--shadow);
+  color: var(--active-color-secondary-light) !important;
+}
+
+/* toggle spiner button medium*/
+.spinner_button_on {
+  padding: 0.5em 0.8em;
+}
+
+.spinner_button_off {
+  padding: 0.8em 0.8em;
+}
+
+.spinner_buttons {
+  width: 1.5em;
+  height: 1.5em;
+  border-width: 2px;
+}
+
+/* buttons medium */
+
+/* general css button medium */
+.buttons_medium {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.4em;
+  font-size: 1em;
+  outline: none;
+  border: none;
+}
+
+.button_primary,
+.button_small_primary {
+  color: var(--active-color-white);
+  background-color: var(--active-color-primary);
+
+  &:hover {
+    background-color: var(--accents-color-primary);
+  }
+}
+
+.button_secondary {
+  color: var(--accents-color-primary);
+  background-color: var(--active-color-white);
+  border: solid 2px var(--accents-color-primary);
+}

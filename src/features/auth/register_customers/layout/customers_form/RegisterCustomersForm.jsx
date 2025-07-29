@@ -2,7 +2,7 @@
 import './register_customers_form.css';
 //components
 import InputComponent from '../../../../../components/input_component/InputComponent';
-import PrimaryButtonComponent from '../../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../../../../components/button_components/ButttonsComponents';
 import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
 //utils
 import { setEncryptedItem } from '../../../../../utils/encryptionUtilities';
@@ -224,7 +224,7 @@ const RegisterCustomersForm = () => {
       />
 
       {/* submit */}
-      <PrimaryButtonComponent
+      <ButtonPrimary
         text="Registrarse"
         type="submit"
         toggleSpinner={toggleSpinner}

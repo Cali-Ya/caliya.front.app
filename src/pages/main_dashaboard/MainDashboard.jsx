@@ -3,7 +3,7 @@ import './main_dashboard.css';
 //components
 import ShoppingCartIcon from '../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 import ShopCard from '../../features/main_dashboard/components/shop_card/ShopCard';
-import PrimaryButtonComponent from '../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../components/button_components/ButttonsComponents';
 //layouts
 import CombosLayout from '../../layout/combos/CombosLayout';
 import TapBar from '../../components/bars/tap_bar/TapBar';
@@ -16,7 +16,7 @@ import useCaliyaLoader from '../../store/caliya_loader.store';
 import { getDecryptedItem } from '../../utils/encryptionUtilities';
 //react
 import { useEffect, useState } from 'react';
-import { data, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const MainDashboard = () => {
   //navigate
@@ -69,7 +69,7 @@ const MainDashboard = () => {
               Bienvenido, {userData.data.name}
             </h3>
           ) : (
-            <PrimaryButtonComponent
+            <ButtonPrimary
               text="Registrate"
               onClick={() => navigate('/auth/sign_up')}
             />

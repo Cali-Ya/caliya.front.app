@@ -3,7 +3,7 @@ import './change_password.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 //react
 import { useForm } from 'react-hook-form';
 
@@ -76,7 +76,7 @@ const ChangePassword = () => {
           }}
         />
 
-        <PrimaryButtonComponent type="submit" text="Cambiar contraseña" />
+        <ButtonPrimary type="submit" text="Cambiar contraseña" />
       </form>
     </section>
   );
