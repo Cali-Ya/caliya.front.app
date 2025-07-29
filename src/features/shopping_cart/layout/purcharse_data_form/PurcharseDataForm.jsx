@@ -2,7 +2,7 @@
 import './purcharse_data_form.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
 //custom hooks
 import useCartStore from '../../../../store/cart.store';
@@ -195,7 +195,7 @@ const FormDelevery = () => {
         </div>
       </div>
 
-      <PrimaryButtonComponent
+      <ButtonPrimary
         onClick={handleSendWhatsApp}
         text="Enviar Pedido"
         disabled={!isPurchaseDataComplete}

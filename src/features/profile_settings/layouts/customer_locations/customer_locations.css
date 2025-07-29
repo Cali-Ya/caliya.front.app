@@ -33,27 +33,6 @@
           gap: 0.6em;
         }
 
-        .customer_locations_form__content_location__button {
-          padding: 0.6em 0.6em;
-          border-radius: var(--border-radius);
-          outline: none;
-          border: none;
-          height: 2.5em;
-          width: 5em;
-          cursor: pointer;
-          background-color: var(--accents-color-primary);
-          color: var(--active-color-white);
-
-          &:active {
-            background-color: var(--active-color-primary);
-          }
-        }
-
-        .customer_locations_form__content_location__spinner_button {
-          width: 20px;
-          height: 20px;
-        }
-
         .customer_locations_form__content_location__gps_address {
           font-size: 0.9em;
           color: var(--active-color-secondary-light);

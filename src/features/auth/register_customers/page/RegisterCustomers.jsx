@@ -2,15 +2,9 @@
 import '../styles/register_customers.css';
 //layout
 import RegisterCustomersForm from '../layout/customers_form/RegisterCustomersForm';
-//components
-import SecondaryButtomComponent from '../../../../components/button_components/button_secondary/SecondaryButtonComponent';
-//react
-import { useNavigate } from 'react-router-dom';
 import AuthHeader from '../../components/AuthHeader/AuthHeader';
 
 const RegisterCustomers = () => {
-  const navigate = useNavigate();
-
   return (
     <section className="container_register_customers">
       <AuthHeader

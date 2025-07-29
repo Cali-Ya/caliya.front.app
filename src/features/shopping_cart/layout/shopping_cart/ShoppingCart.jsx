@@ -1,8 +1,10 @@
 //css
 import './shopping_cart.css';
 //components
-import PrimaryButtonComponent from '../../../../components/button_components/button_primary/PrimaryButtonComponent';
-import SecondaryButtonComponent from '../../../../components/button_components/button_secondary/SecondaryButtonComponent';
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from '../../../../components/button_components/ButttonsComponents';
 //custom hooks
 import useNumberFormat from '../../../../hooks/useNumberFormat';
 import useCartStore from '../../../../store/cart.store';
@@ -155,24 +157,19 @@ const CartStorePage = () => {
                     {/* actions */}
                     <div className="actions_item_list_shopping_cart">
                       {/* add */}
-                      <button
+                      <ButtonPrimary
+                        text="Añadir"
                         onClick={() =>
                           addItem({
                             ...item,
                             quantity: 1, // Solo sumar 1 unidad
                           })
                         }
-                        className="action_add_item_list_shopping_cart actions_item_list_shopping_cart"
-                      >
-                        Añadir
-                      </button>
-
-                      <button
+                      />
+                      <ButtonSecondary
+                        text="Quitar"
                         onClick={() => removeItemQuantity(item)}
-                        className="action_remove_item_list_shopping_cart actions_item_list_shopping_cart"
-                      >
-                        Quitar
-                      </button>
+                      />
                     </div>
                   </li>
                 ))}
@@ -183,7 +180,7 @@ const CartStorePage = () => {
                   <span>Total: </span>
                   <span>${formatNumber(totalShop, country)}</span>
                 </strong>
-                <PrimaryButtonComponent
+                <ButtonPrimary
                   text="Hacer pedido"
                   onClick={() => handlePlaceOrder(shopId, group)}
                   className="actions__button_item_shopping_cart"
@@ -197,7 +194,7 @@ const CartStorePage = () => {
       {/* actions */}
       {cart.length === cartEmpty ? null : (
         <section className="actions_item_shopping_cart">
-          <SecondaryButtonComponent
+          <ButtonSecondary
             text="Quitar todo del carrito"
             onClick={handleRemoveAllProducts}
             className="actions__button_item_shopping_cart"
