@@ -61,7 +61,16 @@ body {
   width: 100%;
 }
 
-body {
+/* main padding */
+.main_dashboard,
+.profile_settings_container,
+.profile_information,
+.change_password_container,
+.customer_locations_container,
+.login_customers_container,
+.container_register_customers,
+.content_store_page,
+.container_shopping_cart_page {
   padding: var(--padding-main);
 }
 
