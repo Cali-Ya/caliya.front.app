@@ -4,6 +4,7 @@ import './purcharse_data_form.css';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
+import CardErrorMessage from '../../../../components/errors_messages/card_error_message/CardErrorMessage';
 //custom hooks
 import useCartStore from '../../../../store/cart.store';
 import usePlaceOrderStore from '../../store/place_order.store';
@@ -11,9 +12,9 @@ import useNumberFormat from '../../../../hooks/useNumberFormat';
 //react
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+//utils
 import { buildWhatsAppMessage } from '../../../../lib/shared/buildWhatsappMessageOrder';
 import { preprocessCartItems } from '../../../../lib/shared/cartUtils';
-import CardErrorMessage from '../../../../components/errors_messages/card_error_message/CardErrorMessage';
 
 const FormDelevery = () => {
   scrollTo(0, 0);
@@ -26,19 +27,6 @@ const FormDelevery = () => {
 
   //navigate
   const navigate = useNavigate();
-
-  //state
-  const [purchaseData, setPurchaseData] = useState({
-    full_name: '',
-    whatsapp: '',
-    neighborhood: '',
-    direction: '',
-  });
-
-  // Check if all fields in purchaseData are filled
-  const isPurchaseDataComplete = Object.values(purchaseData).every(
-    (value) => value && value.trim() !== ''
-  );
 
   //Si hay un pedido en curso, usa solo esos productos
   const items = placeOrder ? placeOrder.items : cart;
@@ -54,15 +42,6 @@ const FormDelevery = () => {
     }
   };
 
-  // handle input changue
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setPurchaseData((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
   //handle send whastapp
 
   const processedItems = preprocessCartItems(items);
@@ -71,7 +50,6 @@ const FormDelevery = () => {
     const message = buildWhatsAppMessage(
       processedItems,
       shopName,
-      purchaseData,
       formatNumber
     );
 
@@ -107,38 +85,17 @@ const FormDelevery = () => {
           <h2 className="form_header__title">Escribe tu Dirección</h2>
         </header>
         <InputComponent
-          placeholder=""
+          name="full_name"
           label="Nombre Completo"
           id="full_name"
-          onChange={handleInputChange}
-          value={purchaseData.full_name}
         />
-        <InputComponent
-          placeholder=""
-          label="Whatsapp"
-          id="whatsapp"
-          onChange={handleInputChange}
-          value={purchaseData.whatsapp}
-        />
-        <InputComponent
-          placeholder=""
-          label="Barrio"
-          id="neighborhood"
-          onChange={handleInputChange}
-          value={purchaseData.neighborhood}
-        />
-        <InputComponent
-          placeholder=""
-          label="Dirreción"
-          id="direction"
-          onChange={handleInputChange}
-          value={purchaseData.direction}
-        />
+        <InputComponent label="Número de télefono" id="phone_number" />
+        <InputComponent label="Ubicación" id="location" />
       </form>
 
-      {isPurchaseDataComplete ? null : (
+      {/*  { ? null : (
         <CardErrorMessage error_message={error_message} />
-      )}
+      )} */}
 
       <div className="order_sumary">
         <h3 className="order_sumary__title">Resumen de tu pedido</h3>
@@ -195,11 +152,7 @@ const FormDelevery = () => {
         </div>
       </div>
 
-      <ButtonPrimary
-        onClick={handleSendWhatsApp}
-        text="Enviar Pedido"
-        disabled={!isPurchaseDataComplete}
-      />
+      <ButtonPrimary onClick={handleSendWhatsApp} text="Enviar Pedido" />
     </section>
   );
 };
