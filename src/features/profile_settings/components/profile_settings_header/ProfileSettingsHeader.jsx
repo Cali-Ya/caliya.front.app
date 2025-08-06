@@ -10,7 +10,7 @@ const ProfileSettingsHeader = ({ title = 'Title header' }) => {
   return (
     <header className="profile_settings_header">
       <CaretIconLeft
-        onClick={() => navigate(-1)}
+        onClick={() => navigate('/profile_settings')}
         preferColor={false}
         className="profile_settings_header__caret_left"
       />

@@ -90,8 +90,8 @@ const CustomerLocations = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputComponent
-          id="location_name"
-          name="location_name"
+          id="alias"
+          name="alias"
           label="Nombre de la ubicación"
           autoComplete="off"
           register={register}
@@ -130,12 +130,13 @@ const CustomerLocations = () => {
               ref={hintRef}
             >
               <h4 className="customer_locations_form__content_location__title">
-                Obten tu ubicación actual o escribe tu dirección.
+                Obten tu ubicación actual.
                 <ButtonPrimary
                   type="button"
                   text="Buscar"
                   toggleSpinner={loadingLocation}
                   onClick={handleGetLocation}
+                  className="customer_locations_form__content_location__title__button"
                 />
               </h4>
               {gpsAddress && (
@@ -160,6 +161,21 @@ const CustomerLocations = () => {
             </div>
           )}
         </div>
+
+        <InputComponent
+          id="reference"
+          name="reference"
+          label="Referencia"
+          autoComplete="off"
+          register={register}
+          errors={errors}
+          rules={{
+            required: {
+              value: true,
+              message: 'Escribe una referencia, ej. Casa 123 color azul',
+            },
+          }}
+        />
 
         <ButtonPrimary type="submit" text="Añadir ubicación" />
       </form>

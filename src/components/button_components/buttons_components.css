@@ -2,6 +2,7 @@
 .button_component_enabled {
   cursor: pointer;
   transition: scale 0.2s ease-in, background-color 0.3s ease;
+  border: solid 2px var(--active-color-primary);
 
   &:active {
     scale: 0.95;

@@ -4,7 +4,9 @@ const register_customer = async (
   data,
   setToggleSpinner,
   setEncryptedItem,
-  navigate
+  navigate,
+  setRedirectionState,
+  data_redirection_page
 ) => {
   // Activa el spinner
   setToggleSpinner(true);
@@ -20,7 +22,8 @@ const register_customer = async (
         data: response.data,
       };
       setEncryptedItem(user_session, userSession);
-      navigate('/');
+      setRedirectionState(data_redirection_page);
+      navigate('/redirect/locations');
     }
   } catch (error) {
     console.log(error);

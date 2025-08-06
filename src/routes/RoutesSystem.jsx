@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { features_pages as Features } from '../features/features_exports';
 import MainPage from '../pages/MainPage';
-import TapBar from '../components/bars/tap_bar/TapBar';
+import RedirectPage from '../pages/redirection/RedirectPage';
 
 const indexActive = true;
 
@@ -54,6 +54,12 @@ const RoutesSystem = createBrowserRouter([
       {
         path: '/profile_settings/my_locations',
         element: <Features.profile_settings.CustomerLocations />,
+      },
+
+      /* redirections */
+      {
+        path: '/redirect/:redirect',
+        element: <RedirectPage />,
       },
     ],
   },

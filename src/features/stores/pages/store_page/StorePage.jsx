@@ -10,7 +10,6 @@ import StoreCategories from '../../../stores/layout/store_categories/StoreCatego
 import { useEffect, useRef, useState } from 'react';
 //components
 import CaretIconLeft from '../../../../components/caret_icons/caret_icon_left/CaretIconLeft';
-import SearchComponent from '../../../../components/search_component/SearchComponent';
 //icons
 import ShoppingCartIcon from '../../../../components/icons/shopping_cart_icon/ShoppingCartIcon';
 //services

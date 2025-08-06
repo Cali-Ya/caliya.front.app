@@ -70,7 +70,8 @@ body {
 .login_customers_container,
 .container_register_customers,
 .content_store_page,
-.container_shopping_cart_page {
+.container_shopping_cart_page,
+.redirect_locations_container {
   padding: var(--padding-main);
 }
 

@@ -23,14 +23,17 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.4em;
+        gap: 0.6em;
 
         .customer_locations_form__content_location__title {
           font-size: 1em;
           font-weight: 400;
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          gap: 0.6em;
+        }
+        .customer_locations_form__content_location__title__button {
+          width: 10em;
         }
 
         .customer_locations_form__content_location__gps_address {
@@ -38,8 +41,8 @@
           color: var(--active-color-secondary-light);
           font-weight: 400;
           display: flex;
-          align-items: center;
-          gap: 1em;
+          flex-direction: column;
+          gap: 0.5em;
         }
       }
     }
