@@ -4,13 +4,17 @@ import './register_customers_form.css';
 import InputComponent from '../../../../../components/input_component/InputComponent';
 import { ButtonPrimary } from '../../../../../components/button_components/ButttonsComponents';
 import InputCalendar from '../../../../../components/calendars/input_calendar/InputCalendar';
+//assets
+import { ilustrations } from '../../../../../assets/assets_exports';
 //utils
 import { setEncryptedItem } from '../../../../../utils/encryptionUtilities';
 //services
 import register_customer from '../../services/register_customer';
+//stores
+import useRedirections from '../../../../../store/redirections.store';
 //react
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterCustomersForm = () => {
@@ -18,6 +22,27 @@ const RegisterCustomersForm = () => {
   const navigate = useNavigate();
   //toggle button spinner
   const [toggleSpinner, setToggleSpinner] = useState(false);
+
+  //data redirection page
+  const img_redirect_page = ilustrations.LocationIlustration;
+  const description = (
+    <>
+      {`Ahora puedes agregar `}
+      <a href="/profile_settings/my_locations">
+        tus ubicaciones más frecuentes
+      </a>
+      {` o `}
+      <a href="/">Ir directamente al menú</a>
+    </>
+  );
+
+  const data_redirection_page = {
+    title: 'Agrega una ubicación',
+    img: img_redirect_page,
+    description: description,
+  };
+
+  const { setRedirectionState } = useRedirections();
 
   const {
     register,
@@ -29,7 +54,14 @@ const RegisterCustomersForm = () => {
 
   const onSubmit = (data) => {
     data.phone = `+57${data.phone}`;
-    register_customer(data, setToggleSpinner, setEncryptedItem, navigate);
+    register_customer(
+      data,
+      setToggleSpinner,
+      setEncryptedItem,
+      navigate,
+      setRedirectionState,
+      data_redirection_page
+    );
   };
 
   //const

@@ -24,7 +24,7 @@ export function buildWhatsAppMessage(
     total += subtotal;
 
     // Producto y detalles
-    message += `Producto: ${item.name}\n`;
+    message += `Producto: *${item.name}*\n`;
     message += `* Cantidad: ${quantity}\n`;
     message += `* Precio unitario: $${formatNumber(unitPrice, 'es-CO')}\n`;
     message += `* Precio total: $${formatNumber(totalUnitPrice, 'es-CO')}\n\n`;
@@ -38,7 +38,10 @@ export function buildWhatsAppMessage(
     if (additionals.length > 0) {
       message += `Adicionales:\n`;
       additionals.forEach((a) => {
-        message += `- ${a.name}: $${formatNumber(a.price, 'es-CO')} x${quantity}\n`;
+        message += `- ${a.name}: x${quantity} $${formatNumber(
+          a.price,
+          'es-CO'
+        )}\n`;
       });
       message += `* Precio total: $${formatNumber(
         totalAdditionals,
@@ -58,7 +61,7 @@ export function buildWhatsAppMessage(
 
   message += `---------------------------------------\n\n`;
   message += `Total a pagar: $${formatNumber(total, 'es-CO')}\n\n`;
-  message += `Datos del comprador:\n`;
+  message += `*Datos del comprador*\n`;
   if (purchaseData.full_name) message += `Nombre: ${purchaseData.full_name}\n`;
   if (purchaseData.direction)
     message += `Dirección: ${purchaseData.direction}\n`;

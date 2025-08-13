@@ -4,14 +4,43 @@ import './login_customers.css';
 import InputComponent from '../../../../components/input_component/InputComponent';
 import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 import AuthHeader from '../../components/AuthHeader/AuthHeader';
+//assets
+import { ilustrations } from '../../../../assets/assets_exports';
 //services
 import login_customers from '../services/login_customers';
+//stores
+import useRedirections from '../../../../store/redirections.store';
 //react
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const LoginCustomers = () => {
   const navigate = useNavigate();
+
+  //toggle button spinner
+  const [toggleSpinner, setToggleSpinner] = useState(false);
+
+  //data redirection page
+  const img_redirect_page = ilustrations.LocationIlustration;
+  const description = (
+    <>
+      {`Ahora puedes agregar `}
+      <a href="/profile_settings/my_locations">
+        tus ubicaciones más frecuentes
+      </a>
+      {` o `}
+      <a href="/">Ir directamente al menú</a>
+    </>
+  );
+
+  const data_redirection_page = {
+    title: 'Agrega una ubicación',
+    img: img_redirect_page,
+    description: description,
+  };
+
+  const { setRedirectionState } = useRedirections();
 
   const {
     register,
@@ -22,7 +51,13 @@ const LoginCustomers = () => {
   const onSubmit = (data) => {
     data.phone_number = `+57${data.phone_number}`;
     console.log(data);
-    login_customers(data, navigate);
+    login_customers(
+      data,
+      navigate,
+      setToggleSpinner,
+      setRedirectionState,
+      data_redirection_page
+    );
   };
 
   //vars
@@ -70,7 +105,11 @@ const LoginCustomers = () => {
             },
           }}
         />
-        <ButtonPrimary type="submit" text="Ir a la página principal" />
+        <ButtonPrimary
+          type="submit"
+          text="Ir a la página principal"
+          toggleSpinner={toggleSpinner}
+        />
       </form>
 
       <footer className="login_customer_footer">
