@@ -26,23 +26,27 @@
         gap: 0.6em;
 
         .customer_locations_form__content_location__title {
-          font-size: 1em;
+          font-size: 1.1em;
           font-weight: 400;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .customer_locations_form__content_location__title__button {
-          width: 10em;
+          text-align: center;
         }
 
         .customer_locations_form__content_location__gps_address {
           font-size: 0.9em;
           color: var(--active-color-secondary-light);
-          font-weight: 400;
+          gap: 0.8em;
           display: flex;
-          flex-direction: column;
-          gap: 0.5em;
+          justify-content: center;
+          .customer_locations_form__content_location__gps_address__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6em;
+          }
+
+          .customer_locations_form__content_location__gps_address__spinner {
+            width: 30px;
+            height: 30px;
+          }
         }
       }
     }
