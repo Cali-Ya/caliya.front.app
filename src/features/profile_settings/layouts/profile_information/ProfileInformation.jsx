@@ -17,6 +17,7 @@ const ProfileInformation = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       name: user_data.data.name,
@@ -25,6 +26,8 @@ const ProfileInformation = () => {
       email: user_data.data.email,
     },
   });
+
+  console.log(watch());
 
   const onSubmit = (data) => {
     console.log(data);

@@ -3,24 +3,24 @@ import './customer_locations.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader';
-import {
-  ButtonPrimary,
-  ButtonSecondary,
-} from '../../../../components/button_components/ButttonsComponents';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
+import Spinner from '../../../../components/spinner/Spinner';
 //icons
 import { MdLocationOn, MdDelete } from 'react-icons/md';
+//services
+import register_location_customer from '../../services/register_location_customer';
+import get_all_location_customer from '../../services/get_all_location_customer';
 //react
 import { useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
-import register_location_customer from '../../services/register_location_customer';
-import Spinner from '../../../../components/spinner/Spinner';
-import { GoogleMapsGeocoding } from '../../../../services/GoogleMapsGeocoding';
 
 const CustomerLocations = () => {
   //detected location
   const [showAddressHint, setShowAddressHint] = useState(false);
   const [loadingLocation, setLoadingLocation] = useState(false);
   const [gpsAddress, setGpsAddress] = useState('');
+  const [locations, setLocations] = useState([]);
+  const [getLocations, setGetLocations] = useState(false);
 
   //force label
   const [forceMoveLabel, setForceMoveLabel] = useState(false);
@@ -86,8 +86,16 @@ const CustomerLocations = () => {
     }
   };
 
+  //Get locations
+  useEffect(() => {
+    get_all_location_customer(setLocations, setGetLocations, getLocations);
+  }, [getLocations]);
+
+  if (!getLocations) {
+    get_all_location_customer(setLocations, setGetLocations, getLocations);
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
     register_location_customer(data, setToggleSpinner);
   };
 
@@ -195,29 +203,38 @@ const CustomerLocations = () => {
         />
       </form>
 
-      <h3 className="customer_locations_title">Ubicaciones guardadas</h3>
-
       {/* address */}
-      <div className="customer_locations__locations">
-        {/* icon */}
-        <MdLocationOn className="customer_locations__locations_icon" />
 
-        {/* addres information */}
-        <address className="customer_locations__address">
-          <p className="customer_locations__address_name">Mi casa</p>
-          <span className="customer_locations__address_description">
-            Santa Martha, Edifi. 19-01, 3er etapa, Via ocumare charallave
-          </span>
-        </address>
+      <ul className="customer_locations__locations_list">
+        <h3 className="customer_locations_title">Ubicaciones guardadas</h3>
+        {locations &&
+          locations.map((location, index) => (
+            <>
+              <li key={index} className="customer_locations__locations">
+                {/* icon */}
+                <MdLocationOn className="customer_locations__locations_icon" />
 
-        {/* actions */}
-        <div className="customer_locations__action_content">
-          <MdDelete className="customer_locations__action_content__icon" />
-          <span className="customer_locations__action_content__text">
-            Eliminar
-          </span>
-        </div>
-      </div>
+                {/* addres information */}
+                <address className="customer_locations__address">
+                  <p className="customer_locations__address_name">
+                    {location.alias}
+                  </p>
+                  <span className="customer_locations__address_description">
+                    {location.address}
+                  </span>
+                </address>
+
+                {/* actions */}
+                <div className="customer_locations__action_content">
+                  <MdDelete className="customer_locations__action_content__icon" />
+                  <span className="customer_locations__action_content__text">
+                    Eliminar
+                  </span>
+                </div>
+              </li>
+            </>
+          ))}
+      </ul>
     </section>
   );
 };

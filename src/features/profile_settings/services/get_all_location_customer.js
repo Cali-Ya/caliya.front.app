@@ -1,17 +1,22 @@
 import api from '../../../lib/api';
 
-const register_location_customer = async (data, setToggleSpinner) => {
-  setToggleSpinner(true);
+const register_location_customer = async (
+  setLocations,
+  setGetLocations,
+  getLocations
+) => {
   try {
-    const response = await api.post('/customers/address', data);
+    const response = await api.get('/customers/address');
 
-    console.log(response); /* 
-    if (response.ok === 201) {
-    } */
+    if (response.status === 200) {
+      setLocations(response.data);
+
+      if (getLocations) {
+        setGetLocations(true);
+      }
+    }
   } catch (error) {
     console.log(error);
-  } finally {
-    setToggleSpinner(false);
   }
 };
 
