@@ -9,7 +9,7 @@ import Spinner from '../../../../components/spinner/Spinner';
 import { MdLocationOn, MdDelete } from 'react-icons/md';
 //services
 import register_location_customer from '../../services/register_location_customer';
-import get_all_location_customer from '../../services/get_all_location_customer';
+import get_all_location_customer from '../../../../services/get_all_location_customer';
 //react
 import { useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
@@ -63,7 +63,7 @@ const CustomerLocations = () => {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          setValue('cords', {
+          setValue('coords', {
             lat: latitude,
             long: longitude,
           });
@@ -89,14 +89,18 @@ const CustomerLocations = () => {
   //Get locations
   useEffect(() => {
     get_all_location_customer(setLocations, setGetLocations, getLocations);
+  }, []);
+
+  useEffect(() => {
+    if (!getLocations) {
+      get_all_location_customer(setLocations, () => setGetLocations(true));
+    }
   }, [getLocations]);
 
-  if (!getLocations) {
-    get_all_location_customer(setLocations, setGetLocations, getLocations);
-  }
-
-  const onSubmit = (data) => {
-    register_location_customer(data, setToggleSpinner);
+  const onSubmit = async (data) => {
+    await register_location_customer(data, setToggleSpinner);
+    // Refresca las ubicaciones después de agregar
+    get_all_location_customer(setLocations, setGetLocations);
   };
 
   return (
