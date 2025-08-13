@@ -3,12 +3,13 @@ import './customer_locations.css';
 //components
 import InputComponent from '../../../../components/input_component/InputComponent';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader';
-import {
-  ButtonPrimary,
-  ButtonSecondary,
-} from '../../../../components/button_components/ButttonsComponents';
+import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
+import Spinner from '../../../../components/spinner/Spinner';
 //icons
 import { MdLocationOn, MdDelete } from 'react-icons/md';
+//services
+import register_location_customer from '../../services/register_location_customer';
+import get_all_location_customer from '../../services/get_all_location_customer';
 //react
 import { useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
@@ -18,9 +19,13 @@ const CustomerLocations = () => {
   const [showAddressHint, setShowAddressHint] = useState(false);
   const [loadingLocation, setLoadingLocation] = useState(false);
   const [gpsAddress, setGpsAddress] = useState('');
+  const [locations, setLocations] = useState([]);
+  const [getLocations, setGetLocations] = useState(false);
 
   //force label
   const [forceMoveLabel, setForceMoveLabel] = useState(false);
+  // spiner button
+  const [toggleSpinner, setToggleSpinner] = useState(false);
 
   //form
   const {
@@ -28,7 +33,10 @@ const CustomerLocations = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    // watch,
   } = useForm();
+
+  // const cords = watch('cords');
 
   const hintRef = useRef(null);
   useEffect(() => {
@@ -46,16 +54,18 @@ const CustomerLocations = () => {
     };
   }, [showAddressHint]);
 
-  //get location
+  //Get location
   const handleGetLocation = async () => {
+    // Active spinner
     setLoadingLocation(true);
     if (navigator.geolocation) {
+      // Get location
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          setValue('coords', {
-            latitude: latitude,
-            longitude: longitude,
+          setValue('cords', {
+            lat: latitude,
+            long: longitude,
           });
           // Usar Nominatim para obtener la dirección
           const response = await fetch(
@@ -76,8 +86,17 @@ const CustomerLocations = () => {
     }
   };
 
+  //Get locations
+  useEffect(() => {
+    get_all_location_customer(setLocations, setGetLocations, getLocations);
+  }, [getLocations]);
+
+  if (!getLocations) {
+    get_all_location_customer(setLocations, setGetLocations, getLocations);
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
+    register_location_customer(data, setToggleSpinner);
   };
 
   return (
@@ -122,7 +141,10 @@ const CustomerLocations = () => {
                 message: 'Escribe tu ubicación',
               },
             }}
-            onFocus={() => setShowAddressHint(true)}
+            onFocus={() => {
+              setShowAddressHint(true);
+              handleGetLocation();
+            }}
           />
           {showAddressHint && (
             <div
@@ -131,31 +153,28 @@ const CustomerLocations = () => {
             >
               <h4 className="customer_locations_form__content_location__title">
                 Obten tu ubicación actual.
-                <ButtonPrimary
-                  type="button"
-                  text="Buscar"
-                  toggleSpinner={loadingLocation}
-                  onClick={handleGetLocation}
-                  className="customer_locations_form__content_location__title__button"
-                />
               </h4>
               {gpsAddress && (
                 <div className="customer_locations_form__content_location__gps_address">
-                  {gpsAddress}.
-                  <div>
-                    <ButtonSecondary
-                      text="Usar ubicación"
-                      onClick={() => {
-                        setValue('address', gpsAddress, {
-                          shouldValidate: true,
-                          shouldTouch: true,
-                        });
-                        setShowAddressHint(false);
-                        setForceMoveLabel(true);
-                        setGpsAddress('');
-                      }}
-                    />
-                  </div>
+                  {loadingLocation ? (
+                    <Spinner className="customer_locations_form__content_location__gps_address__spinner" />
+                  ) : (
+                    <div className="customer_locations_form__content_location__gps_address__info">
+                      {gpsAddress}.
+                      <ButtonPrimary
+                        text="Usar ubicación"
+                        onClick={() => {
+                          setValue('address', gpsAddress, {
+                            shouldValidate: true,
+                            shouldTouch: true,
+                          });
+                          setShowAddressHint(false);
+                          setForceMoveLabel(true);
+                          setGpsAddress('');
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -177,32 +196,45 @@ const CustomerLocations = () => {
           }}
         />
 
-        <ButtonPrimary type="submit" text="Añadir ubicación" />
+        <ButtonPrimary
+          type="submit"
+          text="Añadir ubicación"
+          toggleSpinner={toggleSpinner}
+        />
       </form>
 
-      <h3 className="customer_locations_title">Ubicaciones guardadas</h3>
-
       {/* address */}
-      <div className="customer_locations__locations">
-        {/* icon */}
-        <MdLocationOn className="customer_locations__locations_icon" />
 
-        {/* addres information */}
-        <address className="customer_locations__address">
-          <p className="customer_locations__address_name">Mi casa</p>
-          <span className="customer_locations__address_description">
-            Santa Martha, Edifi. 19-01, 3er etapa, Via ocumare charallave
-          </span>
-        </address>
+      <ul className="customer_locations__locations_list">
+        <h3 className="customer_locations_title">Ubicaciones guardadas</h3>
+        {locations &&
+          locations.map((location, index) => (
+            <>
+              <li key={index} className="customer_locations__locations">
+                {/* icon */}
+                <MdLocationOn className="customer_locations__locations_icon" />
 
-        {/* actions */}
-        <div className="customer_locations__action_content">
-          <MdDelete className="customer_locations__action_content__icon" />
-          <span className="customer_locations__action_content__text">
-            Eliminar
-          </span>
-        </div>
-      </div>
+                {/* addres information */}
+                <address className="customer_locations__address">
+                  <p className="customer_locations__address_name">
+                    {location.alias}
+                  </p>
+                  <span className="customer_locations__address_description">
+                    {location.address}
+                  </span>
+                </address>
+
+                {/* actions */}
+                <div className="customer_locations__action_content">
+                  <MdDelete className="customer_locations__action_content__icon" />
+                  <span className="customer_locations__action_content__text">
+                    Eliminar
+                  </span>
+                </div>
+              </li>
+            </>
+          ))}
+      </ul>
     </section>
   );
 };
