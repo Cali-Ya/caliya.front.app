@@ -12,7 +12,7 @@ const login_customers = async (
   // Activa el spinner
   setToggleSpinner(true);
   try {
-    const response = api.post('/customers/sign_in', data);
+    const response = await api.post('/customers/sign_in', data);
     console.log(response);
 
     const responseOK = 200;

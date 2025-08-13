@@ -33,10 +33,10 @@ const CustomerLocations = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
+    // watch,
   } = useForm();
 
-  const coords = watch('coords');
+  // const cords = watch('cords');
 
   const hintRef = useRef(null);
   useEffect(() => {
@@ -63,7 +63,7 @@ const CustomerLocations = () => {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          setValue('coords', {
+          setValue('cords', {
             lat: latitude,
             long: longitude,
           });
@@ -88,7 +88,7 @@ const CustomerLocations = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    // register_location_customer(data, setToggleSpinner);
+    register_location_customer(data, setToggleSpinner);
   };
 
   return (

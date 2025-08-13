@@ -50,6 +50,7 @@ const LoginCustomers = () => {
 
   const onSubmit = (data) => {
     data.phone_number = `+57${data.phone_number}`;
+    console.log(data);
     login_customers(
       data,
       navigate,
