@@ -115,7 +115,12 @@
         align-self: center;
 
         &:hover {
-          color: var(--active-color-secondary);
+          color: var(--active-color-red);
+        }
+
+        &:active {
+          transform: scale(0.9);
+          transition: transform 0.1s ease-in-out;
         }
 
         .customer_locations__action_content__icon {

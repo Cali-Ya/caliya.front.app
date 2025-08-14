@@ -8,7 +8,10 @@ import Spinner from '../../../../components/spinner/Spinner';
 //icons
 import { MdLocationOn, MdDelete } from 'react-icons/md';
 //services
-import register_location_customer from '../../services/register_location_customer';
+import {
+  delete_location_customer,
+  register_location_customer,
+} from '../../services/locations_customer';
 import get_all_location_customer from '../../../../services/get_all_location_customer';
 //react
 import { useForm } from 'react-hook-form';
@@ -33,6 +36,7 @@ const CustomerLocations = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    reset,
     // watch,
   } = useForm();
 
@@ -97,9 +101,17 @@ const CustomerLocations = () => {
     }
   }, [getLocations]);
 
+  //add location
   const onSubmit = async (data) => {
     await register_location_customer(data, setToggleSpinner);
     // Refresca las ubicaciones después de agregar
+    get_all_location_customer(setLocations, setGetLocations);
+    reset();
+  };
+
+  //delete location
+  const deletedLocation = async (id) => {
+    await delete_location_customer(id, setToggleSpinner);
     get_all_location_customer(setLocations, setGetLocations);
   };
 
@@ -229,7 +241,10 @@ const CustomerLocations = () => {
                 </address>
 
                 {/* actions */}
-                <div className="customer_locations__action_content">
+                <div
+                  className="customer_locations__action_content"
+                  onClick={() => deletedLocation(location.id)}
+                >
                   <MdDelete className="customer_locations__action_content__icon" />
                   <span className="customer_locations__action_content__text">
                     Eliminar
