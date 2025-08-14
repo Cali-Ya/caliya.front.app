@@ -27,12 +27,8 @@ const RegisterCustomersForm = () => {
   const img_redirect_page = ilustrations.LocationIlustration;
   const description = (
     <>
-      {`Ahora puedes agregar `}
-      <a href="/profile_settings/my_locations">
-        tus ubicaciones más frecuentes
-      </a>
-      {` o `}
-      <a href="/">Ir directamente al menú</a>
+      {`Agrega una ubicación para que puedas recibir tus pedidos en tu casa, oficina o donde tú quieras.`}
+      <a href="/profile_settings/my_locations"> Agregar Ubicaciónes</a>
     </>
   );
 

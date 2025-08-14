@@ -4,12 +4,25 @@ import './profile_information.css';
 import InputComponent from '../../../../components/input_component/InputComponent.jsx';
 import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents.jsx';
 import ProfileSettingsHeader from '../../components/profile_settings_header/ProfileSettingsHeader.jsx';
+//services
+import { change_profile_data } from '../../services/change_profile_information.js';
+import get_infomation_customer from '../../../../services/get_infomation_customer.js';
 //utilts
-import { getDecryptedItem } from '../../../../utils/encryptionUtilities.js';
+import {
+  getDecryptedItem,
+  setEncryptedItem,
+} from '../../../../utils/encryptionUtilities.js';
 //react
 import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 
 const ProfileInformation = () => {
+  useEffect(() => {
+    if (user_data && user_data.session) {
+      get_infomation_customer(setEncryptedItem);
+    }
+  }, []);
+
   //data value user
   const user_session = 'user_session';
   const user_data = getDecryptedItem(user_session);
@@ -17,7 +30,6 @@ const ProfileInformation = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm({
     defaultValues: {
       name: user_data.data.name,
@@ -27,10 +39,13 @@ const ProfileInformation = () => {
     },
   });
 
-  console.log(watch());
+  //toggle button spinner
+  const [toggleSpinner, setToggleSpinner] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    await change_profile_data(data, setToggleSpinner);
+    // Refresca la información del usuario después de actualizar
+    get_infomation_customer(setEncryptedItem);
   };
 
   return (
@@ -132,6 +147,7 @@ const ProfileInformation = () => {
         </div>
 
         <div>
+          {/* email */}
           <InputComponent
             id="email"
             name="email"
@@ -149,7 +165,11 @@ const ProfileInformation = () => {
           />
         </div>
 
-        <ButtonPrimary type="submit" text="Cambiar información" />
+        <ButtonPrimary
+          type="submit"
+          text="Cambiar información"
+          toggleSpinner={toggleSpinner}
+        />
       </form>
     </section>
   );
