@@ -12,11 +12,18 @@ import getAllShops from '../../features/main_dashboard/services/get_all_shops';
 import getCombos from '../../features/main_dashboard/services/get_combos';
 //custom hooks
 import useCaliyaLoader from '../../store/caliya_loader.store';
+import useRedirections from '../../store/redirections.store';
 //utils
-import { getDecryptedItem } from '../../utils/encryptionUtilities';
+import {
+  getDecryptedItem,
+  setEncryptedItem,
+} from '../../utils/encryptionUtilities';
+import get_infomation_customer from '../../services/get_infomation_customer';
+import get_all_location_customer from '../../services/get_all_location_customer';
 //react
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ilustrations } from '../../assets/assets_exports';
 
 const MainDashboard = () => {
   //navigate
@@ -27,8 +34,17 @@ const MainDashboard = () => {
   const [combos, setCombos] = useState();
   // loader local
   const [isLoading, setIsLoading] = useState(true);
+  //locations customer
+  const [locations, setLocations] = useState([]);
+  const [getLocations, setGetLocations] = useState(false);
+
+  //location
+  const location = useLocation();
 
   const { setStateCaliyaLoader } = useCaliyaLoader();
+
+  //redirections
+  const { setRedirectionState } = useRedirections();
 
   //get all shops
   useEffect(() => {
@@ -50,12 +66,57 @@ const MainDashboard = () => {
     data: null,
   });
 
+  //create session && get user data
   useEffect(() => {
     const user_session = 'user_session';
-
     const user_data = getDecryptedItem(user_session);
     setUserData(user_data);
+
+    if (user_data && user_data.session) {
+      get_infomation_customer(setEncryptedItem).then(() => {
+        // Actualiza el estado después de obtener la info del usuario
+        const updatedUserData = getDecryptedItem(user_session);
+        setUserData(updatedUserData);
+      });
+    }
+
+    get_all_location_customer(setLocations, setGetLocations);
   }, []);
+
+  // Redirección si no hay ubicaciones
+  useEffect(() => {
+    // Solo ejecuta la redirección cuando la petición terminó
+    if (getLocations && userData.session) {
+      if (Array.isArray(locations) && locations.length === 0) {
+        const data_redirection_page = {
+          title: 'Agrega una ubicación',
+          img: ilustrations.LocationIlustration,
+          description: (
+            <>
+              {`Agrega un ubicación para poder realizar pedidos.`}
+              <a href="/profile_settings/my_locations"> Agregar ubicaciónes</a>
+            </>
+          ),
+        };
+        setRedirectionState(data_redirection_page);
+        navigate('/redirect/locations');
+      }
+      // Si hay ubicaciones, no haces nada y se queda en el dashboard
+    }
+  }, [
+    getLocations,
+    locations,
+    setRedirectionState,
+    navigate,
+    userData.session,
+  ]);
+
+  // Actualiza userData cada vez que cambia la ruta
+  useEffect(() => {
+    const user_session = 'user_session';
+    const user_data = getDecryptedItem(user_session);
+    setUserData(user_data);
+  }, [location]);
 
   if (isLoading) null;
 
