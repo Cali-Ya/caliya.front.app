@@ -16,3 +16,15 @@ export const change_profile_data = async (data, setToggleSpinner) => {
     setToggleSpinner(false);
   }
 };
+
+export const change_password = async (data) => {
+  try {
+    const response = await api.put('/customers/change-password', data);
+    if (response.status === 200) {
+      console.log(response);
+    }
+  } catch (error) {
+    console.error('Error al cambiar la contraseña:', error);
+    return { success: false, message: 'Error de servidor' };
+  }
+};
