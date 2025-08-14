@@ -1,7 +1,7 @@
 .container_shopping_cart_icon {
   display: flex;
   align-items: center;
-  border-radius: 14px;
+  border-radius: 0.4em;
   cursor: pointer;
   transition: all 0.3s;
   padding: 0.4em 0.5em;
