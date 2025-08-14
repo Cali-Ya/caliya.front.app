@@ -66,7 +66,7 @@ const MainDashboard = () => {
     data: null,
   });
 
-  //create session
+  //create session && get user data
   useEffect(() => {
     const user_session = 'user_session';
     const user_data = getDecryptedItem(user_session);
@@ -86,7 +86,7 @@ const MainDashboard = () => {
   // Redirección si no hay ubicaciones
   useEffect(() => {
     // Solo ejecuta la redirección cuando la petición terminó
-    if (getLocations) {
+    if (getLocations && userData.session) {
       if (Array.isArray(locations) && locations.length === 0) {
         const data_redirection_page = {
           title: 'Agrega una ubicación',
@@ -103,7 +103,13 @@ const MainDashboard = () => {
       }
       // Si hay ubicaciones, no haces nada y se queda en el dashboard
     }
-  }, [getLocations, locations, setRedirectionState, navigate]);
+  }, [
+    getLocations,
+    locations,
+    setRedirectionState,
+    navigate,
+    userData.session,
+  ]);
 
   // Actualiza userData cada vez que cambia la ruta
   useEffect(() => {
