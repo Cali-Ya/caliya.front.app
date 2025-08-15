@@ -23,6 +23,7 @@ import getAdditionals from '../../services/get_additionals';
 //react
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import IconHome from '../../../../components/icons/home_icon/IconHome';
 
 const BuyProduct = () => {
   //loader
@@ -126,15 +127,18 @@ const BuyProduct = () => {
   return (
     <aside className="buy_product__container">
       <header className="header_buy_product">
-        <CaretIconLeft
-          onClick={() => {
-            setSelectedAdditionals([]);
-            setObservation('');
-            setQuantity(1);
-            handleReturnPage();
-            additionalsRef.current?.clearChecks();
-          }}
-        />
+        <div className="header_buy_product__content_icons">
+          <CaretIconLeft
+            onClick={() => {
+              setSelectedAdditionals([]);
+              setObservation('');
+              setQuantity(1);
+              handleReturnPage();
+              additionalsRef.current?.clearChecks();
+            }}
+          />
+          <IconHome />
+        </div>
         <ShoppingCartIcon />
       </header>
 
