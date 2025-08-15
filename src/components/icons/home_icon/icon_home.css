@@ -1,0 +1,17 @@
+.icon_home_container {
+  position: relative;
+  display: flex;
+  background-color: var(--active-color-white);
+  border-radius: 0.4em;
+  cursor: pointer;
+
+  .icon_home {
+    font-size: 2em;
+    color: var(--active-color-primary);
+    padding: 4px 5px;
+    width: max-content;
+    height: max-content;
+    box-shadow: var(--shadow);
+    border-radius: 0.2em;
+  }
+}

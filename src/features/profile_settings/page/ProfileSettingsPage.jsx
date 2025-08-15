@@ -4,6 +4,8 @@ import './profile_settings_page.css';
 import TabBar from '../../../components/bars/tap_bar/TapBar';
 //components
 import CaretIconRight from '../../../components/caret_icons/caret_icon_rigth/CaretIconRight';
+//services
+import logout_customer from '../services/logout_customer';
 //icons
 import {
   MdLock,
@@ -13,7 +15,10 @@ import {
 } from 'react-icons/md';
 import { ilustrations } from '../../../assets/assets_exports';
 //utils
-import { getDecryptedItem } from '../../../utils/encryptionUtilities';
+import {
+  getDecryptedItem,
+  setEncryptedItem,
+} from '../../../utils/encryptionUtilities';
 //react
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -34,6 +39,23 @@ const ProfileSettingsPage = () => {
     const user_data = getDecryptedItem(user_session);
     setUserData(user_data);
   }, []);
+
+  //use cookie
+
+  //logout
+  const logOut = () => {
+    const user_session = 'user_session';
+    const user_data = getDecryptedItem(user_session);
+
+    if (user_data) {
+      setUserData({
+        session: false,
+        data: null,
+      });
+      logout_customer(navigate);
+      setEncryptedItem(user_session, { session: false, data: null });
+    }
+  };
 
   return (
     <section className="profile_settings_container">
@@ -123,7 +145,10 @@ const ProfileSettingsPage = () => {
             </li>
 
             {/* logout */}
-            <li className="profile_settings_option profile_settings_option__logout">
+            <li
+              className="profile_settings_option profile_settings_option__logout"
+              onClick={logOut}
+            >
               <MdExitToApp className="profile_settings_option__icon" />
               <p className="profile_settings_option__text_container">
                 <span className="profile_settings_option__text">

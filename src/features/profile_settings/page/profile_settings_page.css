@@ -78,6 +78,7 @@
 
   .profile_settings_option__logout {
     margin-top: auto;
+    cursor: pointer;
   }
 
   .profile_settings_no_session {

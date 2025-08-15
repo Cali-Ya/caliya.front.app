@@ -12,6 +12,12 @@
     top: 0;
     display: flex;
     justify-content: space-between;
+
+    .header_buy_product__content_icons {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+    }
   }
 
   .image_buy_product_container {

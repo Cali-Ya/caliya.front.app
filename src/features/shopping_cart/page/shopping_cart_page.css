@@ -10,6 +10,7 @@
     width: 100%;
     align-items: center;
     min-height: 30px;
+    gap: 0.5em;
 
     .header_cart_store__title {
       width: 100%;

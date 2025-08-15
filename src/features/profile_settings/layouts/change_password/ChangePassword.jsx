@@ -6,6 +6,7 @@ import ProfileSettingsHeader from '../../components/profile_settings_header/Prof
 import { ButtonPrimary } from '../../../../components/button_components/ButttonsComponents';
 //react
 import { useForm } from 'react-hook-form';
+import { change_password } from '../../services/change_profile_information';
 
 const ChangePassword = () => {
   const isUsingPassoword = true; // Assuming this is a constant for the password usage
@@ -17,8 +18,11 @@ const ChangePassword = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (password) => {
+    const data = {
+      password: password.password,
+    };
+    change_password(data);
   };
 
   return (

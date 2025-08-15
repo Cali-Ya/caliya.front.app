@@ -2,6 +2,7 @@
 import './shopping_cart_page.css';
 //icons
 import CaretIconLeft from '../../../components/caret_icons/caret_icon_left/CaretIconLeft';
+import IconHome from '../../../components/icons/home_icon/IconHome';
 //components
 import ShoppingCart from '../layout/shopping_cart/ShoppingCart';
 //react
@@ -22,6 +23,7 @@ const ShoppingCartPage = () => {
     <main className="container_shopping_cart_page">
       <header className="header_cart_store">
         <CaretIconLeft onClick={handleReturnPage} preferColor={caretBlack} />
+        <IconHome />
       </header>
 
       <section>
